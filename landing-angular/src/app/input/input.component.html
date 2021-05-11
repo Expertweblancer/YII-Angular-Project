@@ -1,0 +1,18 @@
+<div class="input-wrapper {{error ? 'with-error' : ''}}">
+  <div class="label">
+    {{label}}
+    <a *ngIf="linkLabel" href="#">
+      {{linkLabel}}
+    </a>
+  </div>
+  <input
+  [disabled]="isDisabled"
+  class="input"
+  type="{{type}}"
+  placeholder="{{placeholder}}"
+  [value]="value"
+  (input)="onChange($event.target.value)" >
+  <div *ngIf="error" class="error">
+    {{error}}
+  </div>
+</div>

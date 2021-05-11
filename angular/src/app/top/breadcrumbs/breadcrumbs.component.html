@@ -1,0 +1,13 @@
+<div *ngIf="messages" class="row">
+  <div class="col-12">
+    <div class="app-breadcrumb">
+      <p *ngIf="breadcrumbs.length>0" >{{getLabel(breadcrumbs[breadcrumbs.length-1].label)}}</p>
+      <ul *ngIf="breadcrumbs.length>1" >
+        <li *ngFor="let breadcrumb of breadcrumbs; let i=index">
+          <a [routerLink]="[breadcrumb.url, breadcrumb.params]">{{getLabel(breadcrumb.label)}}</a>
+          <span *ngIf="i<breadcrumbs.length-1" >/</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

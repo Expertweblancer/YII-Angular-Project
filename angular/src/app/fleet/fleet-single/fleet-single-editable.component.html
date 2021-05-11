@@ -1,0 +1,45 @@
+<div class="card">
+    <div class="card-fleet">
+        <img class="align-self-center" [src]="getFoto(fleet.foto)" />
+        <div class="middle detail">
+            <div class="top">
+                <div>
+                    <h5 class="subtitle-black title">{{fleet.name}}</h5>
+                    <p class="subtitle-gray category">
+                        <i class="glyphicon icon-truck category" aria-hidden="true"></i> {{fleetType}}
+                    </p>
+                </div>
+                <div>
+                    <p>
+                        <a (click)="editFleet()" class="pointer">
+                            <i class="fa fa-pencil" aria-hidden="true"></i> {{messages.edit}}
+                        </a>
+                        <a (click)="deleteFleet()" class="pointer">
+                            <i [ngClass]="(deleting)?'fa fa-circle-o-notch fa-spin fa-fw':'fa fa-trash'" aria-hidden="true"></i>{{messages.delete}}
+                        </a>
+                    </p>
+                </div>
+            </div>
+            <div class="bottom">
+                <div class="d-flex decor-icon">
+                    <i class="glyphicon icon-enlarge" aria-hidden="true"></i>
+                    <div>
+                        <p class="subtitle-gray"> {{messages.dim_load_space}} </p>
+                        <p class="subtitle-black"> {{fleet.loading_width}} x {{fleet.loading_height}} x {{fleet.loading_length}} </p>
+                    </div>
+                </div>
+                <div class="d-flex decor-icon">
+                    <i class="glyphicon icon-weight" aria-hidden="true"></i>
+                    <div>
+                        <p class="subtitle-gray"> {{messages.max_loading}} </p>
+                        <p class="subtitle-black"> {{fleet.max_kg}} kg</p>
+                    </div>
+                </div>
+                <div *ngIf="fleet.registration" class="registration d-flex justify-content-center align-content-center">{{fleet.registration}}</div>
+            </div>
+            <!--p class="title"> {{messages.max_distance}} </p>
+            <p class="elem"> <i class="fa fa-shopping-bag" aria-hidden="true"></i> {{fleet.max_km}} km</p-->
+        </div>
+    </div>
+</div>
+<confirm-dialog *ngIf="confirmDelete" (onAction)="confirmAction($event)"></confirm-dialog>

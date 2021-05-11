@@ -1,0 +1,23 @@
+
+<div id="outer">
+</div>
+<div *ngIf="!working"  id="inner">
+  <h5>{{messages.report_complaint}}</h5>
+  <h6>{{order.title}}</h6>
+
+  <div class="form-group">
+      <textarea class="form-control" rows="6" [(ngModel)]="complaint.message" (ngModelChange)="onMessageChange($event)"></textarea>
+  </div>
+  <div class="form-check">
+    <label class="form-check-label">
+      <input class="form-check-input" name="agree-box" [(ngModel)]="complaint.not_realized" type="checkbox">
+        {{messages.mark_as_not_realized}}
+    </label>
+  </div>
+  <p *ngIf="complaint.filename" >{{complaint.filename}} <button class="btn btn-secondary btn-sm" (click)="complaint.filename=null">X</button></p>
+  <p><file-upload [css_class]="'btn btn-primary'" (onUploaded)="onFileUpload($event)"></file-upload></p> 
+  <button class="btn btn-secondary" (click)="cancel()" >{{messages.cancel}}</button>
+  <button [ngClass]="cansend?'btn btn-primary':'btn btn-primary disabled'" (click)="ok()" >
+    <i *ngIf="sending"  class="fa fa-spinner fa-pulse fa-fw"></i> {{messages.send}}
+  </button>
+</div>

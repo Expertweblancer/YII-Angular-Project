@@ -1,0 +1,69 @@
+@import '../../sass/colors';
+
+.faq-section {
+    display: flex;
+    align-items: center;
+    position: relative;
+    .illustration-wrapper {
+        flex-shrink: 0;
+        &, .ill {
+            max-width: 504px;
+            width: 32%;
+        }
+        .ill {
+            position: absolute;
+            left: 0;
+            background-origin: center;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-image: url(/assets/img/faq.png);
+            top: 0;
+            height: 100%;
+        }
+    }
+    .spacing {
+        max-width: 96px;
+        width: 6%;
+        flex-shrink: 0;
+    }
+    // .section-header {
+    // }
+    .faq {
+        margin: 64px 0;
+        width: 100%;
+        .questions {
+            margin-top: 14px;
+            .question {
+                .controller {
+                    user-select: none;
+                    cursor: pointer;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    border-bottom: 2px solid #F2F2F2;
+                    box-sizing: border-box;
+                    .label {
+                        font-family: ClanWebProThin;
+                        font-size: 20px;
+                        line-height: 44px;
+                    }
+                }
+                &.active {
+                    .controller {
+                        border-color: $blue;
+                    }
+                    .label {
+                        color: $blue;
+                        font-family: ClanWebProBook;
+                    }
+                }
+                .text {
+                    margin: 20px 0;
+                    font-family: ClanWebProThin;
+                    font-size: 16px;
+                    line-height: 28px;
+                }
+            }
+        }
+    }
+}

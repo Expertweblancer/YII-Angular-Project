@@ -1,0 +1,7 @@
+
+  <a *ngIf="messages"  routerLinkActive="active" [routerLink]="['messages']">
+    <span>
+      <i class="glyphicon icon-email" aria-hidden="true"></i> {{messages.messages}}
+    </span>
+    <!-- <span *ngIf="numOfUnread>0"  [ngClass]="nomOfUnread>0?'badge badge-primary':'badge badge-success'">{{numOfUnread}}</span> -->
+  </a>

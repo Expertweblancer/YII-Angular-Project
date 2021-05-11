@@ -1,0 +1,12 @@
+<div id="outer" *ngIf="showServerError" ></div>
+<div *ngIf="!working && showServerError"  id="inner">
+  <h4>Server occured error, we apologize for inconvinience</h4>
+  <p>{{error_text}}</p>
+  <div>
+    <button class="btn btn-secondary" (click)="logout()" >Ok</button>
+  </div>
+</div>
+
+
+
+<router-outlet></router-outlet>

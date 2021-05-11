@@ -1,0 +1,24 @@
+<in-loader *ngIf="working"></in-loader>
+
+<fleet-single-editable [messages]="messages" *ngIf="!working" [categories]="fleetOrderCategories" [fleet]="fleetModel" [editable]="true" [fleetType]="fleetType"></fleet-single-editable>
+
+<div *ngIf="!working" class="card">
+  <div class="card-header">
+    <div>
+      <p class="subtitle-gray">{{messages.history_of}}</p>
+      <p class="subtitle-black">{{messages.orders}}</p>
+    </div>
+  </div>
+
+  <div *ngIf="history.length>0 && fleetModel" class="card-block">
+    <table class="table table-striped">
+      <tr *ngFor="let historyItem of history">
+        <td> <i class="glyphicon {{getOrderCategoryIcon(historyItem.category_id)}}"></i> {{historyItem.title}} </td>
+        <td> {{historyItem.from_city}} {{historyItem.from_country_short}} - {{historyItem.to_city}} {{historyItem.to_country_short}}
+          ({{formatDistance(historyItem.distance)}}km) </td>
+        <td style="text-align: right"> {{historyItem.date_execution | date :'d-MM-y'}} </td>
+      </tr>
+    </table>
+  </div>
+</div>
+<ngb-alert *ngIf="!working && history.length==0" [type]="'warning'" [dismissible]="false">{{messages.not_found}}</ngb-alert>

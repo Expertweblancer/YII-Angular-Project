@@ -1,0 +1,131 @@
+<div *ngIf="!working" class="stats">
+  <div class="block-with-shadow fleet">
+    <img src="/assets/icons/track.svg">
+    <div class="text">
+      <div class="title">ZLECENIA</div>
+      <div class="header">REALIZOWANE</div>
+    </div>
+    <div class="value">7</div>
+  </div>
+  <div class="block-with-shadow income">
+    <img src="/assets/icons/balance.svg">
+    <div class="text">
+      <div class="title">przetargi</div>
+      <div class="header">otwarte</div>
+    </div>
+    <div class="value">4</div>
+  </div>
+  <div class="block-with-shadow orders">
+    <img src="/assets/icons/wallet.svg">
+    <div class="text">
+      <div class="title">zlecenia</div>
+      <div class="header">do płacenia</div>
+    </div>
+    <div class="value">2</div>
+  </div>
+  <div class="block-with-shadow rate">
+    <img src="/assets/icons/star.svg">
+    <div class="text">
+      <div class="title">twoja ocena</div>
+      <div class="header">gratulacje</div>
+    </div>
+    <div class="value">4.85</div>
+  </div>
+</div>
+
+
+<div *ngIf="!areOrdersVisible" class="block-with-shadow no-active-project">
+  <img src="/assets/icons/no-active-projects.svg">
+  <div class="header">
+    NIE MASZ AKTYWNYCH ZLECEŃ
+  </div>
+  <!-- <a [routerLink]="'/customer/order/edit/new'" class="snarto-btn blue">
+    Dodaj nowe zlecenie
+  </a> -->
+  <button (click)="areOrdersVisible = !areOrdersVisible" class="snarto-btn blue">
+    Dodaj nowe zlecenie
+  </button>
+</div>
+
+<ng-container *ngIf="areOrdersVisible">
+  <div *ngIf="!working" class="block-with-shadow">
+    <div class="with-pad block-header">
+      <div class="label">ZLECENIA</div>
+      <div class="header">W TRAKCIE REALIZACJI</div>
+    </div>
+    <div class="with-pad with-list">
+      <order-list
+      [withNumber]="true"
+      [headers]="['TRANSPORT', 'OPIS', 'TRASA']"
+      [orders]="[
+        { 
+          columns: [
+            { value: 'Renault Trafic 2.5DCI (2015)' },
+            { value: 'Przeprowadzka z północy' },
+            { value: 'Gdańsk – Kraków', km: 585 }
+          ]
+        },
+        { 
+          columns: [
+            { value: 'Boeing 747 Dreamlifter' },
+            { value: 'Dreamcars intercontinental transport' },
+            { value: 'JFK – KTW' }
+          ],
+          isActive: true
+        },
+        { 
+          columns: [
+            { value: 'Renault T 460 (2015)' },
+            { value: '24 palety ze sprzętem AGD' },
+            { value: 'Poznań – Bydgoszcz', km: 114 }
+          ]
+        }
+      ]"
+      ></order-list>
+    </div>
+  </div>
+  
+  <div *ngIf="!working" class="block-with-shadow">
+    <div class="with-pad block-header">
+      <div class="label">OTWARTE</div>
+      <div class="header">PRZETARGI <span>(5)</span></div>
+    </div>
+    <div class="with-pad with-list">
+      <order-list
+      [headers]="['Kategoria', 'TRASA', 'ODLEGŁOŚĆ', 'DATA ZAŁ./ROZŁ.', 'STAWKA', 'DODANO']"
+      [orders]="[
+        {
+          columns: [
+            { category: 0 },
+            { value: 'Poznań - Warszawa' },
+            { value: '351km' },
+            { value: '28.09/30.09' },
+            { value: '4 500 PLN', isPrice: true },
+            { value: '2 minuty temu' }
+          ]
+        },
+        { 
+          columns: [
+            { category: 1 },
+            { value: 'Kraków - Gdańsk' },
+            { value: '574km' },
+            { value: '30.09/02.10' },
+            { value: '500 PLN', isPrice: true },
+            { value: '10 minut temu' }
+          ]
+        },
+        {
+          columns: [
+            { category: 2 },
+            { value: 'Berlin - Poznań' },
+            { value: '268km' },
+            { value: '01.10/03.10' },
+            { value: '1 800 PLN', isPrice: true },
+            { value: '1 godzine temu' }
+          ]
+        }
+      ]"
+      ></order-list>
+    </div>
+  </div>
+</ng-container>

@@ -1,0 +1,8 @@
+.nav-col{
+    background-color: #333;
+    height:100%;
+}
+.sidebar{
+    position:fixed;
+    max-width: 200px;
+}

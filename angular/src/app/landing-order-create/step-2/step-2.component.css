@@ -1,0 +1,3 @@
+input:not(.ng-pristine).ng-valid, input.ng-invalid, select:not(.ng-pristine).ng-valid, select.ng-invalid, textarea:not(.ng-pristine).ng-valid, textarea.ng-invalid {
+    border: 1px solid #ced4da!important;
+}

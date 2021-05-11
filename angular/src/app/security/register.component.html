@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="row decor-area"></div>
+    <div class="row justify-content-center input-area middlearea" *ngIf="messages">
+        <div class="col-4">
+            <h3>{{messages.register}}</h3>
+            <div [ngClass]="(em.errors && em.touched) || emailExists || emailFormatInvalid?'form-group has-danger':'form-group'">
+                <label class="form-label" for="email">{{messages.email}}</label>
+                <input #em="ngModel" type="email" class="form-control" id="email" placeholder="{{messages.required}}" [(ngModel)]="email"
+                    name="email" required>
+                <small *ngIf="em.errors && em.touched" class="text-danger">{{messages.email_cant_be_empty}}</small>
+                <small *ngIf="emailExists" class="text-danger">{{messages.exists}}</small>
+                <small *ngIf="emailFormatInvalid" class="text-danger">{{messages.email_incorrect}}</small>
+            </div>
+            <div [ngClass]="(us.errors && us.touched) || usernameExists?'form-group has-danger':'form-group'">
+                <label class="form-label" for="username">{{messages.username}}</label>
+                <input #us="ngModel" type="text" class="form-control" id="username" [(ngModel)]="username" placeholder="{{messages.required}}"
+                    name="username" required>
+                <small *ngIf="us.errors && us.touched" class="text-danger">{{messages.field_cant_be_empty}}</small>
+                <small *ngIf="usernameExists" class="text-danger">{{messages.user_exists}}</small>
+            </div>
+            <div [ngClass]="pass.errors && pass.touched?'form-group has-danger':'form-group'">
+                <label class="form-label" for="password">{{messages.password}}</label>
+                <input #pass="ngModel" type="password" class="form-control" id="password" placeholder="{{messages.required}}" [(ngModel)]="password"
+                    name="password" required>
+                <small *ngIf="us.errors && us.touched" class="text-danger">{{messages.field_cant_be_empty}}</small>
+            </div>
+            <small>{{messages.by_clicking_you_accept_terms}}
+                <a target="__blank" href="{{terms_url}}">{{messages.terms}}</a>
+            </small>
+        </div>
+        <div class="col-12 d-flex justify-content-center" style="margin-top:1rem; margin-bottom:1rem;">
+            <button type="submit" (click)="register()" [ngClass]="registerInProgress?'btn btn-primary disabled':'btn btn-primary'">
+                <i [ngClass]="(registerInProgress)?'fa fa-circle-o-notch fa-spin fa-fw':'fa fa-user'" aria-hidden="true"></i> {{messages.register}}
+            </button>
+        </div>
+        <div class="col-12 d-flex justify-content-center" style="margin-top:1rem; margin-bottom:1rem;">                
+            <p class="text-center">
+                <a [routerLink]="['/login']">{{messages.already_registered}}</a>
+            </p>
+        </div>
+    </div>
+    <extended-footer></extended-footer>
+</div>

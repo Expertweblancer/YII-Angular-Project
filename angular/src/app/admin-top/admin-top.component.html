@@ -1,0 +1,81 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12" style="padding:0; margin:0;">
+        <div class="wrapper" *ngIf="!working" >
+            <div class="sidebar">
+                <div class="sidebar-wrapper">
+                <div class="logo">
+                    Snarto
+                </div>
+                <div class="profile">
+                    <menu-get-profile></menu-get-profile>
+                </div>
+
+                <ul class="nav" >
+                    <li class="unactivable">
+                        <user-messages-menu></user-messages-menu>
+                    </li>
+                        
+                    <li class="unactivable">
+                        <menu-notifications></menu-notifications>
+                    </li>
+                    <li class="separator"></li>
+                    <li>
+                        <a routerLinkActive="active" [routerLink]="['dashboard']"><i class="glyphicon icon-house"></i> {{messages.dashboard}}</a>
+                    </li>
+                    <li class="element">
+                        <a routerLinkActive="active" [routerLink]="['translations']"> {{messages.translations}}</a>
+                    </li>
+                    <li class="element">
+                        <a routerLinkActive="active" [routerLink]="['currencies']"> {{messages.currencies}}</a>
+                    </li>
+                    <li class="element">
+                        <a routerLinkActive="active" [routerLink]="['user-list']"> {{messages.user_list}}</a>
+                    </li>
+                    <li class="element">
+                        <a routerLinkActive="active" (click)="logout()"> {{messages.logout}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="main-panel" *ngIf="!working" >
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <breadcrumbs></breadcrumbs>                                  
+                            <router-outlet></router-outlet>            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="app-footer d-flex">
+                    <p class="copyright ml-auto">
+                        &copy; <script>document.write(new Date().getFullYear())</script> <a href="http://www.snarto.com">Snarto</a>
+                    </p>
+            </footer>
+        </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+
+                    <!--li class="nav-item">
+
+                    <li class="nav-item">
+                        <a class="nav-link" routerLinkActive="active" [routerLink]="['translations']"><i class="fa fa-user" aria-hidden="true"></i> {{messages.translations}}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLinkActive="active" [routerLink]="['currencies']"><i class="fa fa-user" aria-hidden="true"></i> {{messages.currencies}}</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li class="nav-title">
+                        Settings
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"  ><i class="fa fa-sign-out" aria-hidden="true"></i> {{messages.logout}}</a>
+                    </li>
+                    <li class="nav-item">
+                        <span style="margin-left:10px;"><i> Version: {{system_ver}}</i></span>
+                    </li-->

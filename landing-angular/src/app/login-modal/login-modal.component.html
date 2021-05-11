@@ -1,0 +1,48 @@
+<div
+(click)="close()"
+*ngIf="loginModalService.isLoginModalVisible"
+class="modal"
+[@enterAnimation]>
+  <div
+  (click)="$event.stopPropagation()"
+  class="block">
+    <div (click)="close()" class="close">
+      <img src="/assets/icons/close-white.svg">
+    </div>
+    <div class="header">
+      Zaloguj się
+    </div>
+    <div *ngIf="formError" class="form-error">
+      {{formError}}
+    </div>
+    <form (submit)="submitForm($event)">
+      <custom-input
+      [isDisabled]="isLoading"
+      [error]="loginError"
+      [value]="login"
+      (changeValue)="changeLogin($event)"
+      placeholder="EXAMPLE@EMAIL.COM"
+      label="E-MAIL"
+      type="email">
+      </custom-input>
+      <custom-input
+      [isDisabled]="isLoading"
+      [error]="passwordError"
+      [value]="password"
+      (changeValue)="changePassword($event)"
+      placeholder="••••••••"
+      label="HASŁO"
+      type="password"
+      linkLabel="Zapomniałeś hasła?">
+      </custom-input>
+      <button
+      [disabled]="isLoading"
+      class="btn big blue">
+        ZALOGUJ SIĘ
+      </button>
+      <div class="no-account">
+        Nie masz konta? <a (click)="close()" routerLink="/register">Zarejestruj się</a>
+      </div>
+    </form>
+  </div>
+</div>

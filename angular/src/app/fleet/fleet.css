@@ -1,0 +1,38 @@
+.single-fleet-row img {
+    width: 100px;
+    height:auto;
+}
+
+.single-fleet{
+    padding:0.5em;
+}
+
+p.title{
+    color:#bbb;
+    padding:0 0 0 20px;
+    margin:0 0 10px 0;
+    line-height: 1.2em;
+    font-size: 1em;
+}
+p.elem{
+    line-height: 1.2em;
+    font-size: 1.1em;
+    margin:0 0 8px 0;
+    padding:0;
+}
+p.elem i.fa{
+    margin-right:5px;
+}
+
+.fleet-edit-icons{
+    float:right;
+}
+.fleet-edit-icons a{
+    font-size: 2em;
+}
+.ui-select-container .ui-select-multiple .dropdown .form-control {
+    border-radius: 0;
+}
+.ui-select-multiple{
+    
+}

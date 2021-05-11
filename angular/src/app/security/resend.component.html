@@ -1,0 +1,30 @@
+<div class="container" >
+    <div class="row decor-area"></div>
+    <in-loader *ngIf="working"></in-loader>
+    <div class="row justify-content-center input-area middlearea">
+        <div class="col-10" *ngIf="messages">
+            <ngb-alert *ngIf="resendOk" [type]="'success'">{{messages.successful}}</ngb-alert>
+            <ngb-alert *ngIf="resendErr" [type]="'danger'">{{messages.error}}</ngb-alert>
+            <ngb-alert *ngIf="unkownEmail" [type]="'warning'">{{messages.unknown}}</ngb-alert>
+        </div>
+        <div class="col-4" *ngIf="messages">
+            <div class="col-sm-12">
+                <h3>{{messages.resend_confirmation_link}}</h3>
+            </div>
+            <div class="form-group col-12">
+                <label class="form-label" for="login-form-login">{{messages.email}}</label>
+                <input type="text" id="email-form-login" class="form-control" autofocus="autofocus" tabindex="1" aria-required="true" #email
+                    required>
+            </div>
+            <div class="col-12 text-center">
+                <button type="submit" class="btn btn-primary" tabindex="4" (click)="resend(email.value)">
+                    <i [ngClass]="(sending)?'fa fa-circle-o-notch fa-spin fa-fw':'fa fa-envelope'" aria-hidden="true"></i> {{messages.resend}}
+                </button>
+                <p class="text-center">
+                    <a class="btn btn-link" [routerLink]="['/login']">{{messages.login}}</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <extended-footer></extended-footer>
+</div>

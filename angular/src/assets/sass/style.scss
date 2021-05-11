@@ -1,0 +1,32 @@
+@import "lbd/variables";
+@import "lbd/mixins";
+
+@import "lbd/typography";
+
+@import "lbd/misc";
+@import "lbd/sidebar-and-main-panel";
+//@import "lbd/buttons";
+
+@import "lbd/tables";
+
+@import "lbd/landing-add-order";
+
+
+@import "lbd/checkbox-radio-switch";
+@import "lbd/navbars";
+@import "lbd/footers";
+// Fancy Stuff
+@import "lbd/dropdown";
+@import "lbd/card";
+@import "lbd/chartist";
+@import "lbd/responsive";
+@import "lbd/general";
+
+.align-centered, .flex-centered {
+	display: flex;
+	align-items: center;
+}
+
+.flex-centered {
+	justify-content: center;
+}

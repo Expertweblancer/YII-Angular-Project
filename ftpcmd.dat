@@ -1,0 +1,11 @@
+option batch abort 
+option confirm off 
+open sftp://snarto_test:ASDF1234asdf@178.62.242.64 -passive=on 
+put 3rdpartylicenses.txt ./public_html/  
+put favicon.ico ./public_html/  
+put index.html ./public_html/  
+put inline.ebbba1ccd135af180030.bundle.js ./public_html/  
+put main.c2104a15665dc5382b8b.bundle.js ./public_html/  
+put polyfills.ad37cd45a71cb38eee76.bundle.js ./public_html/  
+put styles.639aa9f25e70e368bc73.bundle.js ./public_html/  
+exit 

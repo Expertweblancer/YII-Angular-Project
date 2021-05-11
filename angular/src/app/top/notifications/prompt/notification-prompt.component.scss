@@ -1,0 +1,12 @@
+.notification-prompt {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #FFF;
+    width: 402px;
+    border-radius: 4px;
+    box-shadow: 5px 0 40px rgba($color: #000, $alpha: 0.1);
+    pointer-events: none;
+    // TODO: Remove
+    min-height: 400px
+}

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="38px" height="45px" viewBox="0 0 38 45" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.4 (67378) - http://www.bohemiancoding.com/sketch -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <g id="company" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="company-requirements" transform="translate(-1047.000000, -821.000000)" fill="#2C5EE6">
+            <g id="features-copy" transform="translate(186.000000, 555.000000)">
+                <g id="Group" transform="translate(861.000000, 266.000000)">
+                    <rect id="Rectangle" transform="translate(19.207107, 21.792893) rotate(-315.000000) translate(-19.207107, -21.792893) " x="17.7071068" y="-2.70710678" width="3" height="49"></rect>
+                    <g id="iphone" transform="translate(6.000000, 0.000000)" fill-rule="nonzero">
+                        <path d="M23.8105263,0 L2.18947368,0 C1.18596491,0 0.410526316,0.801980198 0.410526316,1.78217822 L0.410526316,43.2623762 C0.410526316,44.2425743 1.23157895,45 2.18947368,45 L23.8105263,45 C24.8140351,45 25.5894737,44.1980198 25.5894737,43.2623762 L25.5894737,1.78217822 C25.5894737,0.801980198 24.8140351,0 23.8105263,0 Z M11.2210526,41.2128713 C11.2210526,40.2772277 11.9964912,39.4752475 13,39.4752475 C13.9578947,39.4752475 14.7789474,40.2326733 14.7789474,41.2128713 C14.7789474,42.1485149 14.0035088,42.950495 13,42.950495 C12.0421053,42.950495 11.2210526,42.1485149 11.2210526,41.2128713 Z M1.77894737,38.2722772 L1.77894737,5.48019802 L24.2666667,5.48019802 L24.2666667,38.2722772 L1.77894737,38.2722772 Z" id="Shape"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

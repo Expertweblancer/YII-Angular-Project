@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="11px" height="11px" viewBox="0 0 11 11" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.4 (67378) - http://www.bohemiancoding.com/sketch -->
+    <title>arrow-top</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="dashboard" transform="translate(-1605.000000, -2607.000000)" fill="#000000">
+            <g id="main" transform="translate(53.000000, -2.000000)">
+                <g id="section-copy" transform="translate(0.000000, 597.000000)">
+                    <g id="table" transform="translate(0.000000, 102.000000)">
+                        <g id="tr" transform="translate(290.000000, 64.000000)">
+                            <g id="arrow-top" transform="translate(1262.000000, 1846.000000)">
+                                <path d="M0.378125,6.05 C0.721875,6.39375 1.271875,6.359375 1.58125,6.015625 L4.571875,2.921875 L4.571875,9.934375 C4.571875,10.415625 4.95,10.79375 5.43125,10.79375 C5.9125,10.79375 6.290625,10.415625 6.290625,9.934375 L6.290625,2.95625 L9.28125,6.05 C9.625,6.39375 10.140625,6.39375 10.484375,6.084375 C10.828125,5.740625 10.828125,5.225 10.51875,4.88125 L6.05,0.275 C5.878125,0.103125 5.671875,0 5.43125,0 C5.190625,0 4.984375,0.103125 4.8125,0.275 L0.34375,4.88125 C0.034375,5.190625 0.034375,5.740625 0.378125,6.05 Z" id="Path"></path>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

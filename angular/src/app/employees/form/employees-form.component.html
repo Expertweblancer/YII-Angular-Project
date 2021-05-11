@@ -1,0 +1,46 @@
+<loader *ngIf="working && !messages"></loader>
+<ngb-alert *ngIf="messages && inviteResult=='success'" [type]="'success'">{{messages.invitation_sent}}</ngb-alert>
+<ngb-alert *ngIf="messages && inviteResult=='error'" [type]="'danger'">{{messages.invitation_error}}</ngb-alert>
+<ngb-alert *ngIf="messages && inviteResult=='already-exists'" [type]="'danger'">{{messages.already_exists}}</ngb-alert>
+<ngb-alert *ngIf="messages && inviteResult=='invalid-email'" [type]="'danger'">{{messages.invalid}}</ngb-alert>
+<ngb-alert *ngIf="messages && inviteResult=='already-registered'" [type]="'success'">{{messages.already_registered_updating_profile}}</ngb-alert>
+<div class="card" *ngIf="messages">
+  <div class="card-header">
+    {{messages.new_employee}}
+  </div>
+  <div class="card-block">
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group row">
+        <label for="email" class="col-2 col-form-label">{{messages.email}}</label>
+        <div class="col-10">
+          <input type="text" name="email" class="form-control" required #email [(ngModel)]="model.email" [placeholder]="messages.enter_email">
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">
+        <i *ngIf="sending" class="fa fa-circle-o-notch fa-spin fa-fw" aria-hidden="true"></i> {{messages.invite}}
+      </button>
+    </form>
+  </div>
+</div>
+
+<div *ngIf="messages" class="card" style="margin-top:15px;">
+  <div class="card-header">
+    {{messages.invited_users}}
+  </div>
+  <div class="card-block" style="padding-top:0;">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>{{messages.email}}</th>
+          <th>{{messages.invitation_date}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let iu of invitedUsers">
+          <td>{{iu.email}}</td>
+          <td>{{iu.created}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

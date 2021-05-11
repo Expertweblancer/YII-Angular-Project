@@ -1,0 +1,60 @@
+<loader *ngIf="working"></loader>
+
+<ngb-alert *ngIf="messages && showErrorMsg" [type]="'danger'">{{messages.fix_errors}}</ngb-alert>
+<form *ngIf="!working" [formGroup]="profileForm" onkeypress="return event.keyCode != 13;" (ngSubmit)="onSubmit()">
+  <div class="card" *ngIf="!working">
+    <div class="card-block">
+      <div class="row justify-content-center">
+        <div class="col-xl-1 col-sm-3">
+          <div class="float-right">
+            <image-upload (onUploaded)="fotoUploaded($event)"></image-upload>
+          </div>
+        </div>
+        <div class="col-md-9 col-sm-12">
+          <div class="row" formGroupName="profile">
+            <div class="form-group col-6">
+              <label class="form-label" for="name1">{{messages.name}}</label>
+              <input type="text" tabindex="10" name="name" formControlName="name" class="form-control" placeholder="{{messages.required}}">
+            </div>
+          </div>
+
+          <div class="row" formGroupName="profile">
+            <div class="form-group col-4">
+              <label class="form-label" for="telephone">{{messages.telephone}}</label>
+              <input tabindex="12" type="text" name="telephone" formControlName="tel" class="form-control" placeholder="{{messages.required}}">
+              <small class="text-danger" *ngIf="profileForm.controls.profile.controls.tel.invalid">{{messages.phone_invalid}}</small>
+            </div>
+
+            <div class="form-group col-4">
+              <label class="form-label" for="contact-person">{{messages.contact_person}}</label>
+              <input tabindex="11" type="text" name="contact-person" formControlName="contact_person" class="form-control" placeholder="{{messages.optional}}">
+            </div>
+            <div class="form-group col-4">
+              <label class="form-label" for="curr">{{messages.currency}}</label>
+              <select tabindex="13" id="curr" name="curr" class="form-control" formControlName="currency_id">
+                <option *ngFor="let currency of currencies" value="{{currency.id}}">{{currency.short}}</option>
+              </select>
+            </div>
+            <div class="form-group col-4">
+              <label class="form-label" for="vat">{{messages.no_vat}}</label>
+              <input tabindex="14" type="text" name="vat" formControlName="no_vat" class="form-control" placeholder="{{messages.no_vat}}">
+            </div>
+            <div class="form-group col-12">
+              <label class="form-label" for="description">{{messages.description}}</label>
+              <textarea tabindex="14" name="description" formControlName="description" class="form-control" placeholder="{{messages.optional}}"></textarea>
+            </div>
+          </div>
+
+          <h5>{{messages.company_information}}</h5>
+          <profile-address *ngIf="addressModel" [formGroup]="profileForm.controls.address"></profile-address>
+          <h5>{{messages.user_information}}</h5>
+          <profile-user *ngIf="profileUserModel" [formGroup]="profileForm.controls.user"></profile-user>
+          <div class="form-group" style="margin-top:10px; ">
+            <button class="btn btn-success" type="submit">{{messages.save}}</button>
+            <button class="btn btn-warning" style="margin-left:5px;" (click)="cancelEdit()">{{messages.cancel}}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

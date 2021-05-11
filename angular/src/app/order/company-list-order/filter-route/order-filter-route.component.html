@@ -1,0 +1,17 @@
+
+<div class="row" *ngIf="messages" >
+    <div class="form-group col-6">
+      <label for="country-from" class="form-label">{{messages.beginning}}</label>
+      <autocomplete (onPlacesChanged)="onFromPlaceChanged($event)"></autocomplete>
+    </div>
+    <div class="form-group col-6">
+      <label for="country-to" class="form-label">{{messages.end}}</label>
+      <autocomplete (onPlacesChanged)="onToPlaceChanged($event)"></autocomplete>
+    </div>
+    <div class="form-group col-6">
+      <label for="filter-exec" class="form-label">{{messages.start_date}}</label>
+      <jqxDateTimeInput [enableBrowserBoundsDetection]="true" (onChange)="onDateChange($event)" [theme]="'shipme'" [height]="'1.8rem'" [width]="'100%'"></jqxDateTimeInput>
+      <google-maps (onDirectionSet)="onDintanceSet($event)" [from_address]="fromAddress.address" [to_address]="toAddress.address" [displayMap]="false"></google-maps>
+    </div>        
+  </div>
+  

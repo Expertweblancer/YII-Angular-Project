@@ -1,0 +1,181 @@
+:root{
+    @media screen and (max-width: 600px) {
+        font-size:calc(#{$font-size-base} * 2.2);
+    }
+    @media screen and (min-width: 801px) and (max-width: 991px) {
+        font-size:calc(#{$font-size-base} * 1.2);
+    }
+    @media screen and (min-width: 992px) and (max-width: 1199px) {
+        font-size:calc(1.15 * #{$font-size-base});
+    }
+    @media screen and (min-width: 1200px) {
+        font-size:calc(1.1 * #{$font-size-base});
+    }
+    @media screen and (min-width: 1367px) {
+        font-size:calc(0.8 * #{$font-size-base});
+    }
+}
+
+@media screen and (max-width: 1199px) {
+    .container{
+        max-width:100vw;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .container{
+        max-width:100vw;
+    }
+}
+
+@media screen and (min-width: 1367px) {
+    .container{
+        max-width:80vw;
+    }
+}
+
+@media screen and (min-width: 1424px) {
+    .container{
+        max-width:74vw;
+    }
+}
+
+body.body {
+    background-color: $app-bg;
+}
+
+.background-warning{
+    background-color:$warning-color;
+    color:#fff!important;
+}
+
+a.background-warning:hover{
+    background-color: $warning-states-color!important;
+}
+
+.file-upload-no-image{
+    width:6em;
+    height:6em;
+    border:1px solid $app-bg-border;
+    background-color: $menu-bg-color;
+    border-radius:0.5em;
+    .glyphicon {
+        font-size: 2rem;
+        color:$primary-color;
+    }
+}
+
+.custom-control{
+    &.custom-checkbox {
+        .custom-control-indicator{
+            border-radius: 0;
+            width:0.8rem;
+            height:0.8rem;
+        }
+    }
+    .custom-control-description{
+        font-size:0.7rem;
+        position: relative;
+        top:0.13rem;
+    }
+    .custom-radio{
+        padding-bottom: 0;
+    }
+    .custom-control-input {
+        &:checked {
+            &~.custom-control-indicator{
+                background-color:$primary-color;
+            }
+        }
+    }
+}
+
+.form-label {
+    margin-bottom:0.5rem !important;
+    font-size: 0.7rem !important;
+    letter-spacing: 0.07rem !important;
+    color:$font-color !important;
+    text-transform: uppercase !important;
+    font-weight: 600 !important;
+}
+select.custom-select{
+    width:100%;
+}
+select.form-control, input.form-control, select.custom-select {
+    height:1.8rem !important;    
+}
+
+select.form-control, select.custom-select, textarea.form-control, input.form-control {
+    border-radius: 0;
+    font-size:0.7rem;
+    padding-left: 0.6rem;
+    padding-right:0.6rem;
+    line-height: 1.1;
+    &.underline{
+        border:0;
+        border-bottom:0.1rem solid $gray-font-color;
+        font-size:1.2rem;
+        height:auto;
+        &.ng-invalid.ng-touched{
+            border-bottom-color:$danger-color;
+            color:$danger-color;
+        }
+        &.ng-valid.ng-touched{
+            border-bottom-color:green;
+            color:$font-color;
+        }
+    }
+    &:focus{
+        border:2px solid $primary-color;
+    }
+}
+
+.btn {
+    &.btn-primary:not([disabled]):not(.disabled).active{
+        box-shadow: 0 0 0 0.1rem rgba(0,123,255,.5);    
+    }
+    text-transform:uppercase;
+    font-size:0.7rem;
+    cursor: pointer;
+    border-radius: 0;
+    &.btn-primary {
+        color:#fff !important;
+    }
+/*    &.btn-outline-primary{
+        color:$primary-color;
+        &:hover{
+            color:#fff;            
+        }
+
+    }
+*/
+}
+
+.breadcrumb {
+    margin-bottom:0px;
+}
+
+.color-gray{
+    color:$gray-font-color;
+}
+.color-blue{
+    color:$color-blue;
+}
+.color-white{
+    color:#fff;
+}
+
+.glyphicon{
+    line-height: 1;
+    &.icon-star-fill, &.icon-star {
+        color:$warning-color;
+    }
+}
+
+    
+.alert{
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    border-radius: 0;
+    font-weight: 600;
+}

@@ -1,0 +1,138 @@
+<div *ngIf="working"  style="margin-top:50vh; margin-left:50vw"><div class="loader"></div></div>
+<div *ngIf="messages" >
+    <div class="col-12" style="padding:0; margin:0;">
+        <div class="wrapper" *ngIf="!working">
+            <div class="sidebar">
+                <div class="sidebar-wrapper">
+                    <div class="logo d-flex">
+                        <a [routerLink]="['/company']">
+                            <img src="/assets/img/logo.svg">
+                        </a>
+                    </div>
+                    <div class="profile">
+                        <menu-get-profile></menu-get-profile>
+                    </div>
+                    <ul class="nav">
+                        <li class="unactivable with-icon">
+                            <user-messages-menu></user-messages-menu>
+                        </li>
+
+                        <li class="unactivable with-icon">
+                            <menu-notifications></menu-notifications>
+                        </li>
+                        <li class="separator"></li>
+                        <li class="with-icon">
+                            <a routerLinkActive="active" [routerLink]="['dashboard']">
+                                <span>
+                                    <i class="glyphicon icon-house"></i>  Dashboard
+                                </span>
+                            </a>
+                        </li>
+                        <li class="header">
+                            ZLECENIA
+                        </li>
+                        <li class="border-bottom with-icon no-margin-top">
+                            <a class="no-hover" routerLinkActive="active" [routerLink]="['order/search']">
+                                <span>
+                                    <i class="glyphicon icon-magnifying-glass" aria-hidden="true"></i> Szukaj zlecenia
+                                </span>
+                            </a>
+                        </li>
+                        <li class="element">
+                            <a routerLinkActive="active" [routerLink]="['order/list']" [queryParams]="{action:'executing'}">
+                                {{messages.executing}}
+                                <span class="info">{{ordersStatus.num_executing}}</span>
+                            </a>
+                        </li>
+                        <li class="element">
+                            <a routerLinkActive="active" [routerLink]="['order/list']" [queryParams]="{action:'awaiting'}">
+                                {{messages.to_execute}}
+                                <span class="info">{{ordersStatus.num_awaiting}}</span>
+                            </a>
+                        </li>
+                        <li class="element">
+                            <a routerLinkActive="active" class="border-bottom" [routerLink]="['order/list']" [queryParams]="{action:'offering'}">
+                                {{messages.offering}}
+                                <span class="info">{{ordersStatus.num_offering}}</span>
+                            </a>
+                        </li>
+                        <li class="spacing"><div></div></li>
+                        <li class="element">
+                            <a routerLinkActive="active" [routerLink]="['order/list']" [queryParams]="{action:'compleated'}">
+                                {{messages.compleated}}
+                                <span class="info">0</span>
+                            </a>
+                        </li>
+                        <li class="element">
+                            <a routerLinkActive="active" [routerLink]="['order/list']" [queryParams]="{action:'unrealized'}">
+                                {{messages.unrealized}}
+                            </a>
+                        </li>
+                        <li class="separator"></li>
+                        <li class="header border-bottom">
+                            {{messages.fleet}}
+                        </li>
+                        <li class="element">
+                            <a [routerLink]="['']">
+                                Pojazdy w trasie
+                                <span class="info">0</span>
+                            </a>
+                        </li>
+                        <li class="element">
+                            <a [routerLink]="['']">
+                                Pojazdy w bazie
+                                <span class="info">0</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a routerLinkActive="active" [routerLink]="['fleet/list']">
+                                {{messages.all_fleet}}
+                                <span class="info">0</span>
+                            </a>
+                        </li>
+
+                        <li class="border-bottom header">
+                            {{messages.finances}}
+                        </li>
+                        <li class="element with-icon">
+                            <a routerLinkActive="active" [routerLink]="['invoices']">Faktury za zlecenia</a>
+                        </li>
+                        <li class="header border-bottom">
+                            {{messages.settings}}
+                        </li>
+                        <li class="element">
+                            <a routerLinkActive="active" [routerLink]="['employees']"> {{messages.employees}}</a>
+                        </li>
+                        <li class="separator"></li>
+                        <li class="element">
+                            <a (click)="logout()" class="pointer"> {{messages.logout}}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="main-panel" *ngIf="!working">
+                <div class="content">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12">
+                                <breadcrumbs></breadcrumbs>
+                                <router-outlet></router-outlet>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <footer class="app-footer">
+                    <div class="copyright">
+                        2017 &copy; Copyright Snarto. Wszelkie prawa zastrzeżone
+                    </div>
+                    <button (click)="scrollToTop()" class="scrollToTop">
+                        <img src="/assets/icons/arrow-top.svg">
+                        PRZEWIŃ DO GÓRY
+                    </button>
+                </footer>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <user-profile-menu></user-profile-menu> -->

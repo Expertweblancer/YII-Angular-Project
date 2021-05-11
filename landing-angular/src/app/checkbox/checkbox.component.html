@@ -1,0 +1,26 @@
+<label
+class="cw-checkbox"
+for="test">
+    Akceptuje <a href="https://app.snarto.com/doc/regulamin_pl.pdf" target="_blank">regulamin</a> oraz wyrażam zgodę na przetważanie moich danych osobowych
+    <input
+    id="test"
+    type="checkbox"
+    [checked]="isChecked"
+    (change)="onChange($event.target.checked)"
+    />
+    <span class="checkbox-mark flex-centered">
+        <svg width="14px" height="13px" viewBox="0 0 14 13" version="1.1" xmlns="http://www.w3.org/2000/svg">
+            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <g class="stroke" transform="translate(-749.000000, -571.000000)" fill-rule="nonzero" stroke-width="2">
+                    <g transform="translate(570.000000, 549.000000)">
+                        <g transform="translate(16.000000, 16.000000)">
+                            <g transform="translate(157.000000, 0.000000)">
+                              <polyline transform="translate(13.000000, 12.163521) scale(-1, 1) translate(-13.000000, -12.163521) " points="7 7 14.3903449 17.3270416 19 12.7820648"></polyline>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </svg>
+    </span>
+</label>

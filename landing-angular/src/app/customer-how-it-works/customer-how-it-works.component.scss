@@ -1,0 +1,27 @@
+
+.intro {
+    display: flex;
+    height: 408px;
+    align-items: center;
+    justify-content: space-between;
+    .section-header {
+        max-width: 640px;
+        padding-right: 20px;
+    }
+    .illustration {
+        max-width: 586px;
+        height: 100%;
+        width: 37%;
+        flex-shrink: 0;
+        background-origin: center;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-image: url(/assets/img/how-it-works-intro.png);
+    }
+}
+
+.pipeline {
+    background-color: #F2F2F2;
+    padding: 100px 0 1px;
+    margin-bottom: 100px;
+}

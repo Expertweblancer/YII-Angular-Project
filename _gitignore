@@ -1,0 +1,4 @@
+yii/runtime
+yii/web/assets/*
+tmp
+yii/web/upload/*

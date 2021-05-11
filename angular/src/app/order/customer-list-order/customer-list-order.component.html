@@ -1,0 +1,71 @@
+<loader *ngIf="working || searching"></loader>
+<div *ngIf="messages" >
+  <div *ngIf="numOrginalElements==0" class="card">
+    <div class="card-block">
+      <h4 class="card-title">{{messages.no_orders_info}}</h4>
+      <a routerLink="../edit/new" class="btn btn-primary">{{messages.add_new_order}}</a>
+    </div>
+  </div>
+  <div *ngIf="!working && numOrginalElements>0 && (!orders || orders.length==0)"  class="alert alert-info" role="alert">
+      {{messages.no_result}}
+  </div>  
+  <div *ngIf="numOrginalElements && numOrginalElements>0 && systemMode.is_trustee"  class="card">
+    <div class="card-block">
+      <h5>{{messages.filters}} <i *ngIf="searching"  class="fa fa-spinner fa-pulse fa-fw"></i></h5>
+      <div class="row">      
+        <div class="col-6">
+          <div class="form-group row">
+            <label for="filter-name" class="col-sm-4 col-form-label">{{messages.name}}</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name="filter-name" [(ngModel)]="filterObjModel.name" (ngModelChange)="formChange($event)" id="filter-name">
+            </div>
+          </div>      
+        </div>
+
+        <div class="col-6">
+          <div class="form-group row">
+            <label for="filter-name" class="col-sm-4 col-form-label">{{messages.starting_point}}</label>
+            <div class="col-sm-8">
+              <autocomplete (onPlacesChanged)="onFromPlacesChanged($event)"></autocomplete>
+            </div>
+          </div>      
+        </div>
+        
+        <div class="col-6">
+          <div class="form-group row">
+            <label for="filter-category" class="col-sm-4 col-form-label">{{messages.category}}</label>
+            <div class="col-sm-8">
+              <select class="form-control" [(ngModel)]="filterObjModel.category_id" (ngModelChange)="formChange($event)" name="filter-category" id="filter-category">
+                <option value="0"></option>
+                <option *ngFor="let cat of categoryModel"  value="{{cat.id}}">{{cat.name}}</option>
+              </select>
+            </div>
+          </div>      
+        </div>
+
+        <div class="col-6">
+          <div class="form-group row">
+            <label class="col-sm-4 col-form-label">{{messages.finishing_point}}</label>
+            <div class="col-sm-8">
+              <autocomplete (onPlacesChanged)="onToPlacesChanged($event)"></autocomplete>
+            </div>
+          </div>      
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="categoryModel.length>0 && listOrderMessages && agoComponentMessages && orders.length>0" class="card">
+    <div class="card-header">
+      <div>
+        <div class="subtitle-gray">{{messages.orders}}</div>
+        <div class="subtitle-black">{{dispOrderState}}</div>
+      </div>
+    </div>
+    <div class="card-bock">
+        <list-order (onOrderClick)="onListOrderClick($event)" [messages]="listOrderMessages" [categories]="categoryModel" [orders]="orders" [agoComponentMessages]="agoComponentMessages"></list-order>
+    </div>
+  </div>
+  
+  
+</div>

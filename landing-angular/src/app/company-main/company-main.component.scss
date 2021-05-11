@@ -1,0 +1,123 @@
+
+
+.become-partner {
+    margin-bottom: 100px;
+    // height: 570px;
+    display: flex;
+    & > div {
+        width: auto;
+    }
+    .block {
+        background-color: #FFF;
+        padding: 80px 120px 80px 0;
+        margin: 80px 0;
+        .desc {
+            line-height: 33px;
+            margin-top: 10px;
+        }
+        button {
+            padding: 14px 22px 13px;
+            margin-top: 38px;
+        }
+        z-index: 2;
+        .pattern-rect {
+            z-index: 1;
+            right: 0;
+            bottom: 0;
+            $spacingTop: 8px;
+            $spacingLeft: 1px;
+            transform: translate(50%, 50%);
+            margin-bottom: -$spacingTop;
+            margin-right: -$spacingLeft;
+            .mask {
+                background-color: #FFF;
+                width: calc(50% - #{$spacingLeft});
+                height: calc(50% - #{$spacingTop});
+            }
+        }
+        flex-shrink: 0;
+    }
+    .block, .image-wrapper {
+        position: relative;
+        // display: inline-block;
+        // vertical-align: middle;
+        // height: 100%;
+    }
+    .image-wrapper {
+        width: 100%;
+        overflow: hidden;
+        margin-left: -220px;
+        img {
+            z-index: 0;
+            position: absolute;
+            max-height: 100%;
+            // transform: translateY(-50%);
+            // left: -220px;
+        }
+    }
+}
+
+.service-advantages {
+    background-color: #F2F2F2;
+    & > div {
+        padding: 75px 0 80px;
+        .section-header {
+            margin-bottom: 65px;
+        }
+    }
+}
+
+.how-it-works {
+    margin: 80px auto;
+    overflow: hidden;
+    .list {
+        display: flex;
+        flex-wrap: wrap;
+        & > div {
+            margin-top: 50px;
+            &.right {
+                padding-left: 48px;
+            }
+            &.left {
+                padding-right: 16px;
+            }
+            box-sizing: border-box;
+            position: relative;
+            width: 50%;
+            display: flex;
+            align-items: center;
+            img {
+                max-width: 100%;
+                box-shadow: 0 0 60px rgba($color: #000, $alpha: 0.1);
+                z-index: 1;
+            }
+            .pattern {
+                height: 126px;
+                width: 800px;
+                position: absolute;
+                left: 50%;
+                bottom: 0;
+                transform: translate(-5px, calc(50% + 1px));
+                z-index: 0;
+            }
+            .item-content {
+                display: flex;
+                .item-number {
+                    margin-right: 20px;
+                }
+                .item-header, .item-desc {
+                    font-family: ClanWebProThin;
+                }
+                .item-header {
+                    line-height: 40px;
+                    font-size: 28px;
+                }
+                .item-desc {
+                    margin-top: 20px;
+                    line-height: 28px;
+                    font-size: 17px;
+                }
+            }
+        }
+    }
+}

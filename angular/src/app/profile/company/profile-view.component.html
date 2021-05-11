@@ -1,0 +1,74 @@
+<in-loader *ngIf="working" ></in-loader>
+
+<div class="card" *ngIf="model && !working" >
+    <div class="card-block">
+        <div class="d-flex profile-view">
+            <div class="p-2">
+                <div class="no-foto d-flex justify-content-center" *ngIf="!model.foto" >
+                  <i class="fa fa-user no-foto-icon" aria-hidden="true"></i>
+                </div>
+                <img *ngIf="model.foto" class="profile-photo"  [src]="getPhoto(model.foto)"/> 
+            </div>
+            <div class="d-flex flex-column">
+                <div class="d-flex" style="margin-bottom:0.7rem;">
+                    <div>
+                        <p class="subtitle-gray">{{messages.company_name}}</p>
+                        <h5 *ngIf="model.name" >{{model.name}}</h5>          
+                    </div>
+                    <a *ngIf="isMyProfile()"  class="ml-auto edit-link" [routerLink]="['../edit']"><i class="glyphicon icon-draw"></i> {{messages.edit_profile}}</a>
+                </div>
+                <div class="d-flex justify-content-between mt-auto">
+                    <div class="d-flex decor-icon">
+                        <i class="glyphicon icon-avatar"></i>
+                        <div>
+                            <p class="subtitle-gray">{{messages.contact_person}}</p>
+                            <p *ngIf="countryModel" class="subtitle-black" >{{model.contact_person}}</p>        
+                        </div>
+                    </div>
+                    <div class="d-flex decor-icon">
+                        <i class="glyphicon icon-flag"></i>
+                        <div>
+                            <p class="subtitle-gray">{{messages.country}}</p>
+                            <p *ngIf="countryModel" class="subtitle-black" >{{countryModel.name}}</p>        
+                        </div>
+                    </div>
+                    <div>
+                        <p class="subtitle-gray">{{messages.general_rating}}</p>
+                        <p><i class="glyphicon icon-star"></i> {{rating | number:'1.1-1'}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- div class="card card-inverse card-info light-blue" *ngIf="model && isMyProfile() && countryModel && messages  && !working" >
+  <div class="card-block">
+    <div class="row">
+      <div class="col-12">
+          <p class="detail-sub-header alt"> {{messages.description}} </p>
+          <p *ngIf="model.description">{{model.description}}</p>
+          <p *ngIf="!model.description" >{{messages.na}}</p>
+        </div>
+        <div class="col-6">
+            <p class="detail-sub-header alt"> {{messages.address}} </p>
+            <p class="detail">{{addressModel.address1}}</p> 
+            <p class="detail">{{addressModel.address2}}</p> 
+            <p class="detail">{{addressModel.postal}}</p>
+            <p class="detail">{{addressModel.city}}, {{countryModel.name}}</p> 
+            
+        </div>
+      <div class="col-6">
+          <p class="detail-sub-header alt"> {{messages.no_vat}} </p>
+          <p> {{model.no_vat}}</p>  
+          <p class="detail-sub-header alt"> {{messages.telephone}} </p>
+          <p> {{model.tel}}</p>  
+      </div>
+
+
+    </div>
+  </div>
+</div -->
+<comment-list *ngIf="model && model.id"  [company_id]=(model.id)></comment-list>  

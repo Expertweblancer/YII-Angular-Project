@@ -1,0 +1,30 @@
+<loader *ngIf="working"></loader> 
+
+<form *ngIf="!working"  ngNoForm action="https://sandbox.przelewy24.pl/trnDirect" method="post">
+    
+    <div class="form-group">    
+        <label for="credit-card-amount">Amount</label>
+        <input type="number" name="amount" [ngModel]="amount" (ngModelChange)="amountChange($event)" class="form-control" required/>
+    </div>
+
+    <input type="hidden" name="p24_amount" [ngModel]="model.amount" required/>
+    <input type="hidden" name="p24_sign" [ngModel]="sign" />
+    <input type="hidden" name="p24_session_id" value="{{model.session_id}}" />
+    <input type="hidden" name="p24_merchant_id" value="{{p24_user_id}}" />
+    <input type="hidden" name="p24_pos_id" value="{{p24_user_id}}" />
+    <input type="hidden" name="p24_currency" value="PLN" />
+    <input type="hidden" name="p24_description" value="{{payment_title}}" />
+    <input type="hidden" name="p24_client" value="{{profile.name}} {{profile.surname}}" />
+    <input type="hidden" name="p24_address" value="{{address.address1}}" />
+    <input type="hidden" name="p24_zip" value="{{address.postal}}" />
+    <input type="hidden" name="p24_city" value="{{address.city}}" />
+    <input type="hidden" name="p24_country" value="{{country.code}}" />
+    <input type="hidden" name="p24_email" value="{{profile.email}}" />
+    <input type="hidden" name="p24_language" value="{{lang}}" />
+    <input type="hidden" name="p24_url_return" value="{{return_url}}" />
+    <input type="hidden" name="p24_url_status" value="{{status_url}}" />
+    <input type="hidden" name="p24_api_version" value="3.2" />
+    
+    <input name="submit" class="btn btn-primary" value="Pay" type="submit" />
+   </form>
+   

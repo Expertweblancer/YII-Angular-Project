@@ -1,0 +1,22 @@
+<div class="row" style="margin-top:0.5rem" *ngIf="messages" >
+    <div class="col-3">
+      <p class="subtitle-gray">{{messages.general_rating}}</p>
+      <p style="color:gray"><i class="glyphicon icon-star"></i> {{comment.general_rating | number:'1.1-1'}}</p>
+    </div>
+    <div class="col-3">
+        <p class="subtitle-gray">{{messages.contact_rating}}</p>
+        <p style="color:gray"><i class="glyphicon icon-star"></i> {{comment.contact_rating | number:'1.1-1'}}</p>
+    </div>
+    <div class="col-3">
+      <p class="subtitle-gray">{{messages.price_rating}}</p>
+      <p style="color:gray"><i class="glyphicon icon-star"></i> {{comment.price_rating | number:'1.1-1'}}</p>
+    </div>
+    <div class="col-3">
+        <p class="subtitle-gray">{{messages.punctuality_rating}}</p>
+        <p style="color:gray"><i class="glyphicon icon-star"></i> {{comment.punctuality_rating | number:'1.1-1'}}</p>
+    </div>
+    <div *ngIf="comment.comment"  class="col-12">
+        <p class="subtitle-gray">{{messages.comment}}</p>
+        {{comment.comment}}
+    </div>
+</div>  

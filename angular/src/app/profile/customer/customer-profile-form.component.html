@@ -1,0 +1,55 @@
+<loader *ngIf="working"></loader>
+<ngb-alert *ngIf="messages && showErrorMsg" [type]="'danger'">{{messages.fix_errors}}</ngb-alert>
+
+
+<form *ngIf="!working" [formGroup]="profileForm" onkeypress="return event.keyCode != 13;" (ngSubmit)="onSubmit()">
+  <div class="card">
+    <div class="card-block">
+      <div class="row justify-content-center">
+        <div class="col-xl-1 col-sm-2">
+          <div class="float-right">
+            <image-upload (onUploaded)="fotoUploaded($event)"></image-upload>
+          </div>
+        </div>
+        <div class="col-md-10 col-sm-12">
+          <div class="row" formGroupName="profile">
+            <div class="form-group col-6">
+              <label class="form-label" for="name1">{{messages.name}}</label>
+              <input tabindex="10" type="text" name="name" formControlName="name" class="form-control" placeholder="{{messages.required}}">
+              <small class="text-danger" *ngIf="profileForm.controls.profile.controls.name.invalid">{{messages.field_invalid}}</small>
+            </div>
+            <div class="form-group col-6">
+              <label class="form-label" for="surname">{{messages.surname}}</label>
+              <input tabindex="11" type="text" name="surname" formControlName="surname" class="form-control" placeholder="{{messages.required}}">
+              <small class="text-danger" *ngIf="profileForm.controls.profile.controls.surname.invalid">{{messages.field_invalid}}</small>
+            </div>
+          </div>
+          <profile-user *ngIf="profileUserModel" [formGroup]="profileForm.controls.user"></profile-user>
+
+          <div class="row" formGroupName="profile">
+            <div class="form-group col-4">
+              <label class="form-label" for="telephone">{{messages.telephone}}</label>
+              <input tabindex="12" type="text" name="telephone" formControlName="phone_num" class="form-control" placeholder="{{messages.required}}">
+              <small class="text-danger" *ngIf="profileForm.controls.profile.controls.phone_num.invalid">{{messages.phone_invalid}}</small>
+            </div>
+            <div class="form-group col-4">
+              <label class="form-label" for="curr">{{messages.currency}}</label>
+              <select tabindex="13" id="curr" name="curr" class="form-control" formControlName="id_currency">
+                <option value="" disabled selected hidden>{{messages.required}}</option>
+                <option *ngFor="let currency of currencies" value="{{currency.id}}">{{currency.short}}</option>
+              </select>
+            </div>
+          </div>
+
+          <profile-address *ngIf="addressModel" [formGroup]="profileForm.controls.address"></profile-address>
+          <div class="row">
+            <div class="form-group col-12" style="margin-top:10px; ">
+              <input class="btn btn-success" type="submit" value="{{messages.save}}">
+              <button class="btn btn-warning" style="margin-left:5px;" (click)="cancelEdit()">{{messages.cancel}}</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

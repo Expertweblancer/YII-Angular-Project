@@ -1,0 +1,139 @@
+<div class="order-list-wrapper">
+    <div class="list-row th">
+        <div *ngIf="withNumber" class="num">#</div>
+        <div *ngFor="let header of headers" class="text">{{header}}</div>
+        <div class="details"></div>
+    </div>
+    <ng-container *ngFor="let order of orders; let i = index">
+        <div class="list-row {{order.isActive ? 'active' : ''}}">
+            <div *ngIf="withNumber" class="num">{{i+1}}</div>
+            <div *ngFor="let col of order.columns; let j = index" class="text {{j === 0 ? 'first' : ''}} {{col.isPrice ? 'price' : ''}}">
+                <ng-container *ngIf="col.value">
+                    {{col.value}}<span *ngIf="col.km">&nbsp;({{col.km}}km)</span>
+                </ng-container>
+                <ng-container *ngIf="col.category === 0">
+                    <div class="icon-wrapper">
+                        <img src="/assets/icons/track.svg">
+                    </div>
+                    Ładunki - całopojazdowe
+                </ng-container>
+                <ng-container *ngIf="col.category === 1">
+                    <div class="icon-wrapper">
+                        <img src="/assets/icons/caution-sign.svg">
+                    </div>
+                    Ładunki spec. ostrożności
+                </ng-container>
+                <ng-container *ngIf="col.category === 2">
+                    <div class="icon-wrapper">
+                        <img src="/assets/icons/pets.svg">
+                    </div>
+                    Zwierzęta
+                </ng-container>
+            </div>
+            <div (click)="order.isActive = !order.isActive" class="details">{{order.isActive ? 'ZWIŃ' : 'SZCZEGÓŁY'}}<img src="/assets/icons/arrow-bottom.svg"></div>
+        </div>
+        <div *ngIf="order.isActive" class="order-preview align-centered">
+            <img class="map" src="/assets/img/map@3x.png">
+            <div class="info-wrapper">
+                <div class="top align-centered">
+                    <div>
+                        <div class="label">
+                            STAWKA
+                        </div>
+                        <div class="price">
+                            1 800 PLN
+                        </div>
+                    </div>
+                    <div class="align-centered">
+                        <div>
+                            <div class="label">
+                                TYP
+                            </div>
+                            <div class="header">
+                                Chłodnia
+                            </div>
+                        </div>
+                        <div>
+                            <div class="label">
+                                MASA ŁADUNKU
+                            </div>
+                            <div class="header">
+                                22 tony
+                            </div>
+                        </div>
+                        <div>
+                            <div class="label">
+                                RODZAJ PŁATNOŚCI
+                            </div>
+                            <div class="header">
+                                Przelew, PLN / €
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom align-centered">
+                    <div>
+                        <div class="label">TRASA</div>
+                        <div class="road">
+                            <div>
+                                <div class="line top">
+                                    <img src="/assets/icons/green-point.svg">
+                                    <div></div>
+                                </div>
+                                <div>
+                                    <div class="header">Berlin</div>
+                                    <div class="label">Mohrenstrasse 30, 10117, Berlin, Niemcy</div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="line">
+                                    <div></div>
+                                </div>
+                                <div class="distance label">
+                                    <img src="/assets/icons/truck-icon.svg">
+                                    268KM
+                                </div>
+                            </div>
+                            <div>
+                                <div class="line bottom">
+                                        <img src="/assets/icons/red-point.svg">
+                                    <div></div>
+                                </div>
+                                <div>
+                                    <div class="header">Poznań</div>
+                                    <div class="label">ul. Głogowska 223, 60-241, Poznań, Polska</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="contact align-centered">
+                            <div class="align-centered">
+                                <img src="/assets/icons/phone-icon.svg">
+                                <div class="phone-number">
+                                    +48 500 343 234
+                                    <a href="tel:+48 500 343 234">Zadzwoń</a>
+                                </div>
+                            </div>
+                            <button class="snarto-btn blue align-centered">
+                                <img src="/assets/icons/message.svg">
+                                Napisz wiadomość
+                            </button>
+                        </div>
+                        <div class="prof align-centered">
+                            <div>
+                                <div class="label">ZLECENIOBIORCA</div>
+                                <div class="account">
+                                    <img src="/assets/icons/avatar-icon.svg">
+                                </div>
+                            </div>
+                            <button class="snarto-btn white">
+                                Zobacz szczegóły
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+</div>

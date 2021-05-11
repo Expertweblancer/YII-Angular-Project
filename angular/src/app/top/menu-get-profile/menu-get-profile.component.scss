@@ -1,0 +1,24 @@
+#user-menu-releaser {
+    position: relative;
+    &.active {
+        &::before {
+            content: ' ';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            left: 0;
+            top: 0;
+            transform: translate(-30%, 5%);
+            z-index: 1;
+            border-radius: 50%;
+            background-color: rgba($color: #000, $alpha: .06);
+        }
+        img {
+            transform: rotateZ(180deg);
+        }
+    }
+    img {
+        position: relative;
+        z-index: 2;
+    }
+}

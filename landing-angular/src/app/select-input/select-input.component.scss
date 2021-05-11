@@ -1,0 +1,38 @@
+@import '../../sass/colors';
+
+.input-wrapper {
+    .input {
+        color: #ADADAC;
+        cursor: pointer;
+        background-image: url("data:image/svg+xml,%3Csvg width='8px' height='5px' viewBox='0 0 8 5' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cg stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cg transform='translate(-1074.000000, -148.000000)' fill='%23000000'%3E%3Cg transform='translate(1074.000000, 148.000000)'%3E%3Cpath d='M3.60513502,4.81948758 L0.164674635,1.05007764 C-0.0548915449,0.80939441 -0.0548915449,0.421195652 0.164674635,0.180512422 C0.384240815,-0.0601708075 0.738379814,-0.0601708075 0.956175299,0.180512422 L4,3.51708075 L7.0438247,0.180512422 C7.26339088,-0.0601708075 7.61752988,-0.0601708075 7.83532537,0.180512422 C8.05489154,0.421195652 8.05489154,0.80939441 7.83532537,1.05007764 L4.39663568,4.81948758 C4.28685259,4.93982919 4.14342629,5 4,5 C3.85657371,5 3.71314741,4.93982919 3.60513502,4.81948758 Z'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        background-repeat: no-repeat, repeat;
+        background-position: right 12px top 50%, 0 0;
+        &.active {
+            background-image: url("data:image/svg+xml,%3Csvg width='8px' height='5px' viewBox='0 0 8 5' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cg id='personal' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cg id='personal-summary' transform='translate(-1602.000000, -362.000000)' fill='%232C5EE6'%3E%3Cg id='form' transform='translate(1148.000000, 145.000000)'%3E%3Cg id='select-copy-6' transform='translate(41.000000, 89.000000)'%3E%3Cg id='chevron-top' transform='translate(413.000000, 128.000000)'%3E%3Cpath d='M4.39469027,0.182170543 L7.83362832,3.94767442 C8.05309735,4.1879845 8.05309735,4.5755814 7.83362832,4.81589147 C7.61415929,5.05620155 7.26017699,5.05620155 7.04247788,4.81589147 L3.99823009,1.48255814 L0.955752212,4.81395349 C0.736283186,5.05426357 0.382300885,5.05426357 0.16460177,4.81395349 C-0.0548672566,4.57364341 -0.0548672566,4.18604651 0.16460177,3.94573643 L3.60353982,0.180232558 C3.71327434,0.0600775194 3.85663717,-2.84217094e-14 4,-2.84217094e-14 C4.14159292,0.0019379845 4.28495575,0.0620155039 4.39469027,0.182170543 Z' id='Path'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+    }
+    .options {
+        position: absolute;
+        top: 100%;
+        z-index: 3;
+        width: 100%;
+        box-shadow: 0 2px 40px rgba($color: #000, $alpha: 0.11);
+        left: 0;
+        margin-top: 6px;
+        background-color: #FFF;
+        & > div {
+            user-select: none;
+            cursor: pointer;
+            color: #ADADAC;
+            transition: .1s background-color ease-out, .1s color ease-out;
+            padding: 0 15px;
+            line-height: 44px;
+            font-size: 12px;
+            background-color: transparent;
+            &:hover {
+                background-color: $blue;
+                color: #FFF;
+            }
+        }
+    }
+}

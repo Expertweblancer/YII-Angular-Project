@@ -1,0 +1,16 @@
+.card-img-top{
+    width:100%;
+    height:auto;
+}
+.light-blue{
+    background-color:#f9f3e1;
+    color:#263238;
+}
+p.detail{
+    line-height: 1.3em;
+    margin:0;
+
+}
+span.rating{
+    font-size: 1.6em;
+}

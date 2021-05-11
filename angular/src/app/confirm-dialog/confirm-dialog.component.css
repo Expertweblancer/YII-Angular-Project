@@ -1,0 +1,23 @@
+.confirm-dialog{
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    position: fixed;
+    top: 0px;
+    left:0px;
+}
+.confirm-dialog-content{
+    padding:25px;
+    background-color: #555;
+    margin-left: auto;
+    margin-right: auto;
+    width: 500px;
+    margin-top:5%;
+}
+h5{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    color:#ddd;
+    margin-bottom:20px;
+}

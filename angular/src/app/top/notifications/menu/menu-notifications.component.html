@@ -1,0 +1,12 @@
+<a *ngIf="messages" routerLinkActive="active" [routerLink]="['notifications']">
+    <span>
+        <i class="glyphicon  icon-bell" aria-hidden="true"></i> {{messages.notifications}}
+    </span>
+    <!-- (click)="showNotificationsPropmpt($event)" -->
+    <span
+    class="info">
+        2
+    </span>
+    <!-- <notification-prompt [isVisible]="isNotificationPromptVisible"></notification-prompt> -->
+    <!-- <span *ngIf="numOfUnread>0"  [ngClass]="numOfUnread>0?'badge badge-primary':'badge badge-success'">{{numOfUnread}}</span> -->
+</a>

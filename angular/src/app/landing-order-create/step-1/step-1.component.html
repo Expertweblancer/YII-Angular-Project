@@ -1,0 +1,39 @@
+<div class="row justify-content-center" >
+  <div class="col-10">
+    <h4>Wybierz kategorię</h4>
+  </div>
+</div>
+<div class="row justify-content-center chose-category">
+  <div class="col-2" *ngFor="let category of categoriesTop; let i=index">
+    <div (click)="categoryClick(category.id)" [ngClass]="category.id==selectedCategory?boxClass+' active':boxClass">
+      <div class="top d-flex ml-auto">
+        <div *ngIf="category.id==selectedCategory" class="checked d-flex justify-content-center">
+          <div class="glyphicon icon-verification-mark"></div>
+        </div>
+      </div>
+      <i class="glyphicon {{getIcon(category.id)}}"></i>
+      <span>{{category.text}}</span>
+    </div>
+  </div>
+</div>
+
+<div class="row justify-content-center chose-category">
+    <div class="col-2" *ngFor="let category of categoriesBottom; let i=index">
+      <div (click)="categoryClick(category.id)" [ngClass]="category.id==selectedCategory?boxClass+' active':boxClass">
+        <div class="top d-flex ml-auto">
+          <div *ngIf="category.id==selectedCategory" class="checked d-flex justify-content-center">
+            <div class="glyphicon icon-verification-mark"></div>
+          </div>
+        </div>
+        <i class="glyphicon {{getIcon(category.id)}}"></i>
+        <span>{{category.text}}</span>
+      </div>
+    </div>
+  </div>
+  
+
+<div class="row next-button">
+  <div class="col-11">
+    <button [ngClass]="selectedCategory?'btn btn-primary pull-right':'btn btn-primary pull-right disabled'" (click)="next()">{{messages.next}}</button>
+  </div>
+</div>

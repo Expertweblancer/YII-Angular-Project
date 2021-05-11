@@ -1,0 +1,26 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Username</th>
+      <th align="center">Confirmed</th>
+      <th>Last Login At</th>
+      <th>Created At</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let profile of userProfiles" >
+      <th scope="row">{{profile.id}}</th>
+      <td>{{profile.name}}</td>
+      <td>{{profile.surname}}</td>
+      <td>{{profile.username}}</td>
+      <td align="center"><i *ngIf="!profile.confirmed_at"  class="fa fa-times" aria-hidden="true"></i>
+      <i *ngIf="profile.confirmed_at"  class="fa fa-check" aria-hidden="true"></i>
+      </td>
+      <td  align="center">{{formatTimestamp(profile.last_login_at)}}</td>
+      <td align="center">{{formatTimestamp(profile.created_at)}}</td>
+    </tr>
+  </tbody>
+</table>

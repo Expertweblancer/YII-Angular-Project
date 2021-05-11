@@ -1,0 +1,7 @@
+<div *ngIf="files.length==0" class="file-upload-no-image pointer d-flex align-self-center justify-content-center" onclick="document.getElementById('image-input-snarto').click();"> 
+    <i class="align-self-center glyphicon icon-landscape"></i> 
+</div>
+<img *ngIf="files.length>0" class="pointer" onclick="document.getElementById('image-input-snarto').click();" [src]="getImageLink(files[0])">
+
+<input type="file" id="image-input-snarto" (change)="fileInputChange($event)" accept="{{accept}}" style="display: none;" >
+<i *ngIf="uploading"  class="fa fa-spinner fa-pulse fa-fw"></i>

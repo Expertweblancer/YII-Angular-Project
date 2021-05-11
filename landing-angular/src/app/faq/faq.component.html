@@ -1,0 +1,31 @@
+<div class="faq-section">
+  <div class="illustration-wrapper"><div class="ill"></div></div>
+  <div class="spacing"></div>
+  <div class="faq">
+    <div class="section-header">
+      <div class="header">
+        Częste pytania
+      </div>
+      <div class="desc">
+        Czego się spodziewać w trasie
+      </div>
+    </div>
+    <div class="questions">
+      <div *ngFor="let question of questions; let i = index;" class="question {{question.isActive ? 'active' : ''}}">
+        <div (click)="setActiveQuestion(i)" class="controller">
+          <div class="label">
+            {{question.label}}
+          </div>
+          <img src="/assets/icons/arrow-{{question.isActive ? 'top' : 'bottom'}}.svg">
+        </div>
+        <div class="text" *ngIf="question.isActive">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nulla lorem, maximus ac lectus quis, vehicula tempus velit. Duis leo elit, malesuada vitae libero ut, consectetur efficitur mi.
+          <br>
+          <br>
+          Aliquam nec ex volutpat, molestie lorem et, ultrices sapien. Cras cursus lobortis auctor. Nam feugiat, elit at dictum feugiat, diam est imperdiet sem, at tincidunt ipsum urna at arcu. Fusce luctus
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="margin-block"></div>
+</div>

@@ -1,0 +1,29 @@
+<in-loader *ngIf="working" ></in-loader>
+<div class="card full-height" *ngIf="!working" >
+  <div class="card-header" style="text-transform:none; font-size:0.8rem">
+    <b>{{order.title}}</b>&nbsp;&nbsp;(<i class="glyphicon category-icon {{getCategoryIcon(order.category_id)}}" ></i> <span *ngIf="category" >{{category.text}}</span>,&nbsp;
+    {{order.from_city}}, {{order.from_country_short| uppercase}} - {{order.to_city}}, {{order.to_country_short | uppercase}})
+  </div>
+  <div class="link"><a class="pointer" (click)="goBack()" ><i class="fa fa-long-arrow-left" aria-hidden="true"></i> {{messages.go_back}}</a></div>
+  <div class="card-block messages" #messagesBox [scrollTop]="messagesBox.scrollHeight">
+      <div *ngFor="let msg of userMessages">
+        <div [ngClass]="isMessageSender(msg)?'bubble left header':'bubble right header'">
+          <p *ngIf="isMessageSender(msg)">{{messages.you}} (<ago-date-format [date]="msg.date_added" [messages]="agoMessagesModel"></ago-date-format>)</p>                  
+          <p *ngIf="!isMessageSender(msg) && msg.company_name" >{{msg.company_name}} (<ago-date-format [date]="msg.date_added" [messages]="agoMessagesModel"></ago-date-format>)</p>
+          <p *ngIf="!isMessageSender(msg) && !msg.company_name" >
+            {{msg.name}} {{msg.surname}} (<ago-date-format [date]="msg.date_added" [messages]="agoMessagesModel"></ago-date-format>)
+          </p>          
+        </div>  
+        <div [ngClass]="isMessageSender(msg)?'bubble left message':'bubble right message'">
+          <p *ngIf="msg.is_attachment==false" > {{msg.message}} </p>
+          <p *ngIf="msg.is_attachment==true" ><a target="_blank" href="{{getFileLink(msg.message)}}">{{msg.message}}</a></p>
+        </div>   
+      </div>
+  </div>
+  <div class="card-footer messages">
+    <input class="form-control" required [(ngModel)]="model.message" name="send-message" (keyup.enter)="sendMessage()"/>
+    <file-upload (onUploaded)="onUpload($event)" [showAttachIcon]="true" [caption]="''" [css_class]="'btn btn-link'"></file-upload>
+    <button [ngClass]="sending || model.message=='' || !model.message?'btn btn-primary disabled':'btn btn-primary'" (click)="sendMessage()" >{{messages.send}}</button>
+  </div>
+</div>
+

@@ -1,0 +1,28 @@
+<div (click)="userProfileMenuClick()" class="menu-profile">
+  <in-loader *ngIf="working"></in-loader>
+  <!-- <a *ngIf="!working"  class="profile-link" [routerLink]="['profile']">
+    <div class="no-foto" *ngIf="!foto" >
+      <i class="fa fa-user" aria-hidden="true"></i>
+    </div>
+    <img *ngIf="foto" class="profile-photo"  [src]="getPhoto(foto)"/> 
+    <div>
+      <p class="title" *ngIf="messages" >{{messages.your_account}}</p>
+      <p class="profile"> {{userInfo.name?userInfo.name+' '+userInfo.surname:userInfo.username}} </p>
+    </div>
+  </a> -->
+  <div
+  class="foto"
+  *ngIf="foto">
+    <img *ngIf="foto" [src]="getPhoto(foto)"/> 
+  </div>
+  <div class="foto" *ngIf="!foto" style="background-image: url(/assets/icons/no-avatar.svg)"></div>
+  <div class="creds">
+    <div class="title" *ngIf="messages">{{messages.your_account}}</div>
+    <div *ngIf="!working" class="name">{{userInfo.name?userInfo.name+' '+userInfo.surname:userInfo.username}}</div>
+  </div>
+  <div
+  class="{{this.userProfileMenuService.isUserProfileMenuVisible ? 'active' : ''}}" 
+  id="user-menu-releaser">
+    <img src="/assets/icons/user-menu-down.svg">
+  </div>
+</div>

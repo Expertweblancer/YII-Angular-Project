@@ -1,0 +1,33 @@
+<in-loader *ngIf="working" ></in-loader>
+<div *ngIf="!working && orginalMessageModel && ( orginalMessageModel.length>0 )"  class="list-group">
+  <div class="list-group-item d-flex">
+    <div class="search-box ml-auto d-flex">
+        <input type="text" [placeholder]="messages.search" ngModel (ngModelChange)="searchBoxChange($event)" class="form-control"> <i class="glyphicon icon-magnifying-glass align-self-center"></i>        
+    </div>
+  </div>
+  <div *ngFor="let message of messageModel"
+      class="list-group-item list-group-item-action">
+    <div class="d-flex">
+      <i (click)="messageClick(message.order_id, message.offeree_id, message.token)"  class="fa fa-circle align-self-center pointer" 
+          [ngStyle]="{'color':getIconColor(((systemMode.is_company && message.direction=='from') || (!systemMode.is_company && message.direction=='to')) && !message.date_seen)}" aria-hidden="true"></i>    
+      <div (click)="messageClick(message.order_id, message.offeree_id, message.token)"  class="align-self-center pointer" style="width:25%;">
+        <p class="subtitle-black" style="text-transform:uppercase"><strong>{{message.company_name}} {{message.name}} {{message.surname}}</strong></p>     
+      </div>
+      <div (click)="messageClick(message.order_id, message.offeree_id, message.token)"  class="align-self-center pointer" style="width:40%;">
+          <p><strong>{{message.title}}&nbsp;</strong></p>
+          <p class="list-message-preview">{{message.message}}&nbsp;</p>  
+      </div>
+      <p (click)="messageClick(message.order_id, message.offeree_id, message.token)"  class="align-self-center ml-auto ago color-gray pointer">
+        <ago-date-format *ngIf="agoComponentMessages"  [date]="message.date_added" [messages]="agoComponentMessages"></ago-date-format>
+      </p>
+      <div class="align-self-center ml-auto ago color-gray" >
+        <a (click)="deleteClick(message)"><i class="glyphicon icon-garbage pointer"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="!working && messages && messageModel && messageModel.length==0"  class="alert alert-info" role="alert">
+    {{messages.result_not_found}}
+</div>
+  
+<confirm-dialog *ngIf="showDeleteDialog"  (onAction)="onDeleteConfirmation($event)"></confirm-dialog>

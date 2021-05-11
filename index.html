@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html class="full" lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="House of Creations">
+
+	<title>ShipMe</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+	<link rel="stylesheet" href="./assets/bootstrap/bootstrap.css">
+	<link rel="stylesheet" href="./assets/formValidation/formValidation.min.css">
+	<link rel="stylesheet" href="./assets/bootstrap_datepicker/css/bootstrap-datepicker3.min.css">
+	<link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300italic,400,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+
+	<nav class="navbar navbar-default">
+		<div class="container">
+			<div class="navbar-header page-scroll">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a href="index.php"><img src="./assets/img/logo_small.png" class="logo"></a>
+			</div>
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-right">
+					<li class="hidden"><a href="#page-top"></a></li>
+					<li class="active"><a class="page-scroll" href="index.php">Strona główna</a></li>
+					<li ><a class="page-scroll" href="index.php?page=about">O nas</a></li>
+					<li ><a class="page-scroll" href="index.php?page=faq">FAQ</a></li>
+					<li ><a class="page-scroll" href="web.sdev.pl/neworder">Dodaj zlecenie</a></li>
+					<li ><a class="page-scroll" href="http://app.sdev.pl">Rejestracja</a></li>
+					<li><a class="page-scroll" href="http://web.sdev.pl">Logowanie</a></li>
+					<li ><a class="page-scroll" href="index.php?page=contact">Kontakt</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<br />
+
+	<!--
+<header>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 text-center">
+				<img src="./assets//img/logo.png" class="img-responsive">
+			</div>
+		</div>
+	</div>
+</header>
+-->
+
+<header id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="3000">
+	<ol class="carousel-indicators">
+		<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+		<li data-target="#myCarousel" data-slide-to="1"></li>
+	</ol>
+	<div class="carousel-inner">
+		<div class="item active">
+			<div class="fill" style="background-image:url('./assets/img/slider_01.jpg');"></div>
+			<div class="carousel-caption">
+				<h1>Shipme 1</h1>
+				<h3>Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis.</h3>
+			</div>
+		</div>
+		<div class="item">
+			<div class="fill" style="background-image:url('./assets/img/slider_02.jpg');"></div>
+			<div class="carousel-caption">
+				<h1>Shipme 2</h1>
+				<h3>Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis.</h3>
+			</div>
+		</div>
+	</div>
+	<a class="left carousel-control" href="#myCarousel" data-slide="prev">
+		<span class="icon-prev"></span>
+	</a>
+	<a class="right carousel-control" href="#myCarousel" data-slide="next">
+		<span class="icon-next"></span>
+	</a>
+</header>
+
+<section class="info">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<p>Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta urna. Vestibulum commodo volutpat a, convallis ac, laoreet enim. Phasellus fermentum in, dolor. Pellentesque facilisis. Nulla imperdiet sit amet magna. Vestibulum dapibus, mauris nec malesuada fames ac turpis velit, rhoncus eu, luctus et interdum adipiscing wisi. Aliquam erat ac ipsum. Integer aliquam purus. Quisque lorem tortor fringilla sed, vestibulum id, eleifend justo vel bibendum sapien massa ac turpis faucibus orci luctus non, consectetuer lobortis quis, varius in, purus. Integer ultrices posuere cubilia Curae, Nulla ipsum dolor lacus, suscipit adipiscing. Cum sociis natoque penatibus et ultrices volutpat. </p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="news">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 col-md-6">
+				<h3>Aktualność 1</h3>
+				<div class="date">21.08.2015</div>
+				<p>Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta urna.</p>
+			</div>
+			<div class="clearfix brake visible-xs-block visible-sm-block"></div>
+			<div class="col-xs-12 col-md-6">
+				<h3>Aktualność 2</h3>
+				<div class="date">21.08.2015</div>
+				<p>Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta urna.</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section>
+<div id="googleMap" style="width:100%;height:400px;"></div>
+</section>
+
+<section class="orders">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12 head">
+				Ostatnio dodane zlecenia
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="table-responsive">
+					<table class="table table-bordered table-striped">
+					<thead>
+					<tr>
+						<th>Tytuł</th>
+						<th>Kategoria</th>
+						<th>Data dodania</th>
+						<th>Odbiór</th>
+						<th>Dostawa</th>
+						<th>&nbsp;</th>
+					</tr>
+					</thead>
+					<br />
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="invite">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12 text-center">
+				<h2>Dodaj zlecenie i wybierz najlepszą ofertę</h2>
+				<a href="index.php?page=order_add" class="btn btn-warning btn-lg">Dodaj zlecenie</a>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="mobile">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12 head">
+				Dedykowana aplikacja mobilna
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-md-6">
+				<img src="./assets/img/mobile_app_01.jpg" class="img-responsive" />
+			</div>
+			<div class="col-xs-12 col-md-6">
+				<div class="brake visible-sm-block visible-xs-block"></div>
+				<p>Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta urna. Vestibulum commodo volutpat a, convallis ac, laoreet enim.</p>
+				<p>Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta urna.</p>
+				<p class="sub">Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta urna.</p>
+				<div class="links text-center">
+					<img src="./assets/img/appstore.png">
+					<span class="shops"></span>
+					<img src="./assets/img/playstore.png">
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="references">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 head">
+				Opinie naszych użytkowników
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-md-6">
+				<p>Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta urna. Vestibulum commodo volutpat a, convallis ac, laoreet enim.</p>
+				<p class="author">Władysław Nowak - SpedPol</p>
+			</div>
+			<div class="clearfix brake visible-xs-block visible-sm-block"></div>
+			<div class="col-xs-12 col-md-6">
+				<p>Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta urna. Vestibulum commodo volutpat a, convallis ac, laoreet enim.</p>
+				<p class="author">Jan Kowalski - TransAmer</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="banner_references">
+</section>
+
+<section class="clients">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12 head">
+				Nasi partnerzy
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-6 col-md-4 col-lg-2">
+				<img src="./assets//img/partner.jpg" class="img-responsive img-thumbnail">
+			</div>
+			<div class="col-xs-6 col-md-4 col-lg-2">
+				<img src="./assets//img/partner.jpg" class="img-responsive img-thumbnail">
+			</div>
+			<div class="clearfix brake visible-xs-block visible-sm-block"></div>
+			<div class="col-xs-6 col-md-4 col-lg-2">
+				<img src="./assets//img/partner.jpg" class="img-responsive img-thumbnail">
+			</div>
+			<div class="clearfix brake visible-md-block"></div>
+			<div class="col-xs-6 col-md-4 col-lg-2">
+				<img src="./assets//img/partner.jpg" class="img-responsive img-thumbnail">
+			</div>
+			<div class="clearfix brake visible-xs-block visible-sm-block"></div>
+			<div class="col-xs-6 col-md-4 col-lg-2">
+				<img src="./assets//img/partner.jpg" class="img-responsive img-thumbnail">
+			</div>
+			<div class="col-xs-6 col-md-4 col-lg-2">
+				<img src="./assets//img/partner.jpg" class="img-responsive img-thumbnail">
+			</div>
+			<div class="clearfix brake"></div>
+			<div class="col-xs-6 col-md-4 col-lg-2">
+				<img src="./assets//img/partner.jpg" class="img-responsive img-thumbnail">
+			</div>
+			<div class="col-xs-6 col-md-4 col-lg-2">
+				<img src="./assets//img/partner.jpg" class="img-responsive img-thumbnail">
+			</div>
+			<div class="clearfix brake visible-xs-block visible-sm-block"></div>
+			<div class="col-xs-6 col-md-4 col-lg-2">
+				<img src="./assets//img/partner.jpg" class="img-responsive img-thumbnail">
+			</div>
+			<div class="clearfix brake visible-md-block"></div>
+			<div class="col-xs-6 col-md-4 col-lg-2">
+				<img src="./assets//img/partner.jpg" class="img-responsive img-thumbnail">
+			</div>
+			<div class="clearfix brake visible-xs-block visible-sm-block"></div>
+			<div class="col-xs-6 col-md-4 col-lg-2">
+				<img src="./assets//img/partner.jpg" class="img-responsive img-thumbnail">
+			</div>
+			<div class="col-xs-6 col-md-4 col-lg-2">
+				<img src="./assets//img/partner.jpg" class="img-responsive img-thumbnail">
+			</div>
+		</div>
+	</div>
+</section>
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12 col-md-3">
+					<ul>
+						<li><a href="index.php?page=about">O nas</a></li>
+						<li><a href="index.php?page=faq">FAQ</a></li>
+						<li><a href="index.php?page=register">Rejestracja</a></li>
+						<li><a href="http://system.shipme.pl">Logowanie</a></li>
+					</ul>
+				</div>
+				<div class="col-xs-12 col-md-3">
+					<ul>
+						<li><a href="index.php?page=policy">Polityka prywatności</a></li>
+						<li><a href="index.php?page=rules">Regulamin</a></li>
+					</ul>
+				</div>
+				<div class="col-xs-12 col-md-3">
+					<ul>
+						<li><a href="index.php?lang=pl">Shipme - Polski</a></li>
+						<li><a href="index.php?lang=en">Shipme - English</a></li>
+						<li><a href="index.php?lang=de">Shipme - Deutsch</a></li>
+					</ul>
+				</div>
+				<div class="col-xs-12 col-md-3">
+					<ul>
+						<li>E-mail: <a href="#">biuro@shipme.pl</a></li>
+						<li>Infolinia: <a href="#">+48 605 886 757</a></li>
+						<li>Facebook: <a href="https://www.facebook.com/Shipme-109451349183953/timeline/">Shipme-109451349183953</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	<section class="house">
+		<div class="row">
+			<div class="col-xs-12 text-center">
+				Copyright &copy; 2017 shipme.pl
+			</div>
+		</div>
+	</section>
+
+	<script type="text/javascript" src="./assets/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="./assets/bootstrap/bootstrap.min.js"></script>
+	<script type="text/javascript" src="./assets/formValidation/formValidation.min.js"></script>
+	<script type="text/javascript" src="./assets/formValidation/framework/bootstrap.min.js"></script>
+	<script type="text/javascript" src="./assets/js/myFormValidation.js"></script>
+	<script type="text/javascript" src="./assets/bootstrap_datepicker/js/bootstrap-datepicker.min.js"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$.fn.datepicker.dates['pl'] = {
+				days: ["Niedziela", "Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek", "Sobota"],
+				daysShort: ["Pon", "Wt", "Śr", "Czw", "Pt", "Sob", "Nd"],
+				daysMin: ["P", "W", "Ś", "C", "P", "S", "N"],
+				months: ["Styczeń", "Luty", "Marzec", "Kwiecień", "Maj", "Czerwiec", "Lipiec", "Sierpień", "Wrzesień", "Październik", "Listopad", "Grudzień"],
+				monthsShort: ["Sty.","Lut.","Mar.","Kwi.","Maj","Cze.","Lip.","Sie.","Wrz.","Paź.","Lis.","Gru."],
+				today: "Dziś",
+				clear: "Wyczyść"
+			};
+			$('.datepicker').datepicker({
+				format: 'yyyy-mm-dd',
+				language: 'pl',
+				weekStart: 1,
+				startDate: '0d'
+			});
+			$("#option_extra").hide();
+			$("#user_type").change(function() {
+				var user_type_selected = $("#user_type").find(":selected").val();
+				if (user_type_selected == 2) {
+					$("#option_extra").show();
+				} else {
+					$("#option_extra").hide();
+				}
+			});
+		});
+	</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDdF0Y6-E6A2WGj9rnKlz5hIyZDtrsJq3Y"></script>
+	
+<script>
+var locations = [
+      ['Bondi Beach', -51.402724, 21.147133, 4],
+      ['Coogee Beach', -50.264892, 19.023782, 5],
+      ['Cronulla Beach', -51.107885, 17.038538, 3],
+      ['Manly Beach', -54.352025, 18.646638, 2],
+      ['Maroubra Beach', -51.841986, 16.593754, 1]
+    ];
+
+    var map = new google.maps.Map(document.getElementById('googleMap'), {
+      zoom: 5,
+      center: new google.maps.LatLng(52.229676, 21.012229),
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+
+    var infowindow = new google.maps.InfoWindow();
+
+    var marker, i;
+
+    for (i = 0; i < locations.length; i++) {  
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+        map: map
+      });
+
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          infowindow.setContent(locations[i][0]);
+          infowindow.open(map, marker);
+        }
+      })(marker, i));
+    }
+  </script>
+
+
+</body>
+</html>

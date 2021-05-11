@@ -1,0 +1,2 @@
+<ngb-alert *ngIf="success && !working"  [type]="'success'">{{messages.thank_you}}</ngb-alert>
+<ngb-alert *ngIf="!success && !working"  [type]="'danger'">{{messages.payment_error}}</ngb-alert>

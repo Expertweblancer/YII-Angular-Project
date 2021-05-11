@@ -1,0 +1,28 @@
+    <div class="row" *ngIf="messages && countries" [formGroup]="formGroup">
+      <div class="form-group col-4">
+        <label class="form-label"  for="address1">{{messages.address}}</label>
+        <input type="text" id="address1" name="address1" class="form-control" formControlName="address1" placeholder="{{messages.required}}">
+        <small class="text-danger" *ngIf="formGroup.controls.address1.invalid">{{messages.field_invalid}}</small>
+      </div>
+      <div class="form-group col-4">
+        <label class="form-label"  for="address2">{{messages.address_continue}}</label>
+        <input type="text" class="form-control" id="address2" name="address2" 
+            placeholder="{{messages.optional}}"  formControlName="address2">
+      </div>
+      <div class="form-group col-4">
+        <label class="form-label"  for="postal">{{messages.postal}}</label>
+        <input type="text" name="postal" class="form-control"  formControlName="postal" placeholder="{{messages.required}}">
+      </div>
+      <div class="form-group col-4">
+        <label class="form-label"  for="country">{{messages.country}}</label>
+        <select id="country" name="country" class="custom-select"  formControlName="id_country">
+          <option value="" disabled selected hidden>{{messages.required}}</option>
+          <option *ngFor="let country of countries" value="{{country.id}}">{{country.name}}</option>
+        </select>
+      </div>
+      <div class="form-group col-4">
+        <label class="form-label"  for="city">{{messages.city}}</label>
+        <input type="text" name="city" class="form-control"  placeholder="{{messages.required}}"  formControlName="city">
+      </div>
+    </div>
+

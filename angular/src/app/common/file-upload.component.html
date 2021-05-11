@@ -1,0 +1,4 @@
+<a *ngIf="showAttachIcon" class="{{css_class}}" style="border:0;" (click)="click()"><i class="glyphicon icon-attachment"></i>{{caption}}</a>
+<a *ngIf="!showAttachIcon" class="{{css_class}}" (click)="click()">{{caption}}</a>
+<input type="file" id="file-input-snarto-{{index}}" (change)="fileInputChange($event)" #fileInput accept="{{accept}}" style="display: none;" >
+

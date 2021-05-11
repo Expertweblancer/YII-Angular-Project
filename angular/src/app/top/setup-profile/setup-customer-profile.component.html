@@ -1,0 +1,40 @@
+<in-loader *ngIf="working"></in-loader>
+  <div class="row justify-content-center" style="margin-top:3rem; margin-bottom:3rem" *ngIf="messages && !working">
+    <div class="col-xl-1 col-sm-2">
+      <div class="float-right">
+        <image-upload (onUploaded)="fotoUploaded($event)"></image-upload>
+      </div>
+    </div>
+    <div class="col-xl-7 col-lg-7 col-sm-10">
+      <form *ngIf="!working"  [formGroup]="profileForm" onkeypress="return event.keyCode != 13;" (ngSubmit)="onSubmit()">
+        <div class="row" formGroupName="profile">
+          <div class="form-group col-4">
+            <label class="form-label" for="name">{{messages.name}}</label>
+              <input tabindex="10" type="text" name="name" formControlName="name"
+              class="form-control" placeholder="{{messages.required}}">
+          </div>
+          <div class="form-group col-4">
+            <label class="form-label" for="surname">{{messages.surname}}</label>
+            <input tabindex="11" type="text" name="surname" formControlName="surname" required 
+                    class="form-control" placeholder="{{messages.required}}">
+          </div>
+          <div class="form-group col-4">
+              <label class="form-label" for="telephone">{{messages.telephone}}</label>
+              <input tabindex="12" type="text" name="telephone" formControlName="phone_num" 
+                  class="form-control" placeholder="{{messages.required}}">
+            </div>
+          <div class="form-group col-4">
+            <label class="form-label" for="curr">{{messages.currency}}</label>
+              <select tabindex="13" id="curr" name="curr" class="custom-select" title="Choose one of the following..." formControlName="id_currency">
+                <option *ngFor="let currency of currencies"  value="{{currency.id}}">{{currency.short}}</option>
+              </select>
+          </div>
+        </div>
+        <profile-address *ngIf="addressModel" [formGroup]="profileForm.controls.address" ></profile-address>
+        <div class="form-group" style="margin-top:10px; ">
+          <input class="btn btn-primary" type="submit" value="{{messages.save}}">
+        </div>
+      </form>
+    </div>
+</div>
+

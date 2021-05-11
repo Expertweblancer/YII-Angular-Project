@@ -1,0 +1,8 @@
+<in-loader *ngIf="working" ></in-loader>
+<div style="margin-top:25px;"> 
+<h5 *ngIf="messages && commentsModel && commentsModel.length==0" >{{messages.you_have_no_comments}}</h5>
+<div *ngIf="commentsModel && commentsModel.length>0 && messages" >
+<h5>{{messages.comments}}</h5>
+<comment-element *ngFor="let comment of commentsModel" [comment]="comment"></comment-element>
+  </div>
+</div>

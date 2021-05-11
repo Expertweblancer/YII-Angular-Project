@@ -1,0 +1,54 @@
+<section *ngIf="messages" >
+<div class="row">
+  <div class="card col-12">
+    <div class="card-block">
+      <div class="form-group row">
+        <label for="lgFormGroupInput" class="col-sm-2 col-form-label col-form-label-lg">Search <i *ngIf="loading"  class="fa fa-spinner fa-pulse fa-fw"></i></label>
+        <div class="col-sm-10">
+          <input type="text" name="search-text" [(ngModel)]="searchStr" class="form-control form-control-lg" id="lgFormGroupInput" (ngModelChange)="textChanged($event)">
+          <small *ngIf="searchStr.length>0 && searchStr.length<4"  class="form-text text-muted">Minimum 4 letters</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!searchResult && infoBoxData" class="row">
+  <div class="col-sm-3">
+    <div class="dash-box">
+      <div class="dash-box-icon" align="center" style="background-color:#9ada9a">
+        <i class="fa fa-truck" aria-hidden="true"></i>
+      </div>
+      <div class="dash-box-text">
+        <h5>{{messages.orders}}</h5>
+        <h3>{{infoBoxData.num_of_active}}</h3>
+        <p>{{messages.realized}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <div class="dash-box">
+      <div class="dash-box-icon" align="center" style="background-color:#daba9a">
+        <i class="fa fa-handshake-o" aria-hidden="true"></i>
+      </div>
+      <div class="dash-box-text">
+        <h5>{{messages.active}}</h5>
+        <h3>{{infoBoxData.num_orders}}</h3>
+        <p>{{messages.orders}}</p>
+      </div>
+    </div>
+  </div> 
+</div>
+
+
+<div class="row" style="margin-top:20px;" *ngIf="!searchResult">
+  <h5 class="page-header">{{messages.orders_realizing}}</h5>
+  <div class="col-lg-12" id="map">
+    <google-maps></google-maps>
+  </div>
+  <div class="col-lg-12">
+    
+  </div>
+</div>
+</section>
+<dashboard-trustee-search-result *ngIf="searchResult"  [searchResult]="searchResult"></dashboard-trustee-search-result>

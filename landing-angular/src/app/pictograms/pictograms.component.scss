@@ -1,0 +1,19 @@
+.pictograms {
+    display: flex;
+    div {
+        width: 100%;
+        .icon-wrapper {
+            height: 53px;
+            display: flex;
+            align-items: center;
+            margin-bottom: 32px;
+        }
+        pre {
+            font-family: ClanWebProNarrBook;
+            font-size: 18px;
+            line-height: 28px;
+            margin: 0;
+            padding: 0;
+        }
+    }
+}

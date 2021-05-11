@@ -1,0 +1,60 @@
+@import '../../sass/colors';
+
+.cw-checkbox {
+    position: relative;
+    cursor: pointer;
+    margin-top: 20px;
+    display: block;
+    user-select: none;
+    input, .checkbox-mark {
+        position: absolute;
+    }
+    input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+    font-family: ClanWebProNews;
+    color: #ADADAC;
+    a {
+        color: #2C5EE6;
+        text-decoration: underline;
+    }
+    font-size: 12px;
+    line-height: 16px;
+    $size: 18px;
+    // padding-left: $size + 8px;
+    .checkbox-mark {
+        width: $size;
+        height: $size;
+        border-radius: 2px;
+        border: 2px solid #EDEDEC;
+        box-sizing: border-box;
+        left: 0;
+        top: -1px;
+        // transform: translateY(10%);
+        background-color: transparent;
+        transition: .05s background-color ease-out;
+        svg {
+            transition: .1s opacity ease-out, .1s transform ease-out;
+            will-change: opacity, transform;
+            height: 75%;
+            transform: scale(0.5);
+            opacity: 0;
+        }
+        .stroke {
+            stroke: #FFF;
+        }
+    }
+    input:checked ~ .checkbox-mark {
+        svg {
+            transform: scale(1);
+            opacity: 1;
+        }
+        border-color: $blue;
+        background-color: $blue;
+    }
+    // input:focus ~ .checkbox-mark {
+    //     box-shadow: 0 0 0px 1.5px rgba($color: $blue, $alpha: .3);
+    // }
+}

@@ -1,0 +1,26 @@
+    <div class="card" *ngIf="!working" >
+        <div class="card-block">
+            <div class="d-flex profile-view">
+                <div class="p-2">
+                    <div class="no-foto d-flex justify-content-center" *ngIf="!profile.foto" >
+                        <i class="fa fa-user" aria-hidden="true"></i>
+                    </div>
+                    <img *ngIf="profile.foto" class="profile-photo"  [src]="getPhoto(profile.foto)"/> 
+                 </div>
+                <div class="d-flex flex-column">
+                    <div>
+                        <p class="subtitle-gray">{{messages.name_and_surname}}</p>
+                        <h5 *ngIf="profile.name" >{{profile.name}} {{profile.surname}}</h5>            
+                    </div>
+                    <div class="mt-auto d-flex decor-icon">
+                        <i class="glyphicon icon-flag"></i>
+                        <div *ngIf="countryModel">
+                            <p class="subtitle-gray">{{messages.country}}</p>
+                            <p>{{countryModel.name}}</p>                                   
+                        </div>
+                    </div>
+                </div>
+                <a class="ml-auto p-2" *ngIf="isMyProfile()" [routerLink]="['../edit']"><i class="glyphicon icon-draw" aria-hidden="true"></i> {{messages.edit}}</a>           
+            </div>
+         </div>
+    </div>

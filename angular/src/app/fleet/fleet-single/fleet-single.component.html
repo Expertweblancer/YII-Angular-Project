@@ -1,0 +1,41 @@
+<div class="card">
+    <div class="card-fleet">
+        <img (click)="fleetClick(fleet.id)" class="pointer align-self-center" [src]="fleet.foto" />
+        <div (click)="fleetClick(fleet.id)" class="list-element pointer">
+            <div class="info">
+                <div>
+                    <h5 class="subtitle-black title">{{fleet.name}}</h5>
+                    <p class="subtitle-gray fleet-category">
+                        <i class="glyphicon icon-delivery-truck" aria-hidden="true"></i>
+                        <span>{{fleetType}}</span>
+                    </p>
+                </div>
+                <div>
+                    <!--p class="subtitle-gray"> {{messages.current_order}} </p-->
+                    <button [routerLink]="['../../order/search']" [queryParams]="{ fid:fleet.id }" class="btn btn-outline-primary btn-sm"> {{messages.search_orders}} </button>
+                </div>
+
+            </div>
+            <div *ngIf="fleet.registration" class="registration">{{fleet.registration}}</div>
+        </div>
+        <div class="list-element-sizes">
+            <div class="d-flex decor-icon">
+                <i class="glyphicon icon-enlarge"></i>
+                <div>
+                    <p class="subtitle-gray"> {{messages.dim_load_space}} </p>
+                    <p class="subtitle-black"> {{fleet.loading_width}} x {{fleet.loading_height}} x {{fleet.loading_length}} </p>
+                </div>
+            </div>
+            <div class="d-flex decor-icon">
+                <i class="glyphicon icon-weight"></i>
+                <div>
+                    <p class="subtitle-gray"> {{messages.max_loading}} </p>
+                    <p class="subtitle-black"> {{fleet.max_kg}} kg</p>
+                </div>
+            </div>
+            <!--p class="title"> {{messages.max_distance}} </p>
+            <p class="elem"> <i class="fa fa-shopping-bag" aria-hidden="true"></i> {{fleet.max_km}} km</p-->
+
+        </div>
+    </div>
+</div>

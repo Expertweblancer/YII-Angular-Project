@@ -1,0 +1,21 @@
+<in-loader *ngIf="working"></in-loader>
+<div *ngIf="messages" class="card-header">
+  <div class="title">
+    <p class="subtitle-gray">{{messages.choose}}</p>
+    <p class="subtitle-black">{{messages.categories}}</p>
+  </div>
+  <a class="float-right pointer" (click)="markAll()">
+    <i class="fa fa-check" aria-hidden="true"></i> {{messages.mark_all}} </a>
+</div>
+<div *ngIf="messages" class="card-block">
+  <div class="row" *ngIf="messages">
+    <div *ngFor="let checkbox of checkBoxes; let i of index" class="form-check col-4">
+      <label class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" name="check-{{i}}" (ngModelChange)="onModelChange($event, i)" [(ngModel)]="checkbox.checked"
+          value="checkbox.value">
+        <span class="custom-control-indicator"></span>
+        <span class="custom-control-description">{{checkbox.text}}</span>
+      </label>
+    </div>
+  </div>
+</div>

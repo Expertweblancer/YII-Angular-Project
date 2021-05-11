@@ -1,0 +1,49 @@
+<div class="card" *ngIf="messages" >
+    <div class="card-block" style="padding:0;">
+      <div class="row" style="padding:1rem 1.3rem;" *ngIf="messages" >
+        <div class="col-3">
+          <div class="d-flex decor-icon">
+            <i class="glyphicon icon-calendar"></i>
+            <div>
+              <p class="subtitle-gray">{{messages.date}}</p>
+              <p class="subtitle-black">{{comment.added | date:'y-MM-dd'}}</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-9">
+          <div class="d-flex decor-icon">
+            <i class="glyphicon icon-balance"></i>
+            <div>
+              <p class="subtitle-gray">{{messages.order}}</p>
+              <p class="subtitle-black">{{comment.title}}</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-3">
+          <p class="subtitle-gray">{{messages.general_rating}}</p>
+          <p><i class="glyphicon icon-star"></i>{{comment.general_rating | number:'1.1-1'}}</p>
+        </div>
+        </div>
+        <div class="row background-gray" style="margin-right:0;margin-left:0;padding:1rem 1.3rem;">
+        <div class="col-3">
+          <p class="subtitle-gray">{{messages.contact_rating}}</p>
+          <p class="subtitle-black"><i class="glyphicon icon-star"></i>{{comment.contact_rating | number:'1.1-1'}}</p>
+        </div>
+
+        <div class="col-3">
+          <p class="subtitle-gray">{{messages.price_rating}}</p>
+          <p class="subtitle-black"><i class="glyphicon icon-star"></i>{{comment.price_rating | number:'1.1-1'}}</p>      
+        </div>
+
+        <div class="col-3">
+          <p class="subtitle-gray">{{messages.punctuality_rating}}</p>
+          <p class="subtitle-black"><i class="glyphicon icon-star"></i>{{comment.punctuality_rating | number:'1.1-1'}}</p>
+        </div>
+        <div *ngIf="comment.comment"  class="col-12">
+          <p class="subtitle-gray">{{messages.comment}}</p>
+          <p class="subtitle-black">{{comment.comment}}</p>
+        </div>
+      </div>
+    </div>
+</div>

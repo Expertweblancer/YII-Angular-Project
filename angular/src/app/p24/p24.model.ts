@@ -1,0 +1,19 @@
+export class P24Model{
+    p24_session_id:string;
+    p24_merchant_id:string;
+    p24_pos_id:string;
+    p24_amount:string;
+    p24_currency:string;
+    p24_description:string;
+    p24_client:string;
+    p24_address:string;
+    p24_zip:string;
+    p24_city:string;
+    p24_country:string;
+    p24_email:string;
+    p24_language:string;
+    p24_url_return:string;
+    p24_api_version:string;
+    p24_url_status:string;
+    p24_sign:string;
+}

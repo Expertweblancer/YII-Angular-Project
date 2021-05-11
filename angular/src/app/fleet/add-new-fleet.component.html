@@ -1,0 +1,87 @@
+<in-loader *ngIf="working"></in-loader>
+<ngb-alert [dismissible]="false" *ngIf="!working && showErrorDialog==true && messages!=null" [type]="'danger'">{{messages.form_has_erros}}</ngb-alert>
+<form *ngIf="messages && !working" [formGroup]="fleetForm" (ngSubmit)="onSubmit()" onkeypress="return event.keyCode != 13;">
+  <div class="card">
+    <div class="card-block">
+      <div class="row justify-content-center">
+        <div class="col-lg-3 col-sm-12">
+          <div class="float-right">
+            <image-upload (onUploaded)="onUploaded($event)"></image-upload>
+          </div>
+        </div>
+        <div class="col-lg-9 col-sm-12">
+          <div class="row">
+            <div class="form-group col-12">
+              <label class="form-label" for="name">{{messages.name}}</label>
+              <input type="text" [placeholder]="messages.required" formControlName="name" class="form-control underline">
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-4">
+              <label class="form-label" for="year">{{messages.production_year}}</label>
+              <input type="number" [placeholder]="messages.optional" min="1960" max="{{max_year}}" name="year" formControlName="year" class="form-control">
+              <small class="text-danger" [hidden]="fleetForm.controls['year'].valid || fleetForm.controls['year'].disabled">{{messages.cant_be_future}}</small>
+            </div>
+            <div class="form-group col-4">
+              <label class="form-label" for="registration">{{messages.registration_no}}</label>
+              <input type="text" [placeholder]="messages.optional" class="form-control" formControlName="registration">
+            </div>
+            <div class="form-group col-4">
+              <label class="form-label" for="fleet-type">{{messages.type}}</label>
+              <select id="fleet-type" class="custom-select" formControlName="id_type">
+                <option *ngFor="let type of fleetTypes" value="{{type.id}}">{{type.name}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <h4>{{messages.dimentions_loading_area}}</h4>
+            </div>
+            <div class="form-group col-4">
+              <label class="form-label" for="width">{{messages.width}}</label>
+              <input type="number" min="0" [placeholder]="messages.required" id="load-width" name="width" class="form-control" formControlName="loading_width">
+            </div>
+            <div class="form-group col-4">
+              <label class="form-label" for="width">{{messages.length}}</label>
+              <input type="number" [placeholder]="messages.required" min="0" name="load-length" class="form-control" formControlName="loading_length">
+            </div>
+            <div class="form-group col-4">
+              <label class="form-label" for="load-height">{{messages.height}}</label>
+              <input [placeholder]="messages.required" type="number" min="0" name="load-height" class="form-control" formControlName="loading_height">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <h4>{{messages.other_data}}</h4>
+            </div>
+            <div class="form-group col-4">
+              <label class="form-label" for="max-kg">{{messages.max_kg}}</label>
+              <input type="number" min="0" [placeholder]="messages.required" formControlName="max_kg" class="form-control">
+            </div>
+            <div class="form-group col-4">
+              <label class="form-label" for="max-km">{{messages.max_km}}</label>
+              <input type="number" min="0" [placeholder]="messages.required" formControlName="max_km" class="form-control">
+            </div>
+            <div class="form-group col-4" *ngIf="currency">
+              <label class="form-label" for="distance-rate">{{messages.distance_rate}} [{{currency.name}}]</label>
+              <input type="number" min="0" [placeholder]="messages.optional" class="form-control" formControlName="km_rate">
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-12" *ngIf="categories">
+              <label class="form-label" for="fleet-type">{{messages.categories}}</label>
+              <ng-select [multiple]="true" [items]="categories" [active]="activeCategories" (data)="refreshCategoryValue($event)" [placeholder]="messages.no_cat_selected">
+              </ng-select>
+            </div>
+            <div class="col-12" style="margin-top:0.8em">
+              <button class="btn btn-primary" type="submit">
+                <i class="fa fa-circle-o-notch fa-spin fa-fw" *ngIf="saving"  aria-hidden="true"></i> {{messages.save}}
+              </button>
+              <a class="btn btn-warning" style="margin-left:5px;" (click)="cancelClick()">{{messages.cancel}}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

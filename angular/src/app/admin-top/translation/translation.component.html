@@ -1,0 +1,41 @@
+<loader *ngIf="working"></loader> 
+<confirm-dialog *ngIf="deleteDialogOn"  (onAction)="onDeleteConfirm($event)"></confirm-dialog>
+<form (ngSubmit)="onSubmit()" #translationForm="ngForm" onkeypress="return event.keyCode != 13;" class="form-inline">
+  <div class="col-xs-6" style="padding:3px;">
+  <input [(ngModel)]="translationModel.message" name="message" type="text" 
+        class="form-control" id="message" placeholder="String" required>    
+  </div>
+  <div class="col-xs-6" style="padding:3px;">
+    <select class="form-control" (ngModelChange)="langChanged($event)" [(ngModel)]="selectedLanguage" name="language" required id="language">
+      <option value="pl" selected="selected">pl</option>
+      <option value="en" selected="selected">en</option>
+    </select>
+  </div>
+  <div class="col-xs-6" style="padding:3px;">
+    <input [(ngModel)]="translationModel.translation" name="translation" type="text" 
+        class="form-control" id="translation" placeholder="Translation" required>
+  </div>
+  <button type="submit" class="btn btn-primary">Save</button>
+</form>
+
+<table *ngIf="translations"  class="table app-table">
+  <thead>
+    <tr>
+      <th>Category</th>
+      <th>Language</th>
+      <th>Source Message</th>
+      <th>Translation</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let translation of translations" (click)="select(translation)" >
+      <td>{{translation.category}}</td>
+      <td>{{translation.language}}</td>
+      <td>{{translation.message}}</td>
+      <td>{{translation.translation}}</td>
+      <td><a (click)="deleteConfirm(translation)"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+    </tr>
+  </tbody>
+</table>
+

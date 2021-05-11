@@ -1,0 +1,13 @@
+@import '../../sass/colors';
+
+.input-wrapper {
+    .input {
+        &::placeholder {
+            color: #ADADAC;
+        }
+    }
+    .label {
+        display: flex;
+        justify-content: space-between;
+    }
+}

@@ -1,0 +1,42 @@
+<loader *ngIf="working"></loader>
+<!-- <div *ngIf="messages">
+    <ngb-alert [dismissible]="false" *ngIf="!notifications || notifications.length==0">{{messages.no_notifications}}</ngb-alert>
+</div>
+
+<div class="list-group" *ngIf="!working && notifications && notifications.length>0">
+    <div *ngFor="let notf of notifications; let i=index" class="list-group-item list-group-item-action">
+        <div class="d-flex">
+            <i (click)="notificationClick(notf.order_id, notf.category)" [ngClass]="notf.read==1?'fa fa-circle color-white align-self-center pointer':'fa fa-circle color-blue align-self-center pointer'"
+                aria-hidden="true"></i>
+            <div class="pointer" (click)="notificationClick(notf.order_id, notf.category)">
+                <p class="color-gray" style="text-transform:uppercase; font-size:0.7rem;">
+                    <ago-date-format [messages]="agoComponentMessages" [date]="notf.created"></ago-date-format>
+                </p>
+                <p style="font-size:0.8rem;" innerHTML="{{getNotificationText(notf.category, notf.text, notf.data)}}"></p>
+            </div>
+            <i (click)="delete(i)" class="glyphicon icon-garbage ml-auto align-self-center pointer"></i>
+        </div>
+    </div>
+</div> -->
+
+<div class="list block-with-shadow">
+    <div class="row head">
+        <button>
+            Pokaż tylko nieprzeczytane (2)
+        </button>
+        <button>
+            Oznacz wszystkie jako przeczytane (3)
+        </button>
+    </div>
+    <div class="row item new">
+        <div class="full">
+            tes
+        </div>
+        <div class="remove">
+            tes
+        </div>
+    </div>
+    <div class="row item new">
+
+    </div>
+</div>

@@ -1,0 +1,87 @@
+<div class="top-bar with-pattern">
+  <div class="logo-wrapper flex-centered">
+    <img src="/assets/icons/logo-white.svg">
+  </div>
+</div>
+<div class="section-header">
+  <div class="header">
+    Zarejestruj się i jedź
+  </div>
+  <div class="desc">
+    Bezpieczne, niezawodne i szybkie przejazdy
+  </div>
+  <div class="form-wrapper">
+    <form (submit)="$event.preventDefault()">
+      <div class="row">
+        <custom-input
+        placeholder="WPISZ"
+        label="LOGIN"
+        type="text">
+        </custom-input>
+        <custom-input
+        placeholder="EXAMPLE@EMAIL.COM"
+        label="E-MAIL"
+        type="email">
+        </custom-input>
+      </div>
+      <div class="row">
+        <custom-input
+        placeholder="••••••••"
+        label="HASŁO"
+        type="password"></custom-input>
+        <custom-input
+        placeholder="••••••••"
+        label="POWTÓRZ HASŁO"
+        type="password"></custom-input>
+      </div>
+      <checkbox
+      isChecked="isReqChecked"
+      id="req"
+      onCheckedChange="onReqChange"></checkbox>
+      <div class="type-of-account-header">
+        Rejestrujesz firmę?
+      </div>
+      <div class="switch-controller">
+        <div class="line"></div>
+        <div
+        (click)="isCompany = true"
+        class="controll {{isCompany ? 'active' : ''}}">
+          Tak
+        </div>
+        <div class="line spacing"></div>
+        <div
+        (click)="isCompany = false"
+        class="controll {{!isCompany ? 'active' : ''}}">
+          Nie
+        </div>
+        <div class="line"></div>
+      </div>
+      <div *ngIf="isCompany" class="row">
+        <custom-input
+        placeholder="NP. SNARTO"
+        label="NAZWA FIRMY"
+        type="text"></custom-input>
+        <custom-input
+        placeholder="000-000-00-00"
+        label="NIP"
+        type="text"></custom-input>
+      </div>
+      <div class="row">
+        <custom-input
+        placeholder="KOD POCZTOWY, MIEJSCOWOŚĆ"
+        label="ADRES"
+        type="text"></custom-input>
+        <custom-input
+        placeholder="ULICA, NUMER DOMU/LOKALU"
+        label="ADRES C.D."
+        type="text"></custom-input>
+      </div>
+      <button class="btn blue">
+        ZAREJESTRUJ SIĘ
+      </button>
+      <div class="already-registered">
+        Masz już konto? <button (click)="showLoginModal()">Zaloguj się</button>
+      </div>
+    </form>
+  </div>
+</div>

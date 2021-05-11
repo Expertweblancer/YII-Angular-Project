@@ -1,0 +1,17 @@
+
+<div id="outer">
+</div>
+<div *ngIf="!working"  id="inner">
+  <h4>{{messages.are_you_sure}}</h4>
+  <div class="form-check">
+    <label class="form-check-label">
+      <input class="form-check-input" name="agree-box" [(ngModel)]="agree" type="checkbox" value="">
+        {{messages.agree_with}}
+    </label><a href="{{terms_link}}" target="_blank"> {{messages.terms}} </a>
+    <p><small class="text-danger" *ngIf="showWarning" >{{messages.agree_please}}</small></p>
+  </div> 
+  <div>
+    <button class="btn btn-secondary" (click)="cancel()" >{{messages.cancel}}</button>
+    <button [ngClass]="agree?'btn btn-primary':'btn btn-primary disabled'" (click)="ok()" ><i *ngIf="sending"  class="fa fa-spinner fa-pulse fa-fw"></i> {{messages.ok}}</button>
+  </div>
+</div>

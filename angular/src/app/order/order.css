@@ -1,0 +1,94 @@
+#map{
+    height:300px;
+    margin-bottom:30px;
+}
+.order-summary{
+    border-radius: 4px;
+    border-color: #337ab7 1px solid;
+    padding:5px;
+}
+h5{
+    color:#666;
+}
+.order-summary-header{
+    font-size:0.7em;
+    line-height: .8em;
+    margin-top:0;
+    margin-bottom:0;
+    color:#777;
+}
+p > img{
+    height:15px;
+    width:auto;
+    margin-right:5px;
+}
+.details {
+    margin-bottom: 20px;
+}
+
+.ng-invalid.ng-touched{
+    border-color:red;
+}
+.ng-invalid.ng-touched > div{
+    display:block;
+}
+.datepicker__input{
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+#map {
+    height:300px;
+}
+
+.order-title{
+    margin-bottom:20px;
+}
+.order-details-table {
+    font-size: 0.7em;
+    border:0px;
+    margin-top:10px; 
+    margin-bottom: 5px;
+}
+.order-details-table th, .order-details-table  td{
+    border:none;
+}
+
+.order-details-table th, .order-details-table td{
+    padding: 0.2rem;
+}
+.file-icon i{
+    margin:20px 30px 0 0;
+}
+a.standard-link{
+    text-decoration: underline;
+    color:#6666ff;
+}
+button.button-down{
+    margin-top:30px;
+}
+.search-order-offer-box{
+    margin:0 auto;
+    display: table;
+    margin-top:10%;
+}
+
+.search-result-row{
+    border: 1px solid #999;
+    margin-bottom:10px;
+    padding-top:20px;
+    padding-bottom:20px;
+}

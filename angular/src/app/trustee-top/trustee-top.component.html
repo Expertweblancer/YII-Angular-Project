@@ -1,0 +1,94 @@
+<loader *ngIf="working"></loader>
+<div class="container">
+  <div class="row">
+    <nav class="bg-faded sidebar"  *ngIf="messages">
+        <ul class="nav">
+            <li class="menu-header">
+                <menu-get-profile></menu-get-profile>
+            </li>
+            <user-messages-menu></user-messages-menu>
+            <li class="nav-item">
+                <a class="nav-link top-items" routerLinkActive="active" [routerLink]="['notifications']">
+                <i class="fa fa-bell" aria-hidden="true"></i> {{messages.notifications}} <span class="badge badge-info">3</span>
+                </a>
+            </li>
+            <li class="nav-item" id="dashboard-link">
+                <a class="nav-link" routerLinkActive="active" [routerLink]="['dashboard']">
+                    <i class="fa fa-tachometer" aria-hidden="true"></i> {{messages.dashboard}}
+                </a>
+            </li>
+
+            <li class="divider"></li>
+            <li class="nav-title">{{messages.user}}</li>
+            <li class="nav-item">
+                <a class="nav-link" routerLinkActive="active" [routerLink]="['customer']">
+                    <i class="fa fa-caret-right" aria-hidden="true"></i> {{messages.customer}}
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLinkActive="active" [routerLink]="['company']">
+                    <i class="fa fa-caret-right" aria-hidden="true"></i> {{messages.company}}
+                </a>
+            </li>
+            
+
+            <li class="divider"></li>
+            <li class="nav-title">{{messages.order}}</li>
+            <li class="nav-item">
+                <a class="nav-link" routerLinkActive="active" [routerLink]="['order/list']" [queryParams]="{action:'open'}">
+                    <i class="fa fa-caret-right" aria-hidden="true"></i> {{messages.open}}
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLinkActive="active" [routerLink]="['order/list']" [queryParams]="{action:'closed'}">
+                    <i class="fa fa-caret-right" aria-hidden="true"></i> {{messages.closed}}
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLinkActive="active" [routerLink]="['order/list']" [queryParams]="{action:'cancelled'}">
+                    <i class="fa fa-caret-right" aria-hidden="true"></i> {{messages.cancelled}}
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLinkActive="active" [routerLink]="['order/list']" [queryParams]="{action:'executing'}">
+                    <i class="fa fa-caret-right" aria-hidden="true"></i> {{messages.executing}}
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLinkActive="active" [routerLink]="['order/list']" [queryParams]="{action:'awaiting'}">
+                    <i class="fa fa-caret-right" aria-hidden="true"></i> {{messages.awaiting}}
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li class="nav-item">
+                <a class="nav-link" routerLinkActive="active" [routerLink]="['order/list']" [queryParams]="{action:'compleated'}" >
+                <i class="fa fa-caret-right" aria-hidden="true"></i> {{messages.compleated}}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLinkActive="active" [routerLink]="['order/list']" [queryParams]="{action:'unrealized'}">
+                    <i class="fa fa-caret-right" aria-hidden="true"></i> {{messages.unrealized}}
+                </a>
+            </li>
+            <li class="divider" *ngIf="userInfo && userInfo.is_admin" ></li>
+            <li class="nav-title"  *ngIf="userInfo && userInfo.is_admin">
+                Admin
+            </li>
+            <li class="divider" *ngIf="userInfo && userInfo.is_admin" ></li>
+            <li class="nav-item"  *ngIf="userInfo && userInfo.is_admin">
+                <a class="nav-link" routerLinkActive="active" [routerLink]="['/admin/dashboard']"><i class="fa fa-user-o"></i> <b>Admin</b></a>
+            </li>
+
+            <li class="divider"></li>
+            <li class="nav-item">
+                <a class="nav-link" (click)="logout()" ><i class="fa fa-sign-out" aria-hidden="true"></i> {{messages.logout}}</a>
+            </li>
+            <li class="nav-item">
+                <span style="margin-left:10px;"><i> Version: {{system_ver}}</i></span>
+            </li>
+        </ul>
+    </nav>
+</div>
+<main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
+    <router-outlet></router-outlet>
+</main>
+</div>

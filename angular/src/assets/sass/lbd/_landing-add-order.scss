@@ -1,0 +1,126 @@
+.landing-order-add{
+    .next-button{
+        margin-top:1rem;
+        margin-bottom:2rem;
+    }
+    .parcels-view{
+        .btn{
+            height:2.1rem;
+        }
+    }
+    .parcel-buttons{
+        display: inline;
+    }
+    .chose-category{
+        .squere{
+            border:1px solid $app-bg;
+            position: relative;
+            overflow: hidden;        
+            &.active{
+                border: 1px solid $primary-color;
+            }
+        }
+        @media screen and (max-width: 600px) {
+            .glyphicon{
+                line-height: 5vw;
+                font-size: 5vw;
+                margin-top:35%;
+                margin-bottom:35%
+            }        
+        }
+        @media screen and (min-width: 601px) and (max-width: 800px) {
+            .glyphicon{
+                line-height: 3.3vw;
+                font-size: 3.3vw;
+                margin-top:35%;
+                margin-bottom:35%
+            }        
+        }
+        @media screen and (min-width: 801px) and (max-width: 991px) {
+            .glyphicon{
+                line-height: 4vw;
+                font-size: 4vw;
+                margin-top:35%;
+                margin-bottom:20%
+            }
+        }
+        @media screen and (min-width: 992px) and (max-width: 1199px) {
+            .glyphicon{
+                line-height: 3vw;
+                font-size: 3vw;
+                margin-top:32%;
+                margin-bottom:20%
+            }
+        }
+        @media screen and (min-width: 1200px) {
+            .glyphicon{
+                line-height: 4rem;
+                font-size: 4vw;
+                margin-top:35%;
+                margin-bottom:20%                
+            }
+        }
+        @media screen and (min-width: 1367px) {
+            .glyphicon{
+                line-height: 4rem;
+                font-size: 4vw;
+                margin-top:20%;
+                margin-bottom:20%                
+            }
+        }
+    }
+    span{
+        display: block;
+        font-size: 1rem;
+    }
+    .top{
+        height:1.5rem;
+    }
+    .checked {
+        width:1.5rem;
+        height:1.5rem;
+        background-color: $primary-color;
+        color: #fff;
+        .glyphicon{
+            color:#fff;
+            font-size: 0.7rem;
+            line-height: 1;
+        }
+    }
+    .glyphicon{
+        color:$primary-color;
+    }
+    .border-top{
+        border-top: 1px solid $app-bg;
+        &.done{
+            border-top:1px solid $primary-color;
+        }
+    }
+    .point{
+        border:1px solid $app-bg;
+        background-color:#fff;
+        font-size: 1rem;
+        width: 2.2rem;
+        height: 2.2rem;
+        line-height: 1;
+        border-radius: 50%;
+        position: relative;
+        top:-1.1rem;
+        &.active {
+            background-color: $app-bg;
+        }
+        &.done{
+            border:1px solid $primary-color;
+        }
+    }
+    .point-column {
+        &.active{
+            .subtitle{
+                color:$font-color;
+            }                
+        }
+        .subtitle{
+            color:$gray-font-color;
+        }
+    }
+}

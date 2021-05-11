@@ -1,0 +1,18 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Category</th>
+      <th>Name</th>
+      <th>Pick up address</th>
+      <th>Delivery address</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let result of searchResults" >
+      <td>{{getCategoryName(result.category_id)}}</td>
+      <td>{{result.name}}</td>
+      <td>{{result.from_address}}</td>
+      <td>{{result.to_address}}</td>
+    </tr>
+   </tbody>
+</table>

@@ -1,0 +1,2 @@
+<input type="text" #addr="ngModel" class="form-control" id="{{inputId}}" (ngModelChange)="addressInputChanged($event)" name="{{inputId}}" required [(ngModel)]="address">
+<small class="text-danger" *ngIf="messages && (!addr_valid)">{{messages.invalid_value}}</small>

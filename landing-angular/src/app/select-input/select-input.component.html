@@ -1,0 +1,15 @@
+<div class="input-wrapper">
+  <div class="label">
+    {{label}}
+  </div>
+  <div (click)="showOptions()" class="input {{isActive ? 'active' : ''}}">
+    {{activeOption !== null ? options[activeOption] : 'WYBIERZ'}}
+  </div>
+  <div [@enterAnimation] *ngIf="isActive" class="options">
+    <div
+    *ngFor="let option of options; let i = index"
+    (click)="setActiveOption(i)">
+      {{option}}
+    </div>
+  </div>
+</div>

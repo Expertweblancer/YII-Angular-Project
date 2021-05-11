@@ -1,0 +1,30 @@
+.footer {
+    width: 100%;
+    min-height: 100px;
+    background-color: #000;
+    color: #FFF;
+    .content {
+        padding: 93px 0 80px;
+        display: flex;
+        align-items: center;
+        & > div {
+            // flex-shrink: 0;
+            width: 100%;
+            font-family: ClanWebProNews;
+            font-size: 15px;
+            line-height: 22px;
+            .copy-right {
+                font-size: 13px;
+                margin-top: 24px;
+            }
+            .link-wrapper, .address {
+                margin-top: 7px;
+            }
+            .header {
+                color: #C0C0C0;
+                margin-bottom: 3px;
+                font-family: ClanWebProBold;
+            }
+        }
+    }
+}

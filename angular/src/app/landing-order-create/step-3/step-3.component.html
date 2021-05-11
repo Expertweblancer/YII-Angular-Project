@@ -1,0 +1,53 @@
+<form #form="ngForm" (keydown.enter)="$event.preventDefault()" (ngSubmit)="form.valid && onSubmit()">
+  <div class="row justify-content-center parcels-view">
+    <div class="col-10">
+      <h4>{{messages.set_dimensions}}</h4>
+    </div>
+    <div class="col-10">
+      <div class="row" *ngFor="let parcel of parcels; let i=index">
+        <div class="col-10">
+          <div class="row">
+            <div class="form-group col-3">
+              <label  class="form-label">{{messages.width}} [cm]</label>
+              <input #wi="ngModel" class="form-control" [min]="0" required type="number" name="width-{{i}}" [(ngModel)]="parcel.width">
+              <small *ngIf="wi.invalid && (wi.dirty || wi.touched || form.submitted)" class="text-danger">{{messages.mandatory}}</small>
+            </div>
+            <div class="form-group col-3">
+              <label  class="form-label">{{messages.height}} [cm]</label>
+              <input #he="ngModel" class="form-control" [min]="0" required type="number" name="height-{{i}}" [(ngModel)]="parcel.height">
+              <small *ngIf="he.invalid && (he.dirty || he.touched || form.submitted)" class="text-danger">{{messages.mandatory}}</small>
+            </div>
+            <div class="form-group col-3">
+              <label  class="form-label">{{messages.length}} [cm]</label>
+              <input #ln="ngModel" class="form-control" [min]="0" required type="number" name="depth-{{i}}" [(ngModel)]="parcel.depth">
+              <small *ngIf="ln.invalid && (ln.dirty || ln.touched || form.submitted)" class="text-danger">{{messages.mandatory}}</small>              
+            </div>
+            <div class="form-group col-3">
+              <label  class="form-label">{{messages.weight}} [kg]</label>
+              <input #wg="ngModel" class="form-control" [min]="0" required type="number" name="weight-{{i}}" [(ngModel)]="parcel.weight">
+              <small *ngIf="wg.invalid && (wg.dirty || wg.touched || form.submitted)" class="text-danger">{{messages.mandatory}}</small>              
+            </div>
+          </div>
+        </div>
+        <div class="form-group col-2 d-flex">
+          <div *ngIf="i>0" style="margin-right:0.5rem;">
+            <label class="form-label">&nbsp;</label>
+            <br/>
+            <button (click)="removeParcel(i)" class="btn btn-primary">X</button>
+          </div>
+          <div *ngIf="i==parcels.length-1">
+            <label class="form-label">&nbsp;</label>
+            <br/>
+            <button (click)="addParcel()" class="btn btn-outline-primary">{{messages.more}}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center next-button">
+    <div class="col-10">
+      <a class="btn btn-outline-primary btn-lg pull-left" (click)="prev()">{{messages.prev}}</a>
+      <button type="submit" class="btn btn-primary btn-lg pull-right">{{messages.next}}</button>
+    </div>
+  </div>
+</form>

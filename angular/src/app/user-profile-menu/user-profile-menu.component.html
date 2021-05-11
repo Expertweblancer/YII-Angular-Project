@@ -1,0 +1,18 @@
+<div
+*ngIf="activePosition"
+class="user-profile-menu"
+[ngStyle]="{'top': activePosition.y+'px', 'left': activePosition.x+'px'}"
+[@enterAnimation]>
+    <a [routerLink]="['profile']">
+        <img src="/assets/icons/profile-icon.svg">
+        MÓJ PROFIL
+    </a>
+    <a [routerLink]="['profile/edit']">
+        <img src="/assets/icons/settings-icon.svg">
+        EDYCJA KONTA
+    </a>
+    <button (click)="logout()">
+        <img src="/assets/icons/sign-out-icon.svg">
+        WYLOGUJ
+    </button>
+</div>

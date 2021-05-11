@@ -1,0 +1,84 @@
+@media (min-width: 768px) {
+    :root {
+      font-size: 11px;
+    }
+  }
+  
+  @media (min-width: 992px) {
+    :root {
+      font-size: 12px;
+    }
+    .container {
+      max-width: 880px;
+    }
+  }
+  
+  @media (min-width: 1200px) {
+    :root {
+      font-size: 14px;
+    }
+    .container {
+      max-width: 1184px;
+    }
+  }
+  
+  @media (min-width: 1312px) {
+    :root {
+      font-size: 16px;
+    }
+    .container {
+      max-width: 1280px;
+    }
+  }
+  
+  @media (min-width: 1456px) {
+    :root {
+      font-size: 20px;
+    }
+    .container {
+      max-width: 1440px;
+    }
+  }
+  .row{
+    margin-left:0;
+    margin-right:0;
+  }
+  .container {
+      padding:0;
+      height:100vh;
+      background-color: #fff;
+  }
+body.app-body{
+    background-color:#d9d9d9;
+}
+  
+.form-label {
+    text-transform: uppercase;
+    margin-bottom:0.5rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.07rem;
+    color:#201f24;
+    text-transform: uppercase;
+}
+
+select.form-control, textarea.form-control, input.form-control {
+    border-radius: 0;
+    font-size:0.7rem;
+    height:2.6rem;
+    padding-left:0.6rem;
+    padding-right:0.6rem;
+}
+
+input.form-control:focus{
+    border:2px solid #2d5ee7;
+}
+
+.btn{
+    border-radius: 0;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+}
+.btn-primary{
+    color:#fff;
+    background-color: #2d5ee7;
+}

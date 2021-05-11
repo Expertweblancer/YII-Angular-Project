@@ -1,0 +1,27 @@
+i.na {
+    color:#aaa;
+}
+
+.no-order {
+    padding: 92px 100px;
+    img, .inline {
+        display: inline-block;
+        vertical-align: top;
+    }
+    img {
+        margin-right: 68px;
+    }
+    text-transform: uppercase;
+    .title {
+        color: #ADADAC;
+        font-size: 11px;
+        letter-spacing: 1.65px;
+    }
+    .header {
+        font-size: 20px;
+        margin-bottom: 28px;
+    }
+    .snarto-btn {
+        // display: inline-block;
+    }
+}

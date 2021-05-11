@@ -1,0 +1,196 @@
+.order-list-wrapper {
+    .list-row {
+        min-height: 56px;
+        padding-left: 28px;
+        &, .num, .details, .text {
+            display: flex;
+            align-items: center;
+        }
+        .num {
+            padding-right: 28px;
+            justify-content: center;
+        }
+        .details {
+            color: #2C5EE6;
+            width: 134px;
+            box-sizing: border-box;
+            padding-right: 32px;
+            justify-content: flex-end;
+            cursor: pointer;
+            user-select: none;
+            img {
+                margin-left: 6px;
+            }
+        }
+        .num, .details, .text .icon-wrapper {
+            flex-shrink: 0;
+        }
+        .text {
+            width: 100%;
+            span {
+                color: #A1A19F;   
+            }
+            &.price {
+                color: #2ECC71;
+            }
+            &.first, &.price {
+                font-weight: 600;
+            }
+            .icon-wrapper {
+                display: inline-block;
+                width: 40px;
+                text-align: center;
+                margin-right: 15px;
+            }
+        }
+        .text, .num {
+            font-weight: 400;
+            font-size: 14px;
+        }
+        .details, &.th .text, &.th .num {
+            font-size: 12px;
+            letter-spacing: 1.8px;
+            font-weight: 600;
+        }
+        &.th {
+            border-bottom: 2px solid #EDEDEC;
+            .text, .num {
+                color: #ADADAC;
+            }
+        }
+        &.active {
+            &:nth-child(even) {
+                background-color: #F8F8F9;
+            }
+            border-bottom: 2px solid #2c5ee6;
+        }
+    }
+    .order-preview {
+        padding: 30px;
+        img.map {
+            user-select: none;
+            width: 300px;
+            height: 300px;
+            flex-shrink: 0;
+            display: none;
+        }
+        .info-wrapper {
+            width: 100%;
+            margin-left: 40px;
+            .top, .bottom {
+                & > div {
+                    width: 50%;
+                }
+            }
+            & > .top {
+                border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+                padding-bottom: 15px;
+                margin-bottom: 23px;
+                & > div {
+                    &:last-child {
+                        justify-content: space-between;
+                        div {
+                            text-align: right;
+                        }
+                    }
+                }
+            }
+            .price {
+                font-size: 24px;
+            }
+            .header {
+                font-size: 16px;
+            }
+            .label {
+                font-size: 12px;
+                letter-spacing: 1.8px;
+                text-transform: capitalize;
+                color: #adadac;
+                letter-spacing: 1.8px;
+                border-bottom: 2px;
+            }
+            .bottom {
+                .contact, .prof {
+                    justify-content: space-between;
+                }
+                .contact {
+                    padding: 28px;
+                    background-color: #f8f8f9;
+                    & > div {
+                        img {
+                            margin-right: 12px;
+                        }
+                    }
+                    button {
+                        height: 40px;
+                        img {
+                            margin-right: 5px;
+                        }
+                        padding: 0 7px 0 9px;
+                    }
+                    .phone-number {
+                        font-size: 18px;
+                        a {
+                            font-size: 12px;
+                            color: #2c5ee6;
+                            text-decoration: underline;
+                            font-weight: 400;
+                        }
+                    }
+                }
+                .prof {
+                    margin-top: 25px;
+                    .account {
+                        margin-top: 6px;
+                        img {
+                            margin-right: 8px;
+                        }
+                    }
+                }
+                .road {
+                    margin-top: 4px;
+                    .label {
+                        margin-bottom: 0;
+                    }
+                    & > div {
+                        display: flex;
+                        .line {
+                            width: 24px;
+                            margin-right: 14px;
+                            flex-shrink: 0;
+                            position: relative;
+                            img {
+                                position: absolute;
+                                z-index: 2;
+                                top: 50%;
+                                left: 50%;
+                                transform: translate(-50%, -50%);
+                            }
+                            & > div {
+                                position: absolute;
+                                transform: translateX(-1px);
+                                left: 50%;
+                                width: 2px;
+                                background-color: rgba($color: #000, $alpha: 0.1);
+                                top: 0;
+                                bottom: 0;
+                            }
+                            &.bottom > div {
+                                bottom: 50%;
+                            }
+                            &.top > div {
+                                top: 50%;
+                            }
+                        }
+                    }
+                    .distance {
+                        padding: 24px 0;
+                        img {
+                            margin-right: 8px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

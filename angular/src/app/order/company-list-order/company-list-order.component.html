@@ -1,0 +1,62 @@
+<loader *ngIf="working"></loader>
+<div *ngIf="messages">
+  <div *ngIf="showFilterPanel && categoryModel">
+    <div class="row">
+      <div class="col-12">
+        <div class="btn-group btn-group-sm float-left" role="group" aria-label="buttons">
+          <!--button type="button" (click)="toggleFilterFleet(-1)" [ngClass]="fleetFilterActiveIndex == -1?'btn btn-secondary active pointer':'btn btn-secondary pointer'">
+            {{messages.general_filter}}
+          </button -->
+          <div *ngFor="let fleet of fleets; let i=index" (click)="toggleFilterFleet(i)" title="{{fleet.name}}" 
+            [ngClass]="fleetFilterActiveIndex == i ? 'btn btn-secondary active dismisable pointer':'btn btn-secondary dismisable pointer'">{{fleet.name}}
+            <i (click)="removeFleet(i);$event.stopPropagation()" class="fa fa-times-circle" aria-hidden="true"></i>
+          </div>
+        </div>
+        <div class="btn-group btn-group-sm float-right" role="group" aria-label="buttons">
+          <button type="button" (click)="setFilterMode('country')" [ngClass]="filterMode == 'country'?'btn btn-primary active pointer':'btn btn-outline-secondary pointer'">
+            {{messages.country}}
+          </button>
+          <button type="button" (click)="setFilterMode('route')" [ngClass]="filterMode == 'route'?'btn btn-primary active pointer':'btn btn-outline-secondary pointer'">
+            {{messages.route}}
+          </button>
+          <button type="button" (click)="setFilterMode('place')" [ngClass]="filterMode == 'place'?'btn btn-primary active pointer':'btn btn-outline-secondary pointer'">
+            {{messages.place}}
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="filter-box">
+          <div class="card card-mini" *ngIf="messages">
+            <filter-categories *ngIf="categoryModel" [categories]="categoryModel" (onFilterCategoriesChange)="setFilterCategories($event)"></filter-categories>
+          </div>
+          <div class="card card-mini">
+            <div class="card-header">
+              <div>
+                <p class="subtitle-gray">{{messages.choose}}</p>
+                <p class="subtitle-black">{{messages.parameters}}</p>
+              </div>
+            </div>
+            <div class="card-block">
+              <order-filter-country *ngIf="filterMode=='country'" (onFilterChange)="setFilterObject($event)" [countries]="countries"></order-filter-country>
+              <order-filter-route *ngIf="filterMode=='route'" (onFilterChange)="setFilterObject($event)"></order-filter-route>
+              <order-filter-place *ngIf="filterMode=='place'" (onFilterChange)="setFilterObject($event)"></order-filter-place>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div *ngIf="messages && orders.length==0" class="alert alert-info" role="alert">
+  {{messages.no_result}}
+</div>
+<div class="card" *ngIf="listOrderMessages && orders.length>0 && agoComponentMessages && categoryModel">
+  <div class="card-block">
+    <list-order (onOrderClick)="onListOrderClick($event)" [filter]="filterObjModel.status" [orders]="orders" [messages]="listOrderMessages"
+      [categories]="categoryModel" [agoComponentMessages]="agoComponentMessages"></list-order>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="12px" height="12px" viewBox="0 0 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.4 (67378) - http://www.bohemiancoding.com/sketch -->
+    <title>arrow-top</title>
+    <desc>Created with Sketch.</desc>
+    <g id="personal" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="personal-how-it-works" transform="translate(-1579.000000, -2015.000000)" fill="#2C5EE6">
+            <g id="info" transform="translate(178.000000, 1589.000000)">
+                <g id="head" transform="translate(600.000000, 70.000000)">
+                    <g id="item" transform="translate(0.000000, 258.000000)">
+                        <g id="arrow-top" transform="translate(801.000000, 98.000000)">
+                            <path d="M0.4125,6.6 C0.7875,6.975 1.3875,6.9375 1.725,6.5625 L4.9875,3.1875 L4.9875,10.8375 C4.9875,11.3625 5.4,11.775 5.925,11.775 C6.45,11.775 6.8625,11.3625 6.8625,10.8375 L6.8625,3.225 L10.125,6.6 C10.5,6.975 11.0625,6.975 11.4375,6.6375 C11.8125,6.2625 11.8125,5.7 11.475,5.325 L6.6,0.3 C6.4125,0.1125 6.1875,0 5.925,0 C5.6625,0 5.4375,0.1125 5.25,0.3 L0.375,5.325 C0.0375,5.6625 0.0375,6.2625 0.4125,6.6 Z" id="Path"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

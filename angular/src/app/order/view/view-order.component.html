@@ -1,0 +1,257 @@
+<loader *ngIf="working"></loader>
+<div *ngIf="!working">
+    <ngb-alert [dismissible]="false" *ngIf="orderUpdated && systemMode.is_company" [type]="'danger'">{{messages.order_updated}}</ngb-alert>
+    <ngb-alert [dismissible]="false" *ngIf="selectedModel && selectedModel.status=='cancelled'" [type]="'danger'">{{messages.order_cancelled}}</ngb-alert>
+    <ngb-alert [dismissible]="false" *ngIf="selectedModel && selectedModel.status=='compleated'" [type]="'success'">{{messages.offer_compleated}}</ngb-alert>
+    <ngb-alert [dismissible]="false" *ngIf="selectedModel && selectedModel.status=='awaiting'" [type]="'warning'">{{messages.offer_out}}</ngb-alert>
+    <div class="card" *ngIf="!working">
+        <div class="card-header flex-vertical">
+            <div class="link">
+                <a class="pointer" (click)="goBack()">
+                    <i class="fa fa-long-arrow-left" aria-hidden="true"></i> {{messages.go_back}}</a>
+            </div>
+            <div class="flex-horizontal">
+                <div class="flex-vertical">
+                    <h1 style="text-transform:none">{{selectedModel.title}}</h1>
+                    <p class="category">
+                        <i class="glyphicon {{getCategoryIcon(categoryModel.id)}} " style="font-size:1rem;"></i>{{categoryModel.text}}</p>
+                </div>
+                <div class="flex-vertical" style="margin-left:auto;">
+                    <div class="d-flex decor-icon">
+                        <i class="glyphicon icon-calendar"></i>
+                        <div>
+                            <p class="subtitle-gray">{{messages.added}}</p>
+                            <p class="subtitle-black"> {{selectedModel.date_added | date:'d-MM-y'}}
+                                <a *ngIf="!systemMode.is_company && isOwner() && selectedModel.status=='open'" [routerLink]="['../edit', selectedModel.id]">
+                                    <i class="glyphicon icon-draw" aria-hidden="true"></i>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-block">
+            <div class="row" *ngIf="orderUserModel">
+                <div class="col-lg-9">
+                    <div class="row">
+                        <div class="col-lg-4 col-xl-4">
+                            <p class="subtitle-gray"> {{messages.execution_dates}} </p>
+                            <p class="subtitle-black"> {{selectedModel.date_from | date:'dd/MM/yy'}} - {{selectedModel.date_to | date:'dd/MM/yy'}} </p>
+                        </div>
+                        <div class="col-lg-4 col-xl-4">
+                            <p class="subtitle-gray"> {{messages.total_weight}} </p>
+                            <p class="subtitle-black"> {{parcel_total_weight}} kg</p>
+                        </div>
+                        <div class="col-lg-4 col-xl-4" *ngIf="paymentTypesModel && currencyModel">
+                            <p class="subtitle-gray"> {{messages.payment_type_and_currency}} </p>
+                            <p class="subtitle-black"> {{paymentTypesModel.name}}, {{currencyModel.name}} </p>
+                        </div>
+                        <div class="col-12 separator"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="d-flex decor-icon">
+                                        <i class="glyphicon icon-avatar"></i>
+                                        <div>
+                                            <p class="subtitle-gray"> {{messages.customer}} </p>
+                                            <p class="subtitle-black"> {{orderUserModel.name}} </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-8">
+                                    <button *ngIf="selectedModel && systemMode.is_company && !isOwner()" class="btn btn-outline-primary" [routerLink]="['../../messages/view']"
+                                        [queryParams]="{oid:selectedModel.id, token:selectedModel.token}">{{messages.start_confersation}}
+                                    </button>
+                                </div>
+                                <div *ngIf="systemMode.is_customer || selectedModel.status=='awaiting'" class="col-md-10 order-contact">
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <p class="subtitle-black">
+                                                <i class="glyphicon icon-iphone" aria-hidden="true"></i> {{orderUserModel.phone_num}}</p>
+                                        </div>
+                                        <div class="col-8">
+                                            <p class="subtitle-black trim">
+                                                <i class="glyphicon icon-email"></i> {{orderUserModel.email}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <p class="subtitle-gray">{{messages.route}}</p>
+                            <div class="d-flex">
+                                <div class="d-flex flex-column markers">
+                                    <img src="assets/img/start48.png" />
+                                    <img class="mt-auto" src="assets/img/end48.png" />
+                                </div>
+                                <div class="d-flex flex-column">
+                                    <p *ngIf="systemMode.is_company && selectedModel.status!='awaiting'" class="subtitle-black">{{selectedModel.from_city}}, {{selectedModel.from_country_short | uppercase}}</p>
+                                    <p *ngIf="systemMode.is_customer || selectedModel.status=='awaiting'" class="subtitle-black">{{selectedModel.from_address}}</p>
+                                    <p class="subtitle-gray">
+                                        <i class="glyph icon-delivery-truck-alt" style="font-size:1.6em;position:relative;top:0.2em;margin-right:0.5rem;"></i>
+                                        {{selectedModel.distance / 1000 | round}}km
+                                    </p>
+                                    <p *ngIf="systemMode.is_company && selectedModel.status!='awaiting'" title="{{selectedModel.to_city}}, {{selectedModel.to_country_short | uppercase}}"
+                                        class="subtitle-black">{{selectedModel.to_city}}, {{selectedModel.to_country_short | uppercase}}</p>
+                                    <p *ngIf="systemMode.is_customer || selectedModel.status=='awaiting'" title="{{selectedModel.to_city}}, {{selectedModel.to_country_short | uppercase}}"
+                                        class="subtitle-black">{{selectedModel.to_address}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div id="map" style="height:11rem">
+                        <google-maps [from_address]="selectedModel.from_address" [to_address]="selectedModel.to_address"></google-maps>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card" *ngIf="selectedModel">
+                <div class="card-block">
+                    <p class="detail-sub-header">{{messages.dates}}
+                        <b style="font-size:0.8em">({{selectedModel.date_from | date:'dd/MM/yyyy'}} - {{selectedModel.date_to | date:'dd/MM/yyyy'}})</b>
+                        <a *ngIf="orderTimeModel" class="btn btn-sm btn-link float-right pointer" (click)="toggleShowDates()">
+                            <i [ngClass]="showDates?'fa fa-long-arrow-up':'fa fa-long-arrow-down'" aria-hidden="true"></i> {{showDates?messages.less_details:messages.more_details}}
+                        </a>
+                    </p>
+                    <table *ngIf="orderTimeModel && showDates" class="table table-sm order-details-table">
+                        <thead>
+                            <tr>
+                                <th>{{messages.date_of_getting}}</th>
+                                <th>{{messages.hours_of_getting}}</th>
+                                <th>{{messages.date_of_delivery}}</th>
+                                <th>{{messages.hours_of_delivery}}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{selectedModel.date_from}}</td>
+                                <td>{{orderTimeModel.sending_since_1}} - {{orderTimeModel.sending_until_1}}</td>
+                                <td>{{selectedModel.date_to}}</td>
+                                <td>{{orderTimeModel.delivery_since_1}} - {{orderTimeModel.delivery_until_1}}</td>
+                            </tr>
+                            <tr *ngIf="orderTimeModel.sending_since_2">
+                                <td>{{selectedModel.date_from}}</td>
+                                <td>{{orderTimeModel.sending_since_2}} - {{orderTimeModel.sending_until_2}}</td>
+                                <td>{{selectedModel.date_to}}</td>
+                                <td>{{orderTimeModel.delivery_since_2}} - {{orderTimeModel.delivery_until_2}}</td>
+                            </tr>
+                            <tr *ngIf="orderTimeModel.sending_since_3">
+                                <td>{{selectedModel.date_from}}</td>
+                                <td>{{orderTimeModel.sending_since_3}} - {{orderTimeModel.sending_until_3}}</td>
+                                <td>{{selectedModel.date_to}}</td>
+                                <td>{{orderTimeModel.delivery_since_3}} - {{orderTimeModel.delivery_until_3}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="card" *ngIf="parcels">
+                <div class="card-block">
+                    <p class="detail-sub-header">{{messages.parcels}}
+                        <a class="btn btn-sm btn-link float-right pointer" (click)="toggleShowParcels()">
+                            <i [ngClass]="showParcels?'fa fa-long-arrow-up':'fa fa-long-arrow-down'" aria-hidden="true"></i> {{showParcels?messages.less_details:messages.more_details}}
+                        </a>
+                    </p>
+                    <table *ngIf="showParcels" class="table table-sm order-details-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>{{messages.weight}}</th>
+                                <th>{{messages.sizes}}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let parcel of parcels; let i = index">
+                                <th scope="row">{{(i+1)}}</th>
+                                <td>{{parcel.weight}}kg</td>
+                                <td>{{parcel.width}}cm x {{parcel.height}}cm x {{parcel.depth}}cm</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="card" *ngIf="orderAttachmentsModel.length>0">
+                <div class="card-block">
+                    <p class="detail-sub-header">{{messages.attachments}}
+                        <a class="btn btn-sm btn-link float-right pointer" (click)="toggleShowAttachments()">
+                            <i [ngClass]="showAttachments?'fa fa-long-arrow-up':'fa fa-long-arrow-down'" aria-hidden="true"></i> {{showAttachments?messages.less_details:messages.more_details}}
+                        </a>
+                    </p>
+                    <div *ngIf="showAttachments" style="margin-top:1em">
+                        <p *ngFor="let attach of orderAttachmentsModel" class="file-item">
+                            <a class="attachment" href="{{downloadUrl}}{{attach.name}}" target="_blank">
+                                <i class="fa fa-file-{{getFileIcon(attach.name)}}-o" aria-hidden="true"></i> {{attach.name}}
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row" *ngIf="selectedModel && selectedModel.info && selectedModel.info!==''">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-block">
+                    {{selectedModel.info}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <order-offer-form *ngIf="systemMode.is_company && selectedModel && selectedModel.id && orderOfferModel && showOfferBox && currencyModel"
+        (onChange)="onOfferChange($event)" [currency]="currencyModel" [order]="selectedModel" [offer]="yourOrderOfferModel">
+    </order-offer-form>
+
+    <h5 *ngIf="wonOrderOfferModel">{{messages.won_offer}}</h5>
+
+    <div class="card card-outline-primary" *ngIf="wonOrderOfferModel">
+        <div class="card-block">
+            <order-offer-element [currency]="currencyModel" [offer]="wonOrderOfferModel" [order]="selectedModel"></order-offer-element>
+        </div>
+    </div>
+
+    <h5 *ngIf="bestOrderOfferModel">{{messages.best_offer}}</h5>
+
+    <div class="card card-outline-warning" *ngIf="bestOrderOfferModel">
+        <div class="card-block">
+            <order-offer-element (onSelectOffer)="onOfferSelected($event)" (onEditOfferClick)="onEditOfferClick($event)" [currency]="currencyModel"
+                [order]="selectedModel" [offer]="bestOrderOfferModel">
+            </order-offer-element>
+        </div>
+    </div>
+    <h5 *ngIf="yourOrderOfferModel && systemMode.is_company">{{messages.your_offer}}</h5>
+    <div class="card card-outline-success" *ngIf="yourOrderOfferModel && systemMode.is_company">
+        <div class="card-block">
+            <order-offer-element [currency]="currencyModel" (onSelectOffer)="onOfferSelected($event)" (onEditOfferClick)="onEditOfferClick($event)"
+                [offer]="yourOrderOfferModel" [order]="selectedModel"></order-offer-element>
+        </div>
+    </div>
+
+    <div *ngIf="orderOfferModel && orderOfferModel.length>0">
+        <h5>{{messages.other_offers}}</h5>
+        <div *ngFor="let offer of orderOfferModel" class="card card-outline-secondary">
+            <div class="card-block">
+                <order-offer-element [currency]="currencyModel" (onSelectOffer)="onOfferSelected($event)" [offer]="offer" [order]="selectedModel"></order-offer-element>
+            </div>
+        </div>
+    </div>
+
+    <ngb-alert [dismissible]="false" *ngIf="!yourOrderOfferModel && !wonOrderOfferModel && !bestOrderOfferModel && (!orderOfferModel || orderOfferModel.length==0)"
+        [type]="'warning'">{{messages.no_offers_yet}}</ngb-alert>
+</div>

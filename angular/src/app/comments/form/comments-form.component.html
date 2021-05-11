@@ -1,0 +1,35 @@
+
+<div id="outer">
+</div>
+<div *ngIf="!working"  id="inner">
+  <h4>{{order.title}}</h4>
+  <p class="title">{{messages.realized}}</p>
+  <p class="company">{{offer.company_name}}</p>
+  <div class="out-box">
+    <div class="box">
+        <p [ngClass]="tryToSave==true && comment.punctuality_rating==0?'title err':'title'">{{messages.punctuallity}}</p>
+        <p class="small-star"><rating  [(ngModel)]="comment.punctuality_rating"></rating></p>      
+    </div>
+    <div class="box">
+        <p [ngClass]="tryToSave==true && comment.contact_rating==0?'title err':'title'">{{messages.contact}}</p>
+        <p class="small-star"><rating [(ngModel)]="comment.contact_rating"></rating></p>      
+    </div>
+    <div class="box">
+        <p [ngClass]="tryToSave==true && comment.price_rating==0?'title err':'title'">{{messages.price}}</p>
+        <p class="small-star"><rating [(ngModel)]="comment.price_rating"></rating></p>      
+    </div>
+    <div style="clear:both;"></div>
+  </div>
+
+  <p class="title">{{messages.comment}}</p>
+  
+  <div class="form-group">
+      <textarea class="form-control"  [(ngModel)]="comment.comment" name='comment' rows="3"></textarea>
+    </div>
+  
+
+  <button class="btn btn-secondary" (click)="cancel()" >{{messages.cancel}}</button>
+  <button class="btn btn-primary" (click)="ok()" >
+    <i *ngIf="sending"  class="fa fa-spinner fa-pulse fa-fw"></i> {{messages.ok}}
+  </button>
+</div>

@@ -1,0 +1,23 @@
+p{
+    margin:0;
+    padding:0;
+}
+.sender{
+    color: #888;
+    font-size: 0.8em;
+}
+.messages{
+    overflow-y: auto;
+}
+.attachment{
+    
+}
+.form-control {
+    border-radius: 0;
+}
+.glyphicon{
+    position:relative;
+    top:0.24rem;
+    margin-left:.1rem;
+    margin-right:.1rem;
+}

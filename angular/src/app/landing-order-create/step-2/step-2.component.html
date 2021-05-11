@@ -1,0 +1,73 @@
+<form #form="ngForm" (keydown.enter)="$event.preventDefault()" (ngSubmit)="form.valid && onSubmit()">
+  <div class="row justify-content-center">
+    <div class="col-10">
+      <h4>{{messages.set_delivery_and_sending}}</h4>
+    </div>
+  </div>
+  <div style="display:none;">
+    <google-maps (onDirectionSet)="onDirectionSet($event)" [from_address]="model.from_address" [to_address]="model.to_address"></google-maps>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-5">
+      <div class="row">
+        <div class="form-group col-6">
+          <label class="form-label">{{messages.delivery_from}}</label>
+          <autocomplete [accurate]="true" [address]="model.from_address" (onPlacesChanged)="onFromPlacesChanged($event)"></autocomplete>
+        </div>
+        <div class="form-group col-6">
+          <label class="form-label">{{messages.delivery_to}}</label>
+          <autocomplete [accurate]="true" [address]="model.to_address" (onPlacesChanged)="onToPlacesChanged($event)"></autocomplete>
+          <small *ngIf="addressTheSameErr" class="text-danger">{{messages.addr_the_same}}</small>
+          <small *ngIf="routeNotFoundErr" class="text-danger"><br/>{{messages.addr_invalid}}</small>
+        </div>
+        <div class="form-group col-6">
+          <label for="order-sending-date" class="form-label">{{messages.since}}</label>
+          <jqxDateTimeInput [value]="date_from" [enableBrowserBoundsDetection]="true" (onChange)="onDateFromChange($event)"
+            [theme]="'shipme'" #df [height]="'1.8rem'" [width]="'100%'" [min]="min_date_from"></jqxDateTimeInput>
+            <small *ngIf="df.invalid && (df.dirty || df.touched || form.submitted)" class="text-danger">{{messages.mandatory}}</small>            
+        </div>
+        <div class="form-group col-6">
+          <label for="order-sending-date" class="form-label">{{messages.until}}</label>
+          <jqxDateTimeInput #dt [value]="date_to"  [enableBrowserBoundsDetection]="true" (onChange)="onDateToChange($event)"
+            [theme]="'shipme'" [height]="'1.8rem'" [value]="" [width]="'100%'" [min]="min_date_to"></jqxDateTimeInput>
+          <small *ngIf="dt.invalid && (dt.dirty || dt.touched || form.submitted)" class="text-danger">{{messages.mandatory}}</small>
+        </div>
+        <div class="form-group col-6">
+          <label for="order-currency-id" class="form-label">{{messages.currency}}</label>
+          <select #cur="ngModel" id="order-currency-id" name="order-currency-id" required class="form-control" [(ngModel)]="model.currency_id">
+            <option *ngFor="let currency of currencies" value="{{currency.id}}">{{currency.name}}</option>
+          </select>
+          <small *ngIf="cur.invalid && (cur.dirty || cur.touched || form.submitted)" class="text-danger">{{messages.mandatory}}</small>
+        </div>
+        <div class="form-group col-6">
+          <label for="order-payment-id" class="form-label">{{messages.payment_types}}</label>
+          <select #pt="ngModel" id="order-payment-id" name="order-payment-id" class="form-control" [(ngModel)]="model.payment_type_id"
+            required>
+            <option *ngFor="let paymentType of paymentTypes" value="{{paymentType.id}}">{{paymentType.name}}</option>
+          </select>
+          <small *ngIf="pt.invalid && (pt.dirty || pt.touched || form.submitted)" class="text-danger">{{messages.mandatory}}</small>
+        </div>
+      </div>
+    </div>
+    <div class="col-5">
+      <div class="row">
+        <div class="form-group col-12">
+          <label for="title" class="form-label">{{messages.name}}</label>
+          <input #nm="ngModel" type="text" class="form-control" [placeholder]="messages.what_do_you_want_to_transport" name="order-title"
+            [(ngModel)]="model.title" required>
+          <small *ngIf="nm.invalid && (nm.dirty || nm.touched || form.submitted)" class="text-danger">{{messages.mandatory}}</small>
+        </div>
+        <div class="form-group col-12">
+          <label for="info" class="form-label">{{messages.additional_info}}</label>
+          <textarea rows="8" class="form-control" name="info" type="text" [(ngModel)]="model.info"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center next-button">
+    <div class="col-10">
+      <a class="btn btn-outline-primary btn-lg pull-left" (click)="prev()">{{messages.prev}}</a>
+      <button type="submit" class="btn btn-primary btn-lg pull-right">{{messages.next}}</button>
+    </div>
+  </div>
+</form>

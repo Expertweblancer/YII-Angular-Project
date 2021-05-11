@@ -1,0 +1,51 @@
+<div *ngIf="messages" class="card">
+  <div class="card-header">
+    <div>
+      <p class="subtitle-gray">{{messages.set}}</p>
+      <p class="subtitle-black">{{messages.filters}}
+        <i *ngIf="searching" class="fa fa-spinner fa-pulse fa-fw"></i>
+      </p>
+    </div>
+  </div>
+  <div class="card-block">
+    <div class="row">
+      <div class="form-group col-3">
+        <label for="filter-name" class="form-label">{{messages.name}}</label>
+        <input type="text" [placeholder]="messages.filter_by_name" class="form-control" name="filter-name" [(ngModel)]="filter.name"
+          (ngModelChange)="formChange($event)" id="filter-name">
+      </div>
+
+      <div class="form-group col-3">
+        <label for="filter-name" class="form-label">{{messages.max_weight}}</label>
+        <input type="number" [placeholder]="messages.filter_by_maximum_weight" min="0" class="form-control" name="filter-max-kg"
+          [(ngModel)]="filter.max_kg" (ngModelChange)="formChange($event)" id="filter-name">
+      </div>
+
+      <div class="form-group col-3">
+        <label for="filter-category" class="form-label">{{messages.categories}}</label>
+        <ng-select [multiple]="true" [items]="categories" (data)="refreshCategoryValue($event)" placeholder="{{messages.select_category}}"></ng-select>
+      </div>
+
+      <div class="form-group col-3">
+        <label for="filter-longest-side" class="form-label">{{messages.longest_side}}</label>
+        <input type="number" [placeholder]="messages.filter_by_longest_side" min="0" class="form-control" name="filter-longest-side"
+          [(ngModel)]="filter.longest_side" (ngModelChange)="formChange($event)" id="filter-name">
+      </div>
+    </div>
+  </div>
+</div>
+<div class="card" *ngIf="messages" >
+  <div class="card-header">
+    <div>
+      <p class="subtitle-gray">{{messages.found}}</p>
+      <p class="subtitle-black">{{fleets.length}} {{messages.elements}}</p>
+    </div>
+    <button class="btn btn-outline-primary pointer" style="margin-left:auto" (click)="addNewClick()">{{messages.add_new}}</button>
+  </div>
+</div>
+
+
+<section *ngIf="!working  && fleets.length>0 && messages!=null">
+  <fleet-single [messages]="messages" *ngFor="let fleet of fleets" [fleet]="fleet" [fleetType]="getFleetType(fleet.id_type)"></fleet-single>
+</section>
+<div class="alert alert-warning" *ngIf="fleets.length==0 && messages">{{messages.no_any_fleet_yet}}</div>

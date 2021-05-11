@@ -1,0 +1,83 @@
+<div class="intro">
+  <ng-container *ngIf="startsFromRight; else fromLeftToRight">
+    <div class="illustration-wrapper">
+        <div class="ill" [style.background-image]="'url(/assets/img/customer-safety-1.png)'"></div>
+    </div>
+    <div class="spacing"></div>
+    <div class="section-header">
+      <div class="header">
+        Zapewniamy pewnych<br>
+        przeowźników
+      </div>
+      <div class="desc">
+        Nasze zobowiązanie wobec klientów
+      </div>
+      <div class="text">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nulla lorem, maximus ac lectus quis, vehicula tempus velit. Duis leo elit, malesuada vitae libero ut, consectetur efficitur mi.
+      </div>
+    </div>
+    <div class="margin-block"></div>
+  </ng-container>
+  <ng-template #fromLeftToRight>
+    <div class="margin-block"></div>
+    <div class="section-header">
+      <div class="header">
+        Bezpieczeństwo<br>
+        i pewność za kierownicą
+      </div>
+      <div class="desc">
+        Nasze zobowiązanie wobec klientów
+      </div>
+      <div class="text">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nulla lorem, maximus ac lectus quis, vehicula tempus velit. Duis leo elit, malesuada vitae libero ut, consectetur efficitur mi.
+      </div>
+    </div>
+    <div class="illustration-wrapper">
+      <div class="ill" [style.background-image]="'url(/assets/img/safety1.png)'"></div>
+    </div>
+  </ng-template>
+</div>
+
+<div class="second {{startsFromRight ? 'starts-from-right' : 'starts-from-left' }}">
+  <ng-container *ngIf="startsFromRight; else elseBlock">
+    <div class="margin-block"></div>
+    <div class="section-header">
+      <div class="header">
+        System ocen
+      </div>
+      <div class="desc">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nulla lorem, maximus ac lectus quis, vehicula tempus velit. Duis leo elit, malesuada vitae libero ut, consectetur efficitur mi.
+      </div>
+      <div class="pattern-rect with-pattern"><div class="mask"></div></div>
+    </div>
+    <div class="illustration-wrapper">
+      <div class="ill" [style.background-image]="'url(/assets/img/customer-safety-2.png)'"></div>
+    </div>
+  </ng-container>
+  <ng-template #elseBlock>
+    <div class="illustration-wrapper">
+        <div class="ill" [style.background-image]="'url(/assets/img/safety2.png)'"></div>
+    </div>
+    <div class="section-header">
+      <div class="header">
+        Płatności bez pośredników
+      </div>
+      <div class="desc">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nulla lorem, maximus ac lectus quis, vehicula tempus velit. Duis leo elit, malesuada vitae libero ut, consectetur efficitur mi.
+      </div>
+      <div class="pattern-rect with-pattern"><div class="mask"></div></div>
+    </div>
+    <div class="margin-block"></div>
+  </ng-template>
+</div>
+
+<div class="directly-from content">
+    <div class="section-header">
+      <div class="header">
+        {{startsFromRight ? 'Nasi partnerzy musza mieć ubezpieczenie' : 'Bezpośrednio od zlecających'}}
+      </div>
+      <div class="desc">
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen 
+      </div>
+    </div>
+</div>

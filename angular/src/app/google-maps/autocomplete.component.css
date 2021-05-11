@@ -1,0 +1,2 @@
+input.ng-invalid.ng-touched { border:  1px solid rgba(0, 0, 0, 0.15);}
+input:not(.ng-pristine).ng-valid { border: 1px solid rgba(0, 0, 0, 0.15);}

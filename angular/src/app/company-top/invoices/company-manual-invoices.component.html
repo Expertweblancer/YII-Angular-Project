@@ -1,0 +1,100 @@
+<loader *ngIf="working" ></loader>
+  <div *ngIf="!working && orders.length==0" class="block-with-shadow">
+		<div class="no-order">
+			<img src="/assets/icons/add.svg">
+			<div class="inline">
+				<div class="title">
+					NIESTETY, ALE JESZCZE
+				</div>
+				<div class="header">
+					NIE MASZ ZREALIZOWANYCH ZLECEŃ
+				</div>
+				<a class="snarto-btn white" [routerLink]="['/company/order/search']">
+					Szukaj nowych zleceń
+				</a>
+			</div>
+		</div>
+	</div>
+  <!-- <ngb-alert *ngIf="!working && orders.length==0">{{messages.no_invoices_yet}}</ngb-alert> -->
+  <section *ngIf="messages && orders.length>0">
+    <div class="card" *ngFor="let order of orders; let i=index" >
+        <div class="card-block" style="padding-bottom:0">
+            <div class="row">
+                <div class="col-4">
+                    <div class="d-flex decor-icon">
+                        <i class="glyphicon icon-balance"></i>
+                        <div>
+                            <p class="subtitle-gray">{{messages.order_title}}</p>
+                            <p>{{order.title}}</p>            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <p class="subtitle-gray">{{messages.route}}</p>
+                    <p class="subtitle-black">{{order.from_city}}, {{order.from_country_short}} - {{order.to_city}}, {{order.to_country_short}}</p>
+                </div>
+                <div class="col-2">
+                    <div *ngIf="order.created" class="d-flex decor-icon">
+                        <i class="glyphicon icon-calendar"></i>
+                        <div>
+                            <p  class="subtitle-gray">{{messages.invoice_added}}</p>
+                            <p  class="subtitle-black">{{order.created | date:'dd-MM-y'}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="d-flex decor-icon">
+                        <i class="glyphicon icon-calendar"></i>
+                        <div>
+                            <p class="subtitle-gray">{{messages.execution_date}}</p>
+                            <p class="subtitle-black">{{order.date_execution | date:'dd-MM-y'}}</p>              
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" *ngIf="!order.created" style="padding-top:1rem;padding-bottom:1rem;background-color:#f8f8f8">
+                <div class="form-group col-4">
+                    <p class="subtitle-gray">{{messages.invoice_number}}</p>
+                    <input type="text" class="form-control" name="invoice-number" [(ngModel)]="order.num" placeholder="{{messages.invoice_number}}">
+                </div>
+                <div class="form-group col-4">
+                    <p class="subtitle-gray">{{messages.comment}}</p>
+                    <input type="text" class="form-control" name="invoice-comment" [(ngModel)]="order.comment" placeholder="{{messages.comment}}">
+                </div>
+                <div class="col-2"></div>
+                <div class="col-2 align-self-center">
+                    <file-upload [index]="order.order_id" [caption]="messages.upload_invoice" [css_class]="'btn btn-primary float-right'" (onUploadedWithIndex)="onUploaded($event)" [accept]="'.pdf'"></file-upload>              
+                </div>
+            </div>
+        </div>
+        <div class="card-block" style="padding-bottom:0;" *ngIf="order.filename">
+            <div class="row" style="padding-top:1rem; padding-bottom:1rem;background-color:#f8f8f8">
+                <div class="col-4">
+                    <div *ngIf="order.filename" class="d-flex decor-icon" style="text-overflow: ellipsis;white-space: nowrap;overflow: hidden;" >
+                        <i class="glyphicon icon-file" aria-hidden="true"></i>
+                        <div>
+                            <p class="subtitle-gray">{{messages.file}}</p>
+                            <a target="_blank" href="{{getDownloadUrl(order.filename)}}" title="{{order.filename}}">
+                                {{order.filename}}
+                            </a>                                    
+                        </div>        
+                    </div>
+                </div>
+                <div class="col-4">
+                    <p *ngIf="order.comment" class="subtitle-gray">{{messages.comment}}</p>
+                    <p *ngIf="order.comment" class="subtitle-black">{{order.comment}}</p>
+                </div>
+                <div class="col-3">
+                    <p class="subtitle-gray" *ngIf="order.num">{{messages.number}}</p>
+                    <p class="subtitle-black" *ngIf="order.num" >{{order.num}}</p>
+                </div>
+                <div class="col-1" *ngIf="systemMode.is_company" >
+                    <a class="float-right pointer" (click)="deleteInvoiceClick(i)" >
+                        <i class="glyphicon icon-garbage"></i>
+                    </a>
+                    <confirm-dialog *ngIf="showDelete"  (onAction)="deleteInvoiceConfirmation($event)"></confirm-dialog>
+                </div>                    
+            </div>
+        </div>
+  </div> 
+</section>

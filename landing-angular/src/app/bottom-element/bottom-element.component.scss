@@ -1,0 +1,49 @@
+/* .background-driver{
+    background-image: url(/assets/img/driver1.jpeg); 
+}
+.background-employees{
+    background-image: url(/assets/img/employee1.jpeg);                 
+} */
+
+.start-earning {
+    color: #FFF;
+    overflow: hidden;
+    .block, .image-wrapper {
+        vertical-align: middle;
+    }
+    .block {
+        margin: 44px 0;
+        background-color: #377037;
+        padding: 58px 126px 44px 58px;
+        display: inline-block;
+        .header {
+            font-size: 40px;
+            line-height: 50px;
+            font-family: ClanWebProThin;
+            margin-bottom: 100px;
+        }
+        a {
+            font-size: 14px;
+            line-height: 44px;
+            letter-spacing: 2.1px;
+            img {
+                height: 12px;
+                width: 12px;
+                margin-left: 8px;
+            }
+        }
+        position: relative;
+        z-index: 1;
+    }
+    .image-wrapper {
+        display: inline-block;
+        position: relative;
+        img {
+            height: 434px;
+            z-index: 0;
+            transform: translateY(-50%);
+            position: absolute;
+            left: -58px;
+        }
+    }
+}

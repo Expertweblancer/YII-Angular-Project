@@ -1,0 +1,13 @@
+.row{
+    margin-left:0;
+    margin-right:0;
+  }
+.steps {
+  height:4rem;
+}
+
+.subtitle{
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 0.8rem;
+}

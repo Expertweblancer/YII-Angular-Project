@@ -1,0 +1,50 @@
+<div class="container landing-order-add" *ngIf="messages && paymentTypes && currencies">
+  <div class="row decor-area"></div>
+  <div class="row justify-content-center input-area middlearea">
+    <div class="col-10 steps">
+      <div class="row d-flex">
+        <div [ngClass]="colStep1Class">
+          <div [ngClass]="pointStep1Class">
+            <i *ngIf="step>1" class="glyphicon icon-verification-mark"></i>
+            <span *ngIf="step==1">1</span>
+          </div>
+          <div class="subtitle">{{messages.choose_category}}</div>
+        </div>
+        <div [ngClass]="colStep2Class">
+          <div [ngClass]="pointStep2Class">
+            <i *ngIf="step>2" class="glyphicon icon-verification-mark"></i>
+            <span *ngIf="step<=2">2</span>
+          </div>
+          <div class="subtitle">{{messages.sending_and_delivery_address}}</div>
+          <div class="subtitle">{{messages.payments_conditions}}</div>
+        </div>
+        <div [ngClass]="colStep3Class">
+          <div [ngClass]="pointStep3Class">
+            <i *ngIf="step>3" class="glyphicon icon-verification-mark"></i>
+            <span *ngIf="step<=3">3</span>
+          </div>
+          <div class="subtitle">{{messages.parcels}}</div>
+        </div>
+        <div [ngClass]="colStep4Class">
+          <div [ngClass]="pointStep4Class">
+            <i *ngIf="step>4" class="glyphicon icon-verification-mark"></i>
+            <span *ngIf="step<=4">4</span>
+          </div>
+          <div class="subtitle">{{messages.confirmations}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12">
+      <step-1 [messages]="messages" [selectedCategory]="model.order.id_category" (onSelect)="onCategorySelect($event)" *ngIf="step==1"></step-1>
+      <step-2 [messages]="messages" [model]="model.order" 
+          [currencies]="currencies" [paymentTypes]="paymentTypes" 
+          (onGoNext)="onOrderSet($event)" 
+          (onGoBack)="goBack($event)" *ngIf="step==2"></step-2>
+      <step-3 [messages]="messages" [parcels]="model.parcels" (onGoNext)="onParcelsSet($event)" (onGoBack)="goBack($event)" *ngIf="step==3"></step-3>
+      <step-4 [messages]="messages" [model]="model.auth" (onGoNext)="goNext($event)" (onGoBack)="goBack($event)" *ngIf="step==4"></step-4>
+      <saving [messages]="messages" *ngIf="step==5" ></saving>
+      <summary [messages]="messages" *ngIf="step==6"></summary>
+    </div>
+  </div>
+  <extended-footer></extended-footer>
+</div>

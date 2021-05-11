@@ -1,0 +1,10 @@
+
+.btn, .nav-link, .nav-link.active{
+    border-radius: 0;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+}
+.btn-primary, .nav-link.active{
+    color:#fff;
+    background-color: #2d5ee7;
+}

@@ -1,0 +1,48 @@
+p{
+    font-size:0.72rem;
+    margin:0;
+    padding:0;
+}
+div{
+    font-size: 0.8rem;
+}
+.ago{
+    text-transform: uppercase;
+}
+.fa{
+    font-size: 0.5rem;
+    margin: 0 0.6rem 0 0.7rem;
+}
+.list-group{
+    margin-bottom: 1rem;
+}
+.list-group-item{
+    padding-left:0;
+}
+.search-box{
+    border:1px solid #ced4da;
+    width:10rem;
+}
+.search-box .glyphicon{
+    font-size: 0.5rem;
+}
+.form-control{
+    font-size: 0.68rem;
+    border-radius: 0;
+    padding:0.1rem .375rem;
+    width: 9rem;
+    border:none;
+}
+.form-control.ng-valid{
+    border-left:none;
+}
+.form-control:focus { 
+    outline: none;
+    outline-width: 0;
+}
+
+.list-message-preview {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

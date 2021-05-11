@@ -1,0 +1,61 @@
+<nav class="content">
+  <div>
+    <a class="logo" routerLink="/">
+      <img src="/assets/img/logo.svg" alt="snarto logo">
+    </a>
+    <a
+    routerLinkActive
+    routerLink="/customer" 
+    #customer="routerLinkActive"
+    [ngClass]="(customerHowItWorks.isActive || customerSafety.isActive || customer.isActive) ? 'nav-link active' : 'nav-link'"
+    (mouseenter)="showMenu('customer')"
+    (mouseleave)="hideMenu()">
+      <div>
+        Zleceniodawca
+      </div>
+    </a>
+    <a routerLink="/customer-how-it-works" routerLinkActive #customerHowItWorks="routerLinkActive" style="display: none"></a>
+    <a routerLink="/customer-safety" routerLinkActive #customerSafety="routerLinkActive" style="display: none"></a>
+    <a
+    routerLinkActive
+    #company="routerLinkActive"
+    routerLink="/company"
+    [ngClass]="(companyRequirements.isActive || companySafety.isActive || company.isActive) ? 'nav-link active' : 'nav-link'"
+    (mouseenter)="showMenu('company')"
+    (mouseleave)="hideMenu()">
+      <div>
+        Przewoźnik
+      </div>
+    </a>
+    <a routerLink="/company-requirements" routerLinkActive #companyRequirements="routerLinkActive" style="display: none"></a>
+    <a routerLink="/company-safety" routerLinkActive #companySafety="routerLinkActive" style="display: none"></a>
+  </div>
+  <div>
+    <button (click)="showLoginModal()" class="btn white">
+      ZALOGUJ
+    </button>
+    <a routerLink="/register" class="btn blue">
+      ZAREJESTRUJ
+    </a>
+  </div>
+  <div
+  *ngIf="activeMenuType"
+  (mouseenter)="showMenu()"
+  (mouseleave)="hideMenu()"
+  class="dropdown-menu"
+  [@enterAnimation]>
+    <a *ngIf="activeMenuType === 'company'" routerLink="/company" routerLinkActive="active" (click)="hideMenuForce()">Podsumowanie</a>
+    <a *ngIf="activeMenuType !== 'company'" routerLink="/customer" routerLinkActive="active" (click)="hideMenuForce()">Podsumowanie</a>
+
+    <a *ngIf="activeMenuType === 'company'" routerLink="/company-requirements" routerLinkActive="active" (click)="hideMenuForce()">Wymagania</a>
+    <a *ngIf="activeMenuType !== 'company'" routerLink="/customer-how-it-works" routerLinkActive="active" (click)="hideMenuForce()">Jak to działa</a>
+
+    <div>
+      Aplikacja mobilna
+      <div>WKRÓTCE</div>
+    </div>
+
+    <a *ngIf="activeMenuType === 'company'" routerLink="/company-safety" routerLinkActive="active" (click)="hideMenuForce()">Bezpieczeństwo</a>
+    <a *ngIf="activeMenuType !== 'company'" routerLink="/customer-safety" routerLinkActive="active" (click)="hideMenuForce()">Bezpieczeństwo</a>
+  </div>
+</nav>

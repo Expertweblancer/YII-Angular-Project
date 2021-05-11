@@ -1,0 +1,34 @@
+<form #form="ngForm" (keydown.enter)="$event.preventDefault()" (ngSubmit)="form.valid && onSubmit()">
+  <div class="row justify-content-center">
+    <div class="col-10">
+      <h4>{{messages.confirmation}}</h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="form-group col-3">
+      <label class="form-label">{{messages.email}}</label>
+      <input class="form-control" type="email" required name="email" (blur)="checkEmail()" #em="ngModel" [(ngModel)]="model.email">
+      <small *ngIf="em.invalid && (em.dirty || em.touched || form.submitted)" class="text-danger">{{messages.mandatory}}</small>
+      <small *ngIf="emailFormatInvalid" class="text-danger">{{messages.email_value_invalid}}</small>
+      <small *ngIf="emailExists" class="text-danger">{{messages.email_exists}}</small>
+    </div>
+    <div class="form-group col-3">
+      <label class="form-label">{{messages.username}}</label>
+      <input class="form-control" type="text" required name="username" (blur)="checkUsername()" #usname="ngModel" [(ngModel)]="model.username">
+      <small *ngIf="usname.invalid && (usname.dirty || usname.touched || form.submitted)" class="text-danger">{{messages.mandatory}}</small>
+      <small *ngIf="usernameExists" class="text-danger">{{messages.username_exists}}</small>
+    </div>
+    <div class="form-group col-3">
+      <label class="form-label">{{messages.password}}</label>
+      <input class="form-control" type="password" required name="password" #pass="ngModel" [(ngModel)]="model.password">
+      <small *ngIf="pass.invalid && (pass.dirty || pass.touched || form.submitted)" class="text-danger">{{messages.mandatory}}</small>
+    </div>
+  </div>
+  <div class="row justify-content-center next-button">
+    <div class="col-10">
+      <a class="btn btn-outline-primary btn-lg pull-left" (click)="prev()">{{messages.prev}}</a>
+      <button type="submit" class="btn btn-primary btn-lg pull-right">{{messages.next}}</button>
+    </div>
+  </div>
+</form>

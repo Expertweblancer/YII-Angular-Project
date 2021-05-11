@@ -1,0 +1,22 @@
+
+<div class="row" *ngIf="messages" >
+  <div class="form-group col-6">
+    <label for="country-from" class="form-label">{{messages.country_from}}</label>
+    <select name="country-from" class="form-control" [ngModel]="country_from" (ngModelChange)="countryFromChange($event)">
+      <option value="0" selected></option>
+      <option *ngFor="let country of countries" value="{{country.id}}">{{country.name}}</option>
+    </select>
+  </div>
+  <div class="form-group col-6">
+    <label for="country-to" class="form-label">{{messages.country_to}}</label>
+    <select name="country-to" class="form-control" [ngModel]="country_to" (ngModelChange)="countryToChange($event)">
+      <option selected value="0"></option>
+      <option *ngFor="let country of countries" value="{{country.id}}">{{country.name}}</option>
+    </select>
+  </div>
+  <div class="form-group col-6">
+    <label for="filter-exec" class="form-label">{{messages.date_execution}}</label>
+    <jqxDateTimeInput [enableBrowserBoundsDetection]="true" (onChange)="dateExecutionChange($event)" [theme]="'shipme'" [height]="'1.8rem'" [width]="'100%'"></jqxDateTimeInput>
+  </div>        
+</div>
+

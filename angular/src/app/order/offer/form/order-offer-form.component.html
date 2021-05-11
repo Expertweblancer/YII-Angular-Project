@@ -1,0 +1,43 @@
+<h5 *ngIf="!working">{{messages.set_offer}}</h5>
+<div class="card" *ngIf="!working">
+  <div class="card-block">
+    <form (ngSubmit)="onOfferSubmit()">
+      <div class="row">
+        <div class="col-3 form-group">
+          <label for="example-text-input" class="form-label">{{messages.your_price}} [{{currency.name}}]</label>
+          <input #price class="form-control" type="number" min="1" name="your-price" [(ngModel)]="offer.your_price" required>
+        </div>
+        <!-- div class="form-group row">
+          <label for="example-text-input" class="form-label">{{messages.min_price}}</label>
+          <div class="col-9">
+            <input class="form-control" type="number" min="1" name="min-price" [(ngModel)]="offer.min_price" required>
+          </div>
+        </div -->
+        <div class="col-3 form-group">
+          <label for="example-date-input" class="form-label">{{messages.date}}</label>
+          <jqxDateTimeInput [value]="date_execution" [enableBrowserBoundsDetection]="true" (onChange)="onDateChange($event)"
+            [theme]="'shipme'" [height]="'1.8rem'" [width]="'100%'" [min]="min_date" ></jqxDateTimeInput>
+          <small *ngIf="showDatesErr" class="text-danger">{{messages.dates_error}}</small>
+          <small *ngIf="dateTooLate" class="text-danger">{{messages.date_too_late}}</small>
+        </div>
+        <div class="col-3 form-group" *ngIf="fleetModel.length>0">
+          <label for="example-text-input" class="form-label">{{messages.choose_car}}</label>
+          <select class="custom-select" name="car" [(ngModel)]="offer.car_id">
+            <option *ngFor="let fleet of fleetModel" value="{{fleet.id}}">{{fleet.name}}</option>
+          </select>
+        </div>
+        <div *ngIf="fleetModel.length==0" class="col-3 form-group">
+          {{messages.to_assign_fleet}}
+          <a [routerLink]="['../../fleet/new']">{{messages.here}}</a>
+        </div>
+        <div class="col-9 form-group">
+          <label for="comment" class="form-label">{{messages.comment}}</label>
+          <textarea class="form-control" id="notes" name="notes" [(ngModel)]="offer.note" rows="3"></textarea>
+        </div>
+        <div class="col-3 form-group align-self-end">
+          <button [disabled]="sending" class="btn btn-primary pull-right" type="submit"><i *ngIf="sending"  class="fa fa-circle-o-notch fa-spin fa-fw"></i> {{messages.submit}}</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

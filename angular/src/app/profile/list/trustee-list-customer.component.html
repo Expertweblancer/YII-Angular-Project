@@ -1,0 +1,80 @@
+<loader *ngIf="working" ></loader>
+<div  *ngIf="messages">
+<div class="row" >
+<div class="col-12">
+
+  <div *ngIf="!working"  class="card">  
+    <div class="card-block">
+      <h5>{{messages.filters}} <i *ngIf="searching"  class="fa fa-spinner fa-pulse fa-fw"></i></h5>
+      <div class="row">
+        <div class="col-6">
+          <div class="form-group row">
+            <label for="filter-name" class="col-sm-4 col-form-label">{{messages.name}}</label>
+            <div class="col-sm-8">
+               <input type="text" class="form-control" name="filter-name" 
+                [(ngModel)]="filterObjModel.name" (ngModelChange)="formChange($event)" id="filter-name">            
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="filter-tel" class="col-sm-4 col-form-label">{{messages.telephone}}</label>
+            <div class="col-sm-8">
+               <input type="text" class="form-control" name="filter-tel" 
+               [(ngModel)]="filterObjModel.tel" (ngModelChange)="formChange($event)" id="filter-tel">
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="form-group row">
+            <label for="filter-surname" class="col-sm-4 col-form-label">{{messages.surname}}</label>
+            <div class="col-sm-8">
+               <input type="text" class="form-control" name="filter-surname" 
+                [(ngModel)]="filterObjModel.surname" (ngModelChange)="formChange($event)" id="filter-surname">            
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="filter-contact" class="col-sm-4 col-form-label">{{messages.email}}</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name="filter-contact" [(ngModel)]="filterObjModel.email" 
+              (ngModelChange)="formChange($event)" id="filter-contact">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    <div *ngIf="!working && companies && companies.length==0"  class="alert alert-info" role="alert">
+      {{messages.no_result}}
+    </div>
+
+  </div>
+</div>
+
+<div class="row" style="margin-bottom:20px">
+  <div class="col-12">
+    <a [routerLink]="['../new']" class="btn btn-secondary">{{messages.add_new}}</a>
+        
+  </div>
+</div>
+
+
+<section *ngIf="!working && messages && customers && customers.length>0" >
+<div *ngFor="let customer of customers" (click)="profileClick(customer)" 
+       class="card pointer" [style.border-color]="customer.trustee_id?'red':'#cfd8dc'">
+  <div class="card-block row">
+    <div class="col-3">
+      <p class="detail-sub-header alt"> {{messages.name_surname}} </p>
+      <p *ngIf="customer.name" >{{customer.name}} {{customer.surname}}</p>
+      <p *ngIf="!customer.name" ><i> {{messages.not_set}} </i></p>
+    </div>
+    <div class="col-6">
+      <p class="detail-sub-header alt"> {{messages.email}} </p>
+      <p>{{customer.email}}</p>
+    </div>
+    <div class="col-3">
+      <p class="detail-sub-header alt"> {{messages.general_rating}} </p>
+      <p *ngIf="customer.general_rating"> {{customer.general_rating}} </p>
+      <p *ngIf="!customer.general_rating"> <i> {{messages.not_set}} </i></p>
+    </div>
+  </div>
+</div>
+</section>

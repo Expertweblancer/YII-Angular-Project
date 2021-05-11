@@ -1,0 +1,29 @@
+<div class="row app-box">
+  <div class="col-sm-6" [@popInAnimation]>
+      <div class="panel-heading">Przejazd z:</div>
+      <div class="panel-body">
+        <autocomplete (onPlacesChanged)="onFromPlacesChanged($event)"></autocomplete>
+      </div>
+  </div>
+  <div class="col-sm-6" [@popInAnimation]>
+      <div class="panel-heading">Przejazd do</div>
+      <div class="panel-body">
+        <autocomplete (onPlacesChanged)="onToPlacesChanged($event)"></autocomplete>
+      </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-sm-4" *ngIf="distance!==undefined">
+     <search-details (onSubmit)="onSearchSubmit($event)" [fromAddress]="fromAddress" [toAddress]="toAddress" [distance]="distance"></search-details>
+  </div>
+  <div [ngClass]="{'col-lg-12': distance===undefined, 'col-sm-8': distance!==undefined }" id="map">
+     <google-maps (onDirectionSet)="onDirectionSet($event)" [orders]="searchResults" [from_address]="fromAddress.address" [to_address]="toAddress.address"></google-maps>
+  </div>
+</div>
+<div class="row" *ngIf="searchResults">
+  <div class="col-sm-12 app-box">
+    <search-results  [searchResults]="searchResults"></search-results>
+  </div>
+</div>

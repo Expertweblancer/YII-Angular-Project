@@ -1,0 +1,48 @@
+<div class="row" *ngIf="offer && messages && currency">
+    <div class="col-3">
+        <p class="subtitle-gray"> {{messages.offer_from}} </p>
+        <div class="d-flex decor-icon">
+            <i class="glyphicon icon-avatar"></i>
+            <div>
+                <p class="subtitle-black">{{offer.company_name}}</p>
+                <p class="subtitle-rating" *ngIf="offer.general_rating"> <i class="glyphicon icon-star-fill"></i> {{offer.general_rating | number:'1.1-1'}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-3">
+        <p class="subtitle-gray"> {{messages.date}} </p>
+        <div class="d-flex decor-icon">
+            <i class="glyphicon icon-calendar"></i>
+            <div>
+                <p class="subtitle-black"> {{offer.date_execution | date:'d-MM-y'}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-2">
+        <p class="subtitle-gray"> {{messages.price}}</p>
+        <div class="d-flex decor-icon">
+            <i class="glyphicon icon-tag"></i>
+            <div>
+                <p class="subtitle-black"> {{offer.your_price}} {{currency.name}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <button *ngIf="role.is_customer && offer.is_selected==0" (click)="showChooseBox=true" class="btn btn-outline-primary float-right">{{messages.choose_offer}}</button>
+        <a *ngIf="role.is_customer" [routerLink]="['../../messages/view']" [queryParams]="{oid:offer.order_id, uid:offer.company_user_id, token:order.token}"
+            class="btn btn-outline-secondary float-right">{{messages.send_message}}</a>
+        <button *ngIf="isOfferOwner==true && order.status=='open'" (click)="editClick()" class="btn btn-outline-secondary float-right">{{messages.update_offer}}</button>
+        <button *ngIf="showCompleteButton" (click)="compleateOffer()" [ngClass]="completing?'btn btn-outline-success disabled float-right':'btn btn-outline-success float-right'">
+            <i *ngIf="completing" class="fa fa-spinner fa-pulse fa-fw float-right"></i> {{messages.complete}}</button>
+        <button *ngIf="role.is_customer && !comment && order.status=='compleated'" (click)="showCommentsForm=true" class="btn btn-outline-success float-right">
+            {{messages.rate}}</button>
+    </div>
+    <div class="col-12" style="margin-top:0.5rem" *ngIf="offer.note && offer.note.length>0">
+        <p class="subtitle-gray">{{messages.comment}}</p>
+        <p class="subtitle-black"> {{offer.note}}</p>
+    </div>
+</div>
+<comment-element-alt *ngIf="comment" [comment]="comment"></comment-element-alt>
+<choose-offer-box (result)="onChooseOffer($event)" *ngIf="showChooseBox" [offer]="offer"></choose-offer-box>
+<confirm-dialog [message]="messages.sure_complete" *ngIf="confirmComplete" (onAction)="completeOrderDialogResult($event)"></confirm-dialog>
+<comments-form *ngIf="showCommentsForm==true && offer && order" [offer]="offer" [order]="order" (onAction)="commentsFormAction($event)"></comments-form>

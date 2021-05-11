@@ -1,0 +1,173 @@
+@font-face {
+    font-family:'FFClanWebPro';
+    src: url(../font/ClanPro-News.otf);
+    font-style: normal;
+    font-weight: 400;
+}
+@font-face {
+    font-family:'FFClanWebPro';
+    src: url(../font/ClanPro-Medium.otf);
+    font-style: normal;
+    font-weight: 600;
+}
+
+@font-face {
+    font-family:'FFClanWebPro';
+    src: url(../font/ClanPro-Bold.otf);
+    font-style: normal;
+    font-weight: 800;
+}
+
+.middlearea{
+    min-height:calc(100vh - 17rem - 10vh - 5vh);
+}
+
+.decor-area{
+    background-image: url("/assets/img/pattern.png?v=4");
+    background-repeat: repeat;
+    height: 10vh;
+    margin-bottom:5vh;
+    background-color: #7fb5ff;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+#map{
+	height:300px;
+}
+.sidebar::-webkit-scrollbar {
+    width: 3px;
+}
+
+.menu-header{
+    padding:18px 5px 0 18px;
+    width:100%;
+    height:70px;
+}
+.menu-header img{
+    object-fit: cover;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+}
+.menu-header span{
+    margin-left:10px;
+    font-size: 1em;
+    line-height: 30px;
+}
+.menu-header .no-foto{
+    border-radius: 50%;
+    color:#aaa;
+    width: 30px;
+    line-height: 30px;
+    font-size: 2em;
+    background-color: #fff;
+    float:left;
+}
+
+.menu-header .no-foto i{
+    margin-left:5px !important;
+}
+
+
+#dashboard-link {
+    margin-top:20px;
+}
+
+.app-box{
+   padding:15px 10px;
+   background-color:#fff;
+   -webkit-box-shadow: 0px 1px 5px 1px #ddd;
+   -moz-box-shadow: 0px 1px 5px 1px  #ddd;
+   box-shadow: 0px 1px 5px 1px  #ddd;
+   margin-bottom:15px;        
+}
+.box-row .app-box{
+   margin-right:0px;
+}
+.box-row .app-box:last-child{
+   margin-right:0;
+}
+.app-box h5{
+   margin-bottom:10px;
+}
+.app-box h5{
+    text-transform: uppercase;
+    font-size: 0.9em;
+    letter-spacing: 3px;
+}
+.app-box ul {
+    list-style-type: none;
+    padding:0;
+}
+.app-box ul li {
+    display:inline;
+    margin:0;
+    padding:0;
+}
+
+.app-box ul li:first-child {
+    display:inline;
+    margin:0;
+    padding:0;
+    font-size: 40px;
+    color:#22c4e0;
+}
+
+.app-table .table-icon{
+    width:10px;
+}
+.link-pointer{
+    cursor: pointer;
+}
+
+
+.card-light-green{
+    background-color:#e1f9e7;
+    color:#263238;
+}
+
+/* date time picker */
+.mydrp, .mydrp .headertodaybtn, .mydrp .selection, .mydrp .selectiongroup, .mydrp .selector {
+    border-radius: 0;
+}
+
+
+input.ng-invalid.ng-touched { border-left: 2px solid red;}
+input:not(.ng-pristine).ng-valid { border-left: 2px solid green;}
+select.ng-invalid.ng-touched { border-left: 2px solid red;}
+select.ng-valid.ng-touched { border-left: 2px solid green;}
+textarea.ng-invalid.ng-touched { border-left: 2px solid red;}
+textarea:not(.ng-pristine).ng-valid { border-left: 2px solid green;}
+
+
+#inner {
+    position:fixed;
+    top: 50%;
+    left: 50%;
+    z-index:1001;
+    width:40em;
+    margin-top: -20em; /*set to a negative number 1/2 of your height*/
+    margin-left: -13em; /*set to a negative number 1/2 of your width*/
+    background-color: #555;
+    color:#ddd;
+    padding:2em;
+}
+
+#outer{
+    position:fixed;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	z-index:1000;
+	background-color:#DDD;
+    opacity: .3;
+}
+
+
+.mydrp, .mydrp .headertodaybtn, .mydrp .selection, .mydrp .selectiongroup, .mydrp .selector{
+    border-radius: 0;
+}

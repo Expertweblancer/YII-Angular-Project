@@ -1,0 +1,61 @@
+<div class="container" *ngIf="messages">
+
+    <div class="row decor-area"></div>
+    <div class="row justify-content-center input-area middlearea">
+        <div class="col-10">
+            <ngb-alert [dismissible]="false" *ngIf="emergencyLogout" [type]="'danger'">{{messages.server_error}}</ngb-alert>
+            <ngb-alert [dismissible]="false" *ngIf="loginIncorrect" [type]="'danger'">{{messages.login_incorrect}}</ngb-alert>
+            <ngb-alert [dismissible]="false" *ngIf="loginNotConfirmed" [type]="'danger'">{{messages.account_not_confirmed}}</ngb-alert>
+            <ngb-alert [dismissible]="false" *ngIf="fromRegistration" [type]="'success'">{{messages.registration_succesfull}}</ngb-alert>
+            <ngb-alert [dismissible]="false" *ngIf="emailConfirmed" [type]="'success'">{{messages.email_confirmed}}</ngb-alert>
+            <ngb-alert [dismissible]="false" *ngIf="resetCompleated" [type]="'success'">{{messages.reset_compleated}}</ngb-alert>
+            <ngb-alert [dismissible]="false" *ngIf="serverError" [type]="'danger'">{{messages.server_error}}</ngb-alert>
+            <ngb-alert [dismissible]="false" *ngIf="registerInvitedCompleated" [type]="'success'">{{messages.register_invited_compleated}}</ngb-alert>
+        </div>
+        <div class="col-sm-8 col-md-6 col-xl-4">
+            <form #f="ngForm" (ngSubmit)="login(username.value, password.value, true, f.valid)">
+                <div class="row justify-content-center">
+                    <div class="col-12">
+                        <h3>{{messages.sign_in}}</h3>
+                        <div class="form-group field-login-form-login required">
+                            <label class="form-label" for="login-form-login">{{messages.email_or_login}}</label>
+                            <input type="text" class="form-control" autofocus="autofocus" tabindex="1" aria-required="true" required #username
+                                ngModel name="username">
+                            <div class="help-block"></div>
+                        </div>
+                        <div class="form-group field-login-form-password required">
+                            <label class="form-label" for="login-form-password">{{messages.password}} (
+                                <a [routerLink]="['/reset-password-request']" tabindex="5">{{messages.did_forget_password}}</a>)</label>
+                            <input type="password" class="form-control" tabindex="2" required #password ngModel
+                                name="password">
+                            <div class="help-block"></div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <label class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" value="1" tabindex="3" [checked]="true">
+
+                            <span class="custom-control-indicator"></span>
+                            <span class="custom-control-description">{{messages.remember_me}}</span>
+                        </label>
+                    </div>
+                    <div class="col-12 d-flex justify-content-center" style="margin-top:1rem; margin-bottom:1rem;">
+                        <button type="submit" [ngClass]="loginInProgress?'btn btn-primary disabled' :'btn btn-primary'" tabindex="4">
+                            <i [ngClass]="(loginInProgress)?'fa fa-circle-o-notch fa-spin fa-fw':'fa fa-user'" aria-hidden="true"></i> {{messages.login}}
+                        </button>
+                    </div>
+                    <div class="col-12">
+                        <p class="text-center">
+                            <a [routerLink]="['/resend']">{{messages.no_confirmation_msg}}</a>
+                        </p>
+                        <p class="text-center">
+                            <a [routerLink]="['/register']">{{messages.no_account_yet}}</a>
+                        </p>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+    <extended-footer></extended-footer>
+</div>

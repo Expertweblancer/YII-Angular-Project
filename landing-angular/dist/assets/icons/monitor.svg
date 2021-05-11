@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="54px" height="43px" viewBox="0 0 54 43" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.4 (67378) - http://www.bohemiancoding.com/sketch -->
+    <title>Shape</title>
+    <desc>Created with Sketch.</desc>
+    <g id="company" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="company-summary" transform="translate(-1327.000000, -1813.000000)" fill="#2C5EE6" fill-rule="nonzero">
+            <g id="features" transform="translate(179.000000, 1264.000000)">
+                <g id="item-copy-2" transform="translate(1005.000000, 250.000000)">
+                    <g id="truck" transform="translate(0.000000, 184.000000)">
+                        <g id="monitor-(1)" transform="translate(143.000000, 115.000000)">
+                            <path d="M15.3079646,42.9054945 L15.3079646,39.7080586 L20.660177,39.7080586 L20.660177,35.140293 L2.91504425,35.140293 C1.30619469,35.156044 0,33.8487179 0,32.2578755 L0,2.88241758 C0,1.29157509 1.30619469,0 2.91504425,0 L50.9734513,0 C52.5823009,0 53.8884956,1.29157509 53.8884956,2.88241758 L53.8884956,32.2578755 C53.8884956,33.8487179 52.5823009,35.156044 50.9734513,35.156044 L33.2442478,35.156044 L33.2442478,39.7238095 L38.5964602,39.7238095 L38.5964602,42.9212454 L15.3079646,42.9212454 L15.3079646,42.9054945 Z M50.8938053,32.1791209 L50.8938053,2.96117216 L3.01061947,2.96117216 L3.01061947,32.1791209 L50.8938053,32.1791209 Z" id="Shape"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

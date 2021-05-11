@@ -1,0 +1,30 @@
+<div class="panel panel-default">
+  <div class="panel-heading">{{messages.search_details}}</div>
+  <div class="panel-body">
+<p *ngIf="fromAddress.address"  class="order-summary-header">{{messages.starting_point}}</p>
+<p *ngIf="fromAddress.country_short">
+  <img
+     src = "{{getFlagUrl(fromAddress.country_short)}}">
+     <span *ngIf="fromAddress.address">{{fromAddress.address}}</span>      
+</p>
+<p *ngIf="toAddress.address"  class="order-summary-header">{{messages.finish_point}}</p>
+<p *ngIf="toAddress.country_short">
+  <img
+  src = "{{getFlagUrl(toAddress.country_short)}}">
+  <span *ngIf="toAddress.address">{{toAddress.address}}</span>      
+</p>
+<p *ngIf="fromAddress.address!==undefined && toAddress.address!==undefined && distance>0" class="order-summary-header">{{messages.distance}}</p>
+<p *ngIf="fromAddress.address && toAddress.address && distance>0">{{distance | number}} km</p>
+</div></div>
+<div class="panel panel-default">
+  <div class="panel-heading">{{messages.total_distance}}</div>
+  <div class="panel-body">
+    <div class="form-group">
+      <input class="form-control" value="{{total_distance<100 ? (total_distance | number:'1.0-1') : total_distance | number:'1.0-0'}}" #total_km />
+      <p style="margin-top:5px;" class="order-summary-header"> <i> {{messages.km_info}} </i></p>
+    </div>
+    <div class="form-group" >
+      <button (click)="searchClick(total_km.value)" class="btn btn-primary">{{messages.search}}</button>
+    </div>
+  </div>
+</div>

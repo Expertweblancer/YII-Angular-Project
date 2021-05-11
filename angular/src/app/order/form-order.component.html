@@ -1,0 +1,258 @@
+<in-loader *ngIf="working"></in-loader>
+<confirm-dialog *ngIf="showDeleteConfirmationDialog" (onAction)="onOrderDeleteConfirmation($event)"></confirm-dialog>
+<form *ngIf="!working" [formGroup]="orderForm" onkeypress="return event.keyCode != 13;" (ngSubmit)="onSubmit()">
+  <div class="card">
+    <div class="card-block">
+      <div class="row justify-content-xl-center">
+        <div class="col-xl-10">
+          <div class="row">
+            <div class="col-12">
+              <h5>{{messages.basic_data}}</h5>
+            </div>
+            <div class="form-group col-3">
+              <label for="order-title" class="form-label">{{messages.order_name}}</label>
+              <input class="form-control" name="order-title" type="text" id="order-title" formControlName="title">
+            </div>
+            <div class="form-group col-3">
+              <label for="order-category-id" class="form-label">{{messages.category}}</label>
+              <select id="order-category-id" name="order-category-id" class="custom-select" formControlName="category_id">
+                <option *ngFor="let category of categoryModel" value="{{category.id}}">{{category.text}}</option>
+              </select>
+            </div>
+            <div class="form-group col-3">
+              <label for="order-payment-id" class="form-label">{{messages.payment_type}}</label>
+              <select id="order-payment-id" name="order-payment-id" class="custom-select" formControlName="payment_type_id">
+                <option *ngFor="let paymentType of paymentTypes" value="{{paymentType.id}}">{{paymentType.name}}</option>
+              </select>
+            </div>
+            <div class="form-group col-3">
+              <label for="order-currency-id" class="form-label">{{messages.currency}}</label>
+              <select id="order-currency-id" name="order-currency-id"  class="custom-select" formControlName="currency_id">
+                <option *ngFor="let currency of currencies" value="{{currency.id}}">{{currency.name}}</option>
+              </select>
+            </div>
+
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <h5>{{messages.route}}</h5>
+            </div>
+            <div class="col-6">
+              <div class="row">
+                <div class="form-group col-12">
+                  <label class="form-label">{{messages.delivery_from}}</label>
+                  <autocomplete (onPlacesChanged)="onFromPlacesChanged($event)" [accurate]="true" [address]="model.from_address"></autocomplete>
+                </div>
+                <div class="form-group col-12">
+                  <label class="form-label">{{messages.delivery_to}}</label>
+                  <autocomplete (onPlacesChanged)="onToPlacesChanged($event)" [accurate]="true" [address]="model.to_address"></autocomplete>
+
+                  <small class="text-danger" *ngIf="routeNotFoundErr && !orderForm.controls.to_address.errors?.addrTheSameErr">{{messages.route_not_found}}</small>
+                  <small class="text-danger" *ngIf="orderForm.controls.to_address.errors?.addrTheSameErr">{{messages.address_the_same}}</small>
+                </div>
+                <div class="form-group col-12">
+                  <label class="form-label">{{messages.distance}}</label>
+                  <p class="subtitle-black">{{orderForm.controls.distance.value / 1000 | round}} km</p>
+                </div>
+
+              </div>
+            </div>
+            <div class="col-6" id="map">
+              <google-maps *ngIf="model" (onDirectionSet)="onDirectionSet($event)" [from_address]="orderForm.controls.from_address.value"
+                [to_address]="orderForm.controls.to_address.value"></google-maps>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12">
+              <h5>{{messages.execution_date}}</h5>
+            </div>
+
+            <div class="form-group col-6">
+              <label for="order-sending-date" class="form-label">{{messages.since}}</label>
+              <jqxDateTimeInput #sendingDateInput [min]="sendingDateMin"   [enableBrowserBoundsDetection]="true" (onChange)="dateFromChange($event)"
+                  [theme]="'shipme'" [height]="'1.8rem'" [width]="'100%'" [value]="sendingDateVal"></jqxDateTimeInput>
+              <small class="text-danger" *ngIf="orderForm.controls.date_from.errors?.cantBeEarlierThanToday">{{messages.cant_be_earlier_than_today}}</small>
+              <br>
+            </div>
+            <div class="form-group col-6">
+              <label for="order-receiving-date" class="form-label">{{messages.until}}</label>
+              <jqxDateTimeInput #deliveryDateInput (onChange)="dateToChange($event)" [enableBrowserBoundsDetection]="true"
+                [theme]="'shipme'" [height]="'1.8rem'" [width]="'100%'" [value]="deliveryDateVal"></jqxDateTimeInput>
+            </div>
+          </div>
+          <div class="row" formGroupName="time">
+            <div class="col-6">
+              <div class="row">
+                <div class="col-12">
+                  <h5>{{messages.sending_hours}}</h5>
+                </div>
+                <div class="form-group col-6">
+                  <label class="form-label">{{messages.since}}</label>
+                  <input class="form-control" type="time" name="time-siending-since1" formControlName="sending_since_1" id="time-siending-since1">
+
+                </div>
+                <div class="form-group col-6">
+                  <label class="form-label">{{messages.until}}</label>
+                  <input class="form-control" type="time" name="time-sending-until1" formControlName="sending_until_1" id="time-sinding-until1">
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="row">
+                <div class="col-12">
+                  <h5>{{messages.delivery_hours}}</h5>
+                </div>
+                <div class="form-group col-6">
+                  <label class="form-label">{{messages.since}}</label>
+                  <input class="form-control" type="time" name="time-delivery-since1" formControlName="delivery_since_1">
+                </div>
+                <div class="form-group col-6">
+                  <label class="form-label">{{messages.until}}</label>
+                  <input class="form-control" type="time" name="time-delivery-until1" formControlName="delivery_until_1">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <h5>{{messages.parcels}}</h5>
+            </div>
+          </div>
+          <div class="row" formArrayName="parcels" *ngFor="let item of orderForm.get('parcels').controls; let i = index;">
+            <div class="form-group col-2" [formGroupName]="i">
+              <label *ngIf="i==0" class="form-label">{{messages.sizes}}</label>
+              <input class="form-control meas" min="1" type="number" [placeholder]="messages.width" formControlName="width">
+            </div>
+            <div class="form-group col-2" [formGroupName]="i">
+              <label *ngIf="i==0" class="form-label">&nbsp;</label>
+              <input class="form-control meas" min="1" type="number" [placeholder]="messages.height" formControlName="height">
+            </div>
+            <div class="form-group col-2" [formGroupName]="i">
+              <label *ngIf="i==0" class="form-label">&nbsp;</label>
+              <input class="form-control meas" min="1" type="number" [placeholder]="messages.length" formControlName="depth">
+            </div>
+            <div class="form-group col-2" [formGroupName]="i">
+              <label *ngIf="i==0" class="form-label">{{messages.weight}} [kg]</label>
+              <input class="form-control meas" [placeholder]="messages.weight" type="number" min="1" formControlName="weight" />
+            </div>
+            <div class="col-1">
+                <a *ngIf="i>0" class="btn btn-outline-danger btn-sm" (click)="removeParcel(i)"> X </a>                
+            </div>
+          </div>
+          <div class="row">
+              <div class="col-12">
+                <a (click)="addParcel()" class="btn btn-outline-secondary btn-sm pointer">{{messages.add}}</a>
+              </div>
+          </div>
+          <div class="row" *ngIf="model.attachments">
+            <div class="col-12">
+              <h5>{{messages.attachments}}</h5>
+            </div>
+            <div class="col-6" *ngFor="let attach of model.attachments; let i=index">
+              <p class="file-item">{{attach.name}}
+                <a class="float-right pointer" (click)="deleteFile(i)"> X </a>
+              </p>
+            </div>
+            <div class="col-12">
+              <file-upload [caption]="messages.add" [css_class]="'btn btn-outline-secondary btn-sm pointer'" (onUploaded)="onUploaded($event)"></file-upload>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <h5>{{messages.remarks}}</h5>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <textarea class="form-control" name="info" type="text" id="name" formControlName="info"></textarea>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-12">
+              <button style="margin-top:30px;margin-right:30px;" type="submit" [ngClass]="saving>0?'btn btn-success disabled':'btn btn-success pointer'">
+                <i *ngIf="saving" class="fa fa-circle-o-notch fa-spin fa-fw"></i>{{messages.save}}
+              </button>
+              <a *ngIf="!saving" style="margin-top:30px;" class="btn btn-primary pointer" (click)="goBack()">
+                {{messages.cancel}}
+              </a>
+              <a *ngIf="!model.isNewModel && !saving" style="margin-top:30px;" class="btn btn-danger pointer float-right" (click)="deleteConfirmation()">
+                {{messages.delete_order}}
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+<!--div class="row" formGroupName="time">
+      <div class="col-6">
+        <div class="form-group row">
+          
+          <div class="form-group col-4">
+          </div>
+          <div class="form-group col-4">
+          </div>
+          <div class="col-4" *ngIf="!constSendingHours"></div>
+          <div class="form-group col-4" *ngIf="!constSendingHours">
+            
+          </div>
+          <div class="form-group col-4" *ngIf="!constSendingHours">
+            <input class="form-control"  type="time" name="time-sending-until2" formControlName="sending_until_2" id="time-sinding-until2">
+          </div>
+          <div class="col-4" *ngIf="!constSendingHours"></div>
+           <div class="form-group col-4" *ngIf="!constSendingHours">
+            <input class="form-control"   type="time" name="time-siending-since3" formControlName="sending_since_3" id="time-siending-since3">
+          </div>
+          <div class="form-group col-4" *ngIf="!constSendingHours">
+            <input class="form-control"   type="time" name="time-sending-until3" formControlName="sending_until_3" id="time-sinding-until3">
+          </div>
+         </div>
+        </div>
+  
+      <div class="col-6" >
+          <div class="form-group col-4" *ngIf="!constDeliveryHours">
+            <input class="form-control"   type="time" name="time-delivery-until2" formControlName="delivery_until_2" id="time-delivery-until-2">
+          </div>
+          <div class="col-4" *ngIf="!constDeliveryHours"></div>
+          <div class="form-group col-4" *ngIf="!constDeliveryHours">
+            <input class="form-control"   type="time" name="time-delivery-since3" formControlName="delivery_since_3" id="time-delivery-since-3">
+          </div>
+          <div class="form-group col-4" *ngIf="!constDeliveryHours">
+            <input class="form-control"   type="time" name="time-delivery-until3" formControlName="delivery_until_3" id="time-delivery-until-3">
+          </div>
+        </div>
+    </div-->
+
+
+
+<!-- div class="row" *ngIf="model.time" >
+    < div class="col-6">
+      <div class="form-group row">
+        <label for="order-sending-date" class="col-4 form-label">{{messages.sending_hours}}</label>
+        <div class="col-8">
+            <label class="form-check-label">
+              <input class="form-check-input" name="sendingtype" type="radio" checked="checked" (click)="constSendingHours=1" > {{messages.constant}}
+            </label>
+            <label class="form-check-label">
+              <input class="form-check-input" name="sendingtype" type="radio" (click)="constSendingHours=0"> {{messages.customized}}
+            </label>
+        </div>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="form-group row">
+        <label for="order-receiving-date" class="col-4 form-label">{{messages.delivery_hours}}</label>
+        <div class="col-8">
+          <label class="form-check-label">
+            <input class="form-check-input" name="deliveringtype" type="radio" checked="checked" (click)="constDeliveryHours=1" > {{messages.constant}}
+          </label>
+          <label class="form-check-label">
+            <input class="form-check-input" name="deliveringtype" type="radio" (click)="constDeliveryHours=0"> {{messages.customized}}
+          </label>
+        </div>
+      </div>
+    </div>
+  </div !-->

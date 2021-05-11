@@ -1,0 +1,19 @@
+<loader *ngIf="working" ></loader>
+<section *ngIf="messages && !working" >
+  <div class="card" *ngFor="let user of model; let i = index">
+    <div class="card-block row">
+      <div class="col-6">
+          <p class="detail-sub-header alt">{{messages.username}}</p>
+          <p>{{user.username}}</p>
+      </div>
+      <div class="col-6">
+          <p class="detail-sub-header alt">{{messages.email}}</p>
+          <p>{{user.email}}</p>
+      </div>
+    </div>
+  </div>
+  <a [routerLink]="['../new']" class="btn btn-primary">{{messages.add_new}}</a>
+  <div *ngIf="messages && (!model || model.lengtht==0)"  class="alert alert-info" role="alert">
+    {{messages.no_result_found}}
+  </div>
+</section>

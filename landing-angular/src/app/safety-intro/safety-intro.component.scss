@@ -1,0 +1,114 @@
+.intro, .second {
+    display: flex;
+    align-items: center;
+    .section-header {
+        margin: 64px 0;
+        width: 100%;
+    }
+    position: relative;
+    .spacing {
+        width: 10%;
+        max-width: 114px;
+    }
+    .illustration-wrapper {
+        flex-shrink: 0;
+        height: 100%;
+        .ill {
+            position: absolute;
+            height: 100%;
+            top: 0;
+            background-origin: center;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    }
+}
+
+.intro {
+    .illustration-wrapper {
+        &, .ill {
+            max-width: 588px;
+            width: 37%;
+        }
+        .ill {
+            // background-image: url('/assets/img/safety1.png');
+        }
+    }
+}
+
+.second {
+    &.starts-from-left {
+        .section-header {
+            margin-left: -195px !important;
+            padding-left: 79px !important;
+        }
+        .pattern-rect {
+            left: -5px;
+            transform: translate(-50%, 50%);
+            .mask {
+                float: right;
+            }
+        }
+    }
+    &.starts-from-right {
+        .section-header {
+            margin-right: -185px !important;
+            padding-right: 79px !important;
+        }
+        .pattern-rect {
+            right: -5px;
+            transform: translate(-70px, 50%);
+            .mask {
+                width: 100% !important;
+            }
+        }
+    }
+    .section-header {
+        margin: 34px 0;
+        padding: 56px 0;
+        background-color: #FFF;
+        z-index: 2;
+        .header {
+            font-size: 30px;
+        }
+        .desc {
+            line-height: 28px;
+            font-size: 18px;
+            margin-top: 12px;
+            position: relative;
+            z-index: 2;
+        }
+        position: relative;
+        .pattern-rect {
+            z-index: 1;
+            bottom: -5px;
+            .mask {
+                background-color: #FFF;
+                $maskSize: calc(50% - 5px);
+                width: $maskSize;
+                height: $maskSize;
+            }
+        }
+    }
+    .illustration-wrapper {
+        &, .ill {
+            max-width: 988px;
+            width: 63%;
+        }
+        // .ill {
+        //     background-image: url('/assets/img/safety2.png');
+        // }
+    }
+}
+
+.directly-from {
+    margin: 128px auto;
+    .header {
+        font-size: 30px;
+    }
+    .desc {
+        font-size: 18px;
+        max-width: 702px;
+        line-height: 28px;
+    }
+}

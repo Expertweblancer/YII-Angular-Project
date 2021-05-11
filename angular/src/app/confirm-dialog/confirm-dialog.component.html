@@ -1,0 +1,7 @@
+<div class="confirm-dialog" *ngIf="messages" >
+  <div class="confirm-dialog-content">
+    <h5>{{message}}</h5>
+    <button (click)="actionClick(true)"  class="btn btn-warning">{{messages.ok}}</button>
+    <button (click)="actionClick(false)"  class="btn btn-primary">{{messages.cancel}}</button>
+  </div>
+</div>

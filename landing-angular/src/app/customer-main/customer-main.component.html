@@ -1,0 +1,127 @@
+
+<div class="intro content">
+  <div class="section-header">
+    <div class="header">
+      Wysyłaj przesyłki
+    </div>
+    <div class="desc">
+      Czy jesteś klientem indywidualnym czy firmą produkcyjną
+    </div>
+  </div>
+  <div class="add-parcel-wrapper">
+    <div class="add-parcel-box">
+      <div class="header">Dodaj przesyłkę już dziś</div>
+      <select-input
+      [label]="'RODZAJ KLIENTA'"
+      [options]="['KLIENT INDYWIDUALNY', 'FIRMA']" ></select-input>
+      <select-input
+      [label]="'KATEGORIA'"
+      [options]="['test', 'test2']" ></select-input>
+      <button class="btn blue big">
+        DODAJ
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="under-intro">
+  <div class="illustration"></div>
+  <div class="pattern-wrapper">
+    <div class="pattern-rect with-pattern"></div>
+  </div>
+</div>
+
+<start-now [withIllustrations]="true"></start-now>
+
+<div class="cons left-content">
+  <div>
+    <div class="section-header">
+      <div class="header">
+        Zalety serwisu
+      </div>
+      <div class="desc">
+        Szybkie i bezproblemowe zamawianie zleceń transportowych
+      </div>
+    </div>
+    <pictograms [pictograms]="pictograms"></pictograms>
+  </div>
+  <div class="pattern with-pattern"></div>
+</div>
+
+<div class="switch-wrapper content">
+  <div class="section-header">
+    <div class="header">
+      Wysyłaj co chcesz i kiedy chcesz
+    </div>
+    <div class="desc">
+      Wysyłasz jako:
+    </div>
+  </div>
+  <div class="switch-controller {{isSwitchCompanySelect ? 'is-right-active' : ''}}">
+    <div
+    (click)="isSwitchCompanySelect = false"
+    class="controll {{isSwitchCompanySelect ? '' : 'active'}}">
+      Klient indywidualny
+    </div>
+    <div
+    (click)="isSwitchCompanySelect = true"
+    class="controll {{isSwitchCompanySelect ? 'active' : ''}}">
+      Firma
+    </div>
+    <div class="line"></div>
+  </div>
+  <div class="sliders {{isSwitchCompanySelect ? 'is-right-active' : ''}}">
+    <div>
+      <div class="illustration"></div>
+      <div class="list">
+        <div class="enumeration-item">
+          <div class="item-number">1</div>
+          <span>Ładunki specjalnej ostrożności</span>
+        </div>
+        <div class="enumeration-item">
+          <div class="item-number">2</div>
+          <span>RTV/AGD</span>
+        </div>
+        <div class="enumeration-item">
+          <div class="item-number">3</div>
+          <span>Meble</span>
+        </div>
+        <div class="enumeration-item">
+          <div class="item-number">4</div>
+          <span>Motoryzacja</span>
+        </div>
+        <div class="enumeration-item">
+          <div class="item-number">5</div>
+          <span>...i wiele innych</span>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="illustration"></div>
+      <div class="list">
+        <div class="enumeration-item">
+          <div class="item-number">1</div>
+          <span>Ładunki specjalnej ostrożności</span>
+        </div>
+        <div class="enumeration-item">
+          <div class="item-number">2</div>
+          <span>RTV/AGD</span>
+        </div>
+        <div class="enumeration-item">
+          <div class="item-number">3</div>
+          <span>Meble</span>
+        </div>
+        <div class="enumeration-item">
+          <div class="item-number">4</div>
+          <span>Motoryzacja</span>
+        </div>
+        <div class="enumeration-item">
+          <div class="item-number">5</div>
+          <span>...i wiele innych</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<bottom-element [isForCustomer]="true"></bottom-element>

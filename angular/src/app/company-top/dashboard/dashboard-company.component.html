@@ -1,0 +1,262 @@
+<!-- <div *ngIf="!working" class="row animated fadeIn">
+  <div class="col-sm-6 col-lg-4 col-xl-4">
+    <div class="card">
+      <div class="card-block flex-horizontal dash-box">
+        <i class="fa fa-money primary" aria-hidden="true"></i>
+        <div>
+          <p class="subtitle-gray">{{messages.income}}</p>
+          <p class="subtitle-black">{{messages.lat_three_months}}</p>
+        </div>
+        <p class="primary">{{infoBox.num_income | number : '1.0-0'}}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-6 col-lg-4 col-xl-4">
+
+    <div class="card">
+      <div class="card-block flex-horizontal dash-box">
+        <i class="fa fa-cube danger" aria-hidden="true"></i>
+        <div>
+          <p class="subtitle-gray">{{messages.orders}}</p>
+          <p class="subtitle-black">{{messages.compleated}}</p>
+        </div>
+        <p class="danger">{{infoBox.num_orders}}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-6 col-lg-4 col-xl-4" *ngIf="infoBox.num_rating>0">
+
+    <div class="card">
+      <div class="card-block flex-horizontal dash-box">
+        <i class="fa fa-star-half-o warning" aria-hidden="true"></i>
+        <div>
+          <p class="subtitle-gray">{{messages.rating}}</p>
+          <p class="subtitle-black">{{messages.congratulations}}</p>
+        </div>
+        <p class="warning">{{infoBox.num_rating | number : '1.1-1'}}</p>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div *ngIf="!working" class="stats">
+  <div class="block-with-shadow fleet">
+    <img src="/assets/icons/track.svg">
+    <div class="text">
+      <div class="title">FLOTA</div>
+      <div class="header">W TRASIE</div>
+    </div>
+    <div class="value">7</div>
+  </div>
+  <div class="block-with-shadow income">
+    <img src="/assets/icons/balance.svg">
+    <div class="text">
+      <div class="title">przychód</div>
+      <div class="header">za ostatnie 3 msc.</div>
+    </div>
+    <div class="value">48.46</div>
+  </div>
+  <div class="block-with-shadow orders">
+    <img src="/assets/icons/wallet.svg">
+    <div class="text">
+      <div class="title">zlecenia</div>
+      <div class="header">zrealizowane</div>
+    </div>
+    <div class="value">416</div>
+  </div>
+  <div class="block-with-shadow rate">
+    <img src="/assets/icons/star.svg">
+    <div class="text">
+      <div class="title">twoja ocena</div>
+      <div class="header">gratulacje</div>
+    </div>
+    <div class="value">4.85</div>
+  </div>
+</div>
+
+<div *ngIf="!working" class="block-with-shadow">
+  <div class="with-pad block-header">
+    <div class="label">Flota</div>
+    <div class="header">W trasie</div>
+  </div>
+  <div class="with-pad with-list">
+    <order-list
+    [withNumber]="true"
+    [headers]="['TRANSPORT', 'OPIS', 'TRASA']"
+    [orders]="[
+      { 
+        columns: [
+          { value: 'Renault Trafic 2.5DCI (2015)' },
+          { value: 'Przeprowadzka z północy' },
+          { value: 'Gdańsk – Kraków', km: 585 }
+        ]
+      },
+      { 
+        columns: [
+          { value: 'Boeing 747 Dreamlifter' },
+          { value: 'Dreamcars intercontinental transport' },
+          { value: 'JFK – KTW' }
+        ]
+      },
+      { 
+        columns: [
+          { value: 'Renault T 460 (2015)' },
+          { value: '24 palety ze sprzętem AGD' },
+          { value: 'Poznań – Bydgoszcz', km: 114 }
+        ]
+      }
+    ]"
+    ></order-list>
+  </div>
+</div>
+
+<div *ngIf="!working" class="block-with-shadow">
+  <div class="with-pad block-header">
+    <div class="label">Zlecenia</div>
+    <div class="header">Oczekujące na realizacje <span>(5)</span></div>
+  </div>
+  <div class="with-pad with-list">
+    <order-list
+    [headers]="['Kategoria', 'TRASA', 'ODLEGŁOŚĆ', 'DATA ZAŁ./ROZŁ.', 'STAWKA', 'DODANO']"
+    [orders]="[
+      {
+        columns: [
+          { category: 0 },
+          { value: 'Poznań - Warszawa' },
+          { value: '351km' },
+          { value: '28.09/30.09' },
+          { value: '4 500 PLN', isPrice: true },
+          { value: '2 minuty temu' }
+        ]
+      },
+      { 
+        columns: [
+          { category: 1 },
+          { value: 'Kraków - Gdańsk' },
+          { value: '574km' },
+          { value: '30.09/02.10' },
+          { value: '500 PLN', isPrice: true },
+          { value: '10 minut temu' }
+        ]
+      },
+      {
+        columns: [
+          { category: 2 },
+          { value: 'Berlin - Poznań' },
+          { value: '268km' },
+          { value: '01.10/03.10' },
+          { value: '1 800 PLN', isPrice: true },
+          { value: '1 godzine temu' }
+        ]
+      }
+    ]"
+    ></order-list>
+  </div>
+</div>
+
+<div *ngIf="!working" class="block-with-shadow">
+  <div class="with-pad block-header">
+    <div class="label">Zlecenia</div>
+    <div class="header">Oferowane <span>(5)</span></div>
+  </div>
+  <div class="with-pad with-list">
+    <order-list
+    [headers]="['Kategoria', 'TRASA', 'ODLEGŁOŚĆ', 'DATA ZAŁ./ROZŁ.', 'STAWKA', 'DODANO']"
+    [orders]="[
+      {
+        columns: [
+          { category: 0 },
+          { value: 'Poznań - Warszawa' },
+          { value: '351km' },
+          { value: '28.09/30.09' },
+          { value: '4 500 PLN', isPrice: true },
+          { value: '2 minuty temu' }
+        ]
+      },
+      { 
+        columns: [
+          { category: 1 },
+          { value: 'Kraków - Gdańsk' },
+          { value: '574km' },
+          { value: '30.09/02.10' },
+          { value: '500 PLN', isPrice: true },
+          { value: '10 minut temu' }
+        ]
+      },
+      {
+        columns: [
+          { category: 2 },
+          { value: 'Berlin - Poznań' },
+          { value: '268km' },
+          { value: '01.10/03.10' },
+          { value: '1 800 PLN', isPrice: true },
+          { value: '1 godzine temu' }
+        ]
+      }
+    ]"
+    ></order-list>
+  </div>
+</div>
+
+
+<div class="stats">
+    <div *ngIf="!working" class="block-with-shadow chart-wrapper">
+      <div class="with-pad block-header">
+        <div class="label">Zlecenia</div>
+        <div class="header">Zrealizowane w czasie</div>
+      </div>
+    </div>
+    <div *ngIf="!working" class="block-with-shadow graphq-wrapper">
+      <div class="with-pad block-header">
+        <div class="label">Pojazdy</div>
+        <div class="header">Najczęściej w trasie</div>
+      </div>
+    </div>
+</div>
+<!-- <in-loader *ngIf="loadingAwaiting || loadingOffering"></in-loader>
+<div class="card" *ngIf="messages && !loadingAwaiting && awaitingOrders.length==0">
+  <div class="card-block">
+    <p class="subtitle-gray">{{messages.orders}}</p>
+    <p class="subtitle-black">{{messages.awaiting}}</p>
+  </div>
+</div>
+<ngb-alert [dismissible]="false" *ngIf="messages && !loadingAwaiting && awaitingOrders.length==0">{{messages.orders_not_found}}</ngb-alert>
+
+<div *ngIf="messages && categories && agoDateFormatMessages && !loadingAwaiting && awaitingOrders.length>0" class="card">
+  <div class="card-header">
+    <div>
+      <p class="subtitle-gray">{{messages.orders}}</p>
+      <p class="subtitle-black">{{messages.awaiting}}</p>
+    </div>
+  </div>
+  <div *ngIf="!loadingAwaiting" class="card-block">
+    <list-order (onOrderClick)="onListOrderClick($event)" [messages]="listOrderMessages" [categories]="categories" [agoComponentMessages]="agoDateFormatMessages"
+      [orders]="awaitingOrders"></list-order>
+  </div>
+</div> -->
+
+
+
+
+<!-- <div class="card" *ngIf="messages && !loadingOffering && offeringOrders.length==0">
+  <div class="card-block">
+    <p class="subtitle-gray">{{messages.orders}}</p>
+    <p class="subtitle-black">{{messages.offering}}</p>
+  </div>
+</div>
+<ngb-alert [dismissible]="false" *ngIf="messages && !loadingOffering && offeringOrders.length==0">{{messages.orders_not_found}}</ngb-alert>
+
+<div *ngIf="messages && categories && agoDateFormatMessages && !loadingOffering && offeringOrders.length>0" class="card">
+  <div class="card-header">
+    <div>
+      <p class="subtitle-gray">{{messages.orders}}</p>
+      <p class="subtitle-black">{{messages.offering}}</p>
+    </div>
+  </div>
+  <div *ngIf="!loadingOffering" class="card-block">
+    <list-order (onOrderClick)="onListOrderClick($event)" [messages]="listOrderMessages" [categories]="categories" [agoComponentMessages]="agoDateFormatMessages"
+      [orders]="offeringOrders"></list-order>
+  </div>
+</div> -->

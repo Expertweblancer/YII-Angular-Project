@@ -1,0 +1,14 @@
+.custom-control-description {
+    font-size: 0.8em;
+}
+
+.card-block input.form-control{
+    height:1.6rem;
+    font-size: 0.7rem;
+}
+.form-check{
+    height:1rem;
+}
+.label{
+    font-size: 0.3rem;
+}

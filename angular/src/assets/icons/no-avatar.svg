@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="62px" height="62px" viewBox="0 0 62 62" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.4 (67378) - http://www.bohemiancoding.com/sketch -->
+    <title>user</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="62" height="62" rx="31"></rect>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="finance-empty" transform="translate(-770.000000, -495.000000)">
+            <g id="user" transform="translate(770.000000, 495.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <rect stroke="#DADADA" x="0.5" y="0.5" width="61" height="61" rx="30.5"></rect>
+                <g mask="url(#mask-2)" fill="#DADADA">
+                    <g transform="translate(11.000000, 14.000000)">
+                        <ellipse id="Oval" cx="20.4765982" cy="11.1196911" rx="11.2328767" ry="11.1196911"></ellipse>
+                        <path d="M20.4765982,27.7992278 C9.23230137,27.7992278 0.117009132,36.8226718 0.117009132,47.953668 L40.8361872,47.953668 C40.8361872,36.8226718 31.720895,27.7992278 20.4765982,27.7992278 Z" id="Path"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

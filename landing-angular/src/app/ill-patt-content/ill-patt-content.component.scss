@@ -1,0 +1,38 @@
+.ill-patt-content {
+    height: 408px;
+    display: flex;
+    align-items: center;
+    background-color: #F2F2F2;
+    .illustration {
+        width: 32%;
+        max-width: 500px;
+        background-origin: center;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 100%;
+    }
+    .pattern {
+        width: 104px;
+        height: 100%;
+    }
+    .interspace {
+        width: 110px;
+    }
+    .text {
+        max-width: 476px;
+        padding-right: 20px;
+        .header {
+            font-size: 30px;
+        }
+        .desc {
+            font-size: 22px;
+        }
+        .snart-desc {
+            margin-top: 26px;
+            font-size: 18px;
+            font-family: ClanWebProThin;
+            line-height: 28px;
+        }
+    }
+}

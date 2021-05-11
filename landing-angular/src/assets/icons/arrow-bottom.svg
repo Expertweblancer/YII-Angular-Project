@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="12px" height="12px" viewBox="0 0 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g id="personal" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="personal-how-it-works" transform="translate(-1574.000000, -1927.000000)" fill="#000000">
+            <g id="info" transform="translate(178.000000, 1589.000000)">
+                <g id="head" transform="translate(600.000000, 70.000000)">
+                    <g id="item" transform="translate(0.000000, 258.000000)">
+                        <g id="arrow-bottom" transform="translate(796.000000, 10.000000)">
+                            <path d="M11.4375,5.175 C11.0625,4.8 10.4625,4.8375 10.125,5.2125 L6.8625,8.5875 L6.8625,0.9375 C6.8625,0.4125 6.45,0 5.925,0 C5.4,0 4.9875,0.4125 4.9875,0.9375 L4.9875,8.55 L1.725,5.175 C1.35,4.8 0.7875,4.8 0.4125,5.1375 C0.0375,5.5125 0.0375,6.075 0.375,6.45 L5.25,11.475 C5.4375,11.6625 5.6625,11.775 5.925,11.775 C6.1875,11.775 6.4125,11.6625 6.6,11.475 L11.475,6.45 C11.8125,6.1125 11.8125,5.5125 11.4375,5.175 Z" id="Path"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
