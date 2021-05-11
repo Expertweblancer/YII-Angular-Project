@@ -1,29 +1,21 @@
-Wytyczne:
+##Guidelines:
 
-- zrzut bazy danych jest w pliku:shipme.dev.sql, należy ją wczytać do bazy
-dane bazy danych zmienia się w yii/config/db.php - gdzie ustawaia się użytkownika, hasło, adres serwera bazy danych
+- The database dump is in the file: shipme.dev.sql, it must be loaded into the database database changes to yii / config / db.php - where you set the user, password, database server address
 
-- dane serwera - backendu z którym łączy się angular (frontend) zmienia się w angular\src\app\definitions.ts - 
-zmienna backendUrl - należy tam podać domenę pod którą jest serwer.
+- server data - backend to which angular connects (frontend) changes into angular \ src \ app \ definitions.ts - backendUrl variable - you should enter the domain under which the server is.
 
-- utwórz katalog "assets" w yii/web/ jeśli go tam nie ma.
+- create "assets" directory in yii / web / if it's not there.
 
 
 
-Wykonaj test czy działa angular i czy prawidłowo łączy się z backendem
+Test if angular works and connects properly to the backend
 
-wejdź na adres backendu. np. services.transovia.com
-utwórz konto, potwierdź email.
-UWAGA: email przyjdzie z innej domeny - w obecnej wersji, bo nie ma jeszcze utworzonego emailu: admin@transovia.com
+go to the backend address. eg services.transovia.com create an account, confirm email. NOTE: the email will come from a different domain - in the current version, because there is no email created yet: admin@transovia.com
 
-trzeba tam kliknąć link potwierdzający założenie konta.
-w momencie, kiedy aktualizuję to readme - nie ma automatycznego przejścia do angulara, więc wpisz do przeglądarki transovia.com
-zaloguj się podając usera i password,
+you need to click the link confirming the creation of an account. when I update this readme - there is no automatic transition to angular, so enter transovia.com into the browser, log in with the username and password,
 
-jest tam testowa zakładka: heros się nazywa
-służy ona do przetestowania czy jest wszystko dobrze połączone.
+there is a test tab: the hero's name, it is used to test if everything is well connected.
 
-po zalogowaniu przejdź do tej zakładki i zobac czy pokazuje się lista. spróbuj dodać do niej jakiąś nazwę, nazwa powinna się pokazać na liście. 
-Jeśli się pokazuje to znaczy, że wszystko jest miodzio..
+after logging in, go to this tab and see if the list shows. try adding a name to it, the name should show up in the list. If it shows up, it means that everything is nice ..
 
 
